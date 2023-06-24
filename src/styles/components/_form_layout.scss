@@ -1,0 +1,33 @@
+.form_layout {
+  height: 100vh;
+  background-color: var(--background);
+  @extend %center;
+
+  & > div {
+    width: 60%;
+  }
+
+  input {
+    @include input;
+  }
+  textarea {
+    @include textarea;
+  }
+
+  button {
+    @extend %button;
+  }
+  .btn-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    button:disabled {
+      background-color: gray;
+      opacity: 0.8;
+      cursor: not-allowed;
+    }
+    button:active:disabled {
+      transform: scale(1);
+    }
+  }
+}

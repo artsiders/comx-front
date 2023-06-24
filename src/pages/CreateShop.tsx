@@ -3,6 +3,7 @@ import StartForm from "../components/CreateShopForm/StartForm";
 import { ShopDatas } from "../_interface";
 import UploadLogo from "../components/CreateShopForm/UploadLogo";
 import UserInfo from "../components/CreateShopForm/UserInfo";
+import ShopInfo from "../components/CreateShopForm/ShopInfo";
 
 export default function CreateShop() {
     const [page, setPage] = useState(0);
@@ -17,15 +18,17 @@ export default function CreateShop() {
         phone: "",
     });
 
-    const FormTitles: string[] = ["Welcome", "information personnel", "Upload logo"];
+    const FormTitles: string[] = ["Welcome", "information personnel", "Upload logo", "Information sur la boutique"];
 
     const PageDisplay = () => {
         if (page === 0) {
             return <StartForm shopDatas={shopDatas} setShopDatas={setShopDatas} />;
         } else if (page === 1) {
             return <UserInfo shopDatas={shopDatas} setShopDatas={setShopDatas} />;
-        } else {
+        } else if (page === 2) {
             return <UploadLogo shopDatas={shopDatas} setShopDatas={setShopDatas} />;
+        } else {
+            return <ShopInfo shopDatas={shopDatas} setShopDatas={setShopDatas} />;
         }
     };
     return (
@@ -56,7 +59,18 @@ export default function CreateShop() {
                             }
                         }}
                     >
-                        {page === FormTitles.length - 1 ? "Terminer" : "Suivant"} <i className="fa fa-chevron-right"></i></button>
+                        {page === FormTitles.length - 1 ?
+                            <>
+                                Terminer
+                                <i className="fa fa-check"></i>
+                            </>
+                            :
+                            <>
+                                Suivant
+                                <i className="fa fa-chevron-right"></i>
+                            </>
+                        }
+                    </button>
                 </div>
             </form>
         </div>

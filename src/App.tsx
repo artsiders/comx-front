@@ -1,13 +1,8 @@
-import CreateShop from "./pages/CreateShop";
+import Routeur from "./Routeur";
 
 const App = () => {
   return (
-    // <div>
-    //   <TopBar />
-    //   <Routeur />
-    //   <Footer />
-    // </div>
-    <CreateShop />
+    <Routeur />
   );
 };
 

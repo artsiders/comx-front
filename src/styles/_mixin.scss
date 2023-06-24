@@ -14,6 +14,13 @@
     border-color: var(--primary);
   }
 }
+@mixin textarea($height: 100px, $width: 100%, $max-height: 250px) {
+  @include input($height: $height);
+  padding-top: 10px;
+  resize: vertical;
+  max-height: $max-height;
+  min-height: $height;
+}
 
 @mixin clamp($limit: 3) {
   display: -webkit-box;
