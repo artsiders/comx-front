@@ -12,7 +12,6 @@ export default function UserInfo(props: Props) {
 
     return (
         <div>
-            Information Personnel !
             <label htmlFor="email">Email</label>
             <input
                 type="email"
@@ -22,22 +21,23 @@ export default function UserInfo(props: Props) {
                     setShopDatas({ ...shopDatas, email: e.target.value });
                 }}
             />
-            <label htmlFor="email">Nom</label>
+            <label htmlFor="fullname">Nom complet</label>
             <input
                 type="text"
+                id="fullname"
                 placeholder=""
-                value={shopDatas.firstname}
+                value={shopDatas.fullname}
                 onChange={(e) => {
-                    setShopDatas({ ...shopDatas, firstname: e.target.value });
+                    setShopDatas({ ...shopDatas, fullname: e.target.value });
                 }}
             />
-            <label htmlFor="text">premon</label>
+            <label htmlFor="text">Mot de passe</label>
             <input
-                type="text"
+                type="password"
                 placeholder=""
-                value={shopDatas.lastname}
+                value={shopDatas.password}
                 onChange={(e) => {
-                    setShopDatas({ ...shopDatas, lastname: e.target.value });
+                    setShopDatas({ ...shopDatas, password: e.target.value });
                 }}
             />
             <label htmlFor="text">Téléphone</label>

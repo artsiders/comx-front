@@ -10,10 +10,9 @@ export default function StartForm(props: Props) {
 
     return (
         <div className="start_form">
-            Commençons. <br /> Quel est le nom de votre entrepise ? <br />
             <input
                 type="text"
-                placeholder=""
+                placeholder="Nom de la boutique"
                 autoFocus
                 value={shopDatas.shopName}
                 onChange={(e) => {

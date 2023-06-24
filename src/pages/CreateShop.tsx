@@ -13,12 +13,17 @@ export default function CreateShop() {
         email: "",
         theme: "",
         description: "",
-        firstname: "",
-        lastname: "",
+        fullname: "",
+        password: "",
         phone: "",
     });
 
-    const FormTitles: string[] = ["Welcome", "information personnel", "Upload logo", "Information sur la boutique"];
+    const FormTitles: string[] = [
+        "Commençons. Quel est le nom de votre entrepise ?",
+        "Informations personnels",
+        "Importez le logo de votre entreprise (Boutique)",
+        "Information sur la boutique"
+    ];
 
     const PageDisplay = () => {
         if (page === 0) {
