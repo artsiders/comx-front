@@ -1,0 +1,32 @@
+@mixin input($height: 50px, $width: 100%) {
+  height: $height;
+  width: $width;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  padding-left: 14px;
+  padding-right: 50px;
+  border: 1px solid var(--border);
+  background-color: var(--input-accent);
+  color: var(--writing);
+
+  &:focus {
+    border-color: var(--primary);
+  }
+}
+
+@mixin clamp($limit: 3) {
+  display: -webkit-box;
+  -webkit-line-clamp: $limit;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@mixin textgradient(
+  $color1: var(--primary),
+  $color2: var(--blue),
+  $deg: 223deg
+) {
+  background: linear-gradient($deg, $color1, $color2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

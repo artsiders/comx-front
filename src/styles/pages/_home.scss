@@ -1,0 +1,126 @@
+.section {
+  & > h1 {
+    padding: 7px calc(100vw - 95%);
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+
+  .cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+
+    .card {
+      width: 250px;
+      height: 350px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      background-image: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.397),
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.342)
+        ),
+        url(../../../images/0-0.jpg);
+
+      &::before {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(37, 35, 35, 0.123);
+        position: absolute;
+        border-radius: 10px;
+        left: 0;
+        top: 0;
+        transition: all 0.3s;
+        z-index: -1;
+      }
+
+      &:hover::before {
+        transform: rotate(5deg);
+      }
+    }
+  }
+
+  .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .service {
+      width: 80%;
+      height: fit-content;
+      position: relative;
+      background-color: red;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 25px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+
+      .ico {
+        background: blue;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 24px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0px;
+      }
+    }
+  }
+
+  .formations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .formation {
+      background: red;
+      display: flex;
+      gap: 10px;
+      margin: 30px;
+      padding: 10px;
+      border-radius: 5px;
+
+      & > .img {
+        background-image: url(../../../images/0-0.jpg);
+        width: 200px;
+        height: 250px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 10px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      & > .details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+    }
+
+    & > .btn_content {
+      padding-bottom: 30px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+$font: "Poppins", Arial, sans-serif;
+$speed: 0.2s;
+
+:root {
+  --primary: #3957db;
+  --secondary: #ff6a00;
+  --accent: #f1f1f1;
+  --input-accent: #ffffff;
+  --border: #d7d9de;
+  --shadow: #aaaaaa8f;
+  --white-opacity: #ffffff88;
+
+  --success: #2ecc71;
+  --warning: #ffdd70;
+  --danger: #c7192e;
+
+  --background: #ffffff;
+  --writing: #131523;
+
+  --red: #c7192e;
+  --blue: #0461ab;
+  --yellow: #ffc700;
+  --green: #22a77d;
+  --color1: #50514f;
+
+  --animate-duration: 500ms;
+  --animate-delay: 0.9s;
+
+  --skeleton-base-color: #e5e5e5;
+  --skeleton-highlight-color: #f5f5f5;
+}
