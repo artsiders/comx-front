@@ -18,7 +18,7 @@ Comx-front est une application web qui permet à un utilisateur de créer sa pro
 1. Clonez ce dépôt de code sur votre machine
 2. Ouvrez un terminal dans le dossier du projet et exécutez la commande `npm install` pour installer les dépendances
 3. Exécutez la commande `npm run dev` pour lancer l'application en mode développement
-4. Ouvrez votre navigateur à l'adresse http://localhost:3000 pour voir l'application en action
+4. Ouvrez votre navigateur à l'adresse http://localhost:5173 pour voir l'application en action
 
 ## Captures d'écran
 
