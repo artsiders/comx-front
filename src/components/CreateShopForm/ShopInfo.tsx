@@ -10,7 +10,6 @@ export default function ShopInfo(props: Props) {
 
     return (
         <div>
-            Information suplémentaire sur la boutique !
             <label htmlFor="email">Thème de la boutique</label>
             <textarea
                 value={shopDatas.theme}

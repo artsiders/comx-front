@@ -4,8 +4,10 @@ import { ShopDatas } from "../_interface";
 import UploadLogo from "../components/CreateShopForm/UploadLogo";
 import UserInfo from "../components/CreateShopForm/UserInfo";
 import ShopInfo from "../components/CreateShopForm/ShopInfo";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateShop() {
+    const navigate = useNavigate()
     const [page, setPage] = useState(0);
     const [shopDatas, setShopDatas] = useState<ShopDatas>({
         shopName: "",
@@ -57,8 +59,7 @@ export default function CreateShop() {
                         type="button"
                         onClick={() => {
                             if (page === FormTitles.length - 1) {
-                                alert("FORM SUBMITTED");
-                                console.log(shopDatas);
+                                navigate('/custom-shop')
                             } else {
                                 setPage((currPage) => currPage + 1);
                             }
