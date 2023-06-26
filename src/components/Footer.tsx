@@ -20,16 +20,14 @@ export default function Footer() {
         <div className="column">
           <h3>Contact</h3>
           <p>
-            123 rue de la Ville<br />
-            75001 Paris<br />
-            France<br />
-            +33 1 23 45 67 89<br />
-            contact@example.com
+            Cameroun Bafoussam <br />
+            +237 651 28 41 14<br />
+            salim.artsider@gmail.com
           </p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2023 My Company. Tous droits réservés.</p>
+        <p>&copy; 2023 Alt Plus. Tous droits réservés.</p>
       </div>
     </div>
   );
