@@ -25,7 +25,18 @@
     width: auto;
     margin-left: 20px;
   }
+  button {
+    @extend %button-outline;
+    font-weight: 500;
+    color: var(--primary);
+    i {
+      color: var(--primary);
+    }
+  }
   .menu {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
     ul {
       display: flex;
       list-style: none;

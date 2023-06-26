@@ -34,6 +34,10 @@ const TopBar = () => {
           <li>Produits</li>
           <li>Contact</li>
         </ul>
+        <button>
+          options
+          <i className='fa fa-cog'></i>
+        </button>
       </nav>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="hamburger"></div>

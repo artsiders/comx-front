@@ -11,7 +11,7 @@ export interface ShopDatas {
 }
 
 export interface Product {
-  id: number;
+  _id: number;
   name: string;
   price: number;
   image: string;

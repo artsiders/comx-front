@@ -9,19 +9,19 @@ const UserShop = () => {
   const { shopName } = useParams();
   const products: Product[] = [
     {
-      id: 1,
+      _id: 1,
       name: "sac à dos",
       price: 100000,
       image: "sac-a-dos.jpg",
     },
     {
-      id: 2,
+      _id: 2,
       name: "sac à dos",
       price: 100000,
       image: "sac-a-dos.jpg",
     },
     {
-      id: 3,
+      _id: 3,
       name: "sac à dos",
       price: 100000,
       image: "sac-a-dos.jpg",
@@ -36,8 +36,8 @@ const UserShop = () => {
       <section className="product-section">
         <h1>Articles de la boutique</h1>
         <div className="product-grid">
-          {products.map((product: Product) => (
-            <ProductCart product={product} />
+          {products.map((product: Product, key: number) => (
+            <ProductCart product={product} key={key} />
           ))}
         </div>
       </section>

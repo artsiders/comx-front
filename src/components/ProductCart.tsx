@@ -6,7 +6,7 @@ interface Props {
 
 const ProductCart: React.FC<Props> = ({ product }) => {
     return (
-        <div className="product-card" key={product.id}>
+        <div className="product-card" key={product._id}>
             <div className="product-image">
                 <img src={`/images/${product.image}`} alt={product.name} />
             </div>
