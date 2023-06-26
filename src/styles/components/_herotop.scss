@@ -10,13 +10,27 @@
   margin-top: 100px;
 
   .hero_content {
-    background-color: var(--background);
-    width: 350px;
+    width: 60%;
     height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     padding: 15px;
     border-radius: 4px;
+    text-align: center;
+    margin: auto;
+    h1 {
+      color: var(--secondary);
+      text-transform: capitalize;
+    }
+    p {
+      color: #ffffff;
+    }
+    button {
+      @extend %button;
+      width: fit-content;
+      padding: 15px;
+      margin: 0 auto;
+    }
   }
 }
