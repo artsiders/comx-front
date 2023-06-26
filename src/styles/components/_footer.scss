@@ -1,74 +1,62 @@
 .footer {
-  background: red;
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-
-  .top {
-    display: grid;
-    align-items: center;
-    justify-content: space-around;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 25px;
-
-    .contact {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .center {
-      h2 {
-        color: #666;
+  background-color: #eee;
+  margin-top: 100px;
+  .footer-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 40px;
+    .column {
+      flex-basis: calc(33.33% - 20px);
+      margin-bottom: 40px;
+      img {
+        width: 100%;
+        max-width: 100px;
+        margin-bottom: 20px;
       }
-
-      .btnContent {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 80%;
-        gap: 12px;
-
-        a {
-          @extend %a;
-        }
+      h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
       }
-    }
-
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
       ul {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 4px;
-
+        list-style: none;
+        padding: 0;
         li {
+          margin-bottom: 10px;
           a {
-            @extend %a;
+            color: #333;
+            text-decoration: none;
+            &:hover {
+              text-decoration: underline;
+            }
           }
         }
       }
-
-      .social-links {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        flex-direction: row;
-      }
     }
   }
-
-  .bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--secondary);
-    padding: 11px;
+  .footer-bottom {
+    background-color: #ddd;
+    padding: 20px;
+    p {
+      font-size: 14px;
+      text-align: center;
+      margin: 0;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .footer-body {
+      padding: 20px;
+      .column {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+        img {
+          max-width: 100%;
+        }
+      }
+    }
   }
 }

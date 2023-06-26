@@ -51,38 +51,6 @@
     }
   }
 
-  .services {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-
-    .service {
-      width: 80%;
-      height: fit-content;
-      position: relative;
-      background-color: red;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 25px;
-      border-radius: 5px;
-      margin-bottom: 30px;
-
-      .ico {
-        background: blue;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 24px;
-        display: grid;
-        align-items: center;
-        justify-content: center;
-        margin-right: 0px;
-      }
-    }
-  }
-
   .formations {
     display: flex;
     flex-direction: column;

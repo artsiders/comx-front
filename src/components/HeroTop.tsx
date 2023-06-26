@@ -7,7 +7,7 @@ const HeroTop = () => {
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
           facere?
         </p>
-        <button>contact us</button>
+        <button>Contactez nous</button>
       </div>
     </div>
   );
