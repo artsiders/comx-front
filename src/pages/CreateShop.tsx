@@ -13,6 +13,7 @@ export default function CreateShop() {
         shopName: "",
         logo: "",
         email: "",
+        adresse: "",
         theme: "",
         description: "",
         fullname: "",
@@ -59,7 +60,7 @@ export default function CreateShop() {
                         type="button"
                         onClick={() => {
                             if (page === FormTitles.length - 1) {
-                                navigate('/custom-shop')
+                                navigate(`/my-shop/${shopDatas.shopName}`)
                             } else {
                                 setPage((currPage) => currPage + 1);
                             }

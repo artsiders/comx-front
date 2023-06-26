@@ -1,12 +1,14 @@
+import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import HeroTop from "../components/HeroTop";
 import TopBar from "../components/TopBar";
 
 const Home = () => {
+  const { shopName } = useParams();
   return (
     <div>
       <TopBar />
-      <HeroTop />
+      <HeroTop shopName={shopName || "Shop name"} />
       <section className="section">
         <h1>Articles de la boutique</h1>
         <div className="cards">

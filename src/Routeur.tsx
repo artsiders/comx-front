@@ -11,7 +11,7 @@ const Routeur = () => {
         <Route path="/" element={<CreateShop />} />
       </Route>
       <Route path="/store" element={<Store />} />
-      <Route path="/custom-shop" element={<Home />} />
+      <Route path="/my-shop/:shopName" element={<Home />} />
     </Routes>
   );
 };

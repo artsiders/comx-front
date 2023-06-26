@@ -1,8 +1,11 @@
-const HeroTop = () => {
+interface Props {
+  shopName: string;
+}
+const HeroTop = (props: Props) => {
   return (
     <div className="herotop" style={{ backgroundImage: "url('/images/herotop.webp')" }}>
       <div className="hero_content">
-        <h1>Gic Bonus</h1>
+        <h1>{props.shopName}</h1>
         <p>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
           facere?

@@ -5,6 +5,7 @@ export interface ShopDatas {
   fullname: string;
   phone: string;
   password: string;
+  adresse: string;
   theme: string;
   description: string;
 }

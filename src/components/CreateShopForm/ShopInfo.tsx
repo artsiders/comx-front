@@ -10,6 +10,16 @@ export default function ShopInfo(props: Props) {
 
     return (
         <div>
+            <label>Adresse de la boutique</label>
+            <input
+                type="text"
+                placeholder="123 rue de la Ville 75001 Paris"
+                autoFocus
+                value={shopDatas.adresse}
+                onChange={(e) => {
+                    setShopDatas({ ...shopDatas, adresse: e.target.value });
+                }}
+            />
             <label htmlFor="email">Thème de la boutique</label>
             <textarea
                 value={shopDatas.theme}
