@@ -1,28 +1,39 @@
 .form_layout {
   height: 100vh;
-  background-color: var(--background);
+  background-color: var(--primary);
   @extend %center;
 
   & > div {
     width: 60%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 100px var(--shadow);
+    animation: fade-in 0.3s linear;
   }
 
   input {
     @include input;
+  }
+  input[type="password"]::placeholder {
+    font-weight: bold;
+    letter-spacing: 4px;
+    font-size: 5px;
+    opacity: 0.6;
   }
   textarea {
     @include textarea;
   }
 
   button {
-    @extend %button;
+    @extend %button-outline;
   }
   .btn-navigation {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
     button:disabled {
-      background-color: gray;
+      border: none;
       opacity: 0.8;
       cursor: not-allowed;
     }
