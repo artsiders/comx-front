@@ -1,52 +1,120 @@
-.topbar {
-  .top {
-    background: var(--primary);
-    padding-left: 20px;
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background);
+  z-index: 100;
+  transition: all 0.3s ease;
+  // transform: translateY(-40px);
 
-    .logotext {
-      color: #ffffff;
-      font-weight: 300;
-      font-size: 35px;
-      width: 230px;
+  &.scrolled {
+    opacity: 1;
+    transform: translateY(0);
+    height: 80px;
+    background-color: #ffffff;
+    color: var(--writing);
+    box-shadow: 0 2px 100px var(--shadow);
+  }
+  .logo {
+    height: 50px;
+    width: auto;
+    margin-left: 20px;
+  }
+  .menu {
+    ul {
+      display: flex;
+      list-style: none;
+      li {
+        margin-right: 20px;
+        position: relative;
+        cursor: pointer;
+        &:hover::after {
+          content: "";
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: #000;
+          animation: fade-in 0.2s ease forwards;
+        }
+      }
+    }
+    @media screen and (max-width: 768px) {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease;
+      &.open {
+        height: auto;
+      }
+      ul {
+        flex-direction: column;
+        li {
+          margin: 0;
+          padding: 10px 20px;
+          border-bottom: 1px solid #eee;
+        }
+      }
     }
   }
-
-  .bottom {
-    background: var(--secondary);
-    display: flex;
-    @extend %container;
-    justify-content: space-between;
-
-    .links {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      align-items: center;
-      a {
-        color: #ffffff;
-        text-decoration: none;
+  .menu-toggle {
+    display: none;
+    @media screen and (max-width: 768px) {
+      display: block;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      .hamburger {
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: #000;
+        }
+        &::before {
+          top: -8px;
+        }
+        &::after {
+          bottom: -8px;
+        }
       }
-
-      input {
-        @include input;
+      &.active .hamburger {
+        background-color: transparent;
+        &::before {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+        &::after {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
       }
     }
-
-    .cta-log {
-      display: flex;
-      gap: 15px;
-
-      .signin {
-        @extend %button;
-        background-color: var(--background);
-        color: var(--writing);
-      }
-
-      .login {
-        @extend %button;
-        background-color: var(--background);
-        color: var(--writing);
-      }
-    }
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

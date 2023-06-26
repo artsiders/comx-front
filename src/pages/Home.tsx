@@ -1,8 +1,10 @@
 import HeroTop from "../components/HeroTop";
+import TopBar from "../components/TopBar";
 
 const Home = () => {
   return (
     <div>
+      <TopBar />
       <HeroTop />
       <section className="section">
         <h1>Articles de la boutique</h1>

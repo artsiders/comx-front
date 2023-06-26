@@ -6,7 +6,6 @@ Comx-front est une application web qui permet à un utilisateur de créer sa pro
 
 - Créer une boutique en ligne personnalisée
 - Ajouter des produits, des images, des descriptions, des prix, etc.
-- Gérer les commandes et les clients
 - Personnaliser le design de la boutique avec des thèmes prédéfinis
 
 ## Prérequis
@@ -36,17 +35,3 @@ Les scripts suivants sont disponibles dans ce projet :
 Pour exécuter un script, ouvrez un terminal et tapez `npm run nom-du-script`, par exemple :
 
 - `npm run dev` ou `yarn dev` Cela lancera l'application en mode développement avec Vite.
-
-## Contribuer
-
-Les contributions sont les bienvenues! Si vous souhaitez contribuer à l'application, veuillez suivre les étapes suivantes :
-
-1. Créez une branche pour votre contribution : `git checkout -b ma-contribution`
-2. Faites vos modifications et testez-les localement
-3. Faites un commit de vos modifications : `git commit -am 'Ajout de ma contribution'`
-4. Poussez vos modifications vers votre branche : `git push origin ma-contribution`
-5. Ouvrez une demande de fusion (pull request) pour que vos modifications soient examinées et fusionnées dans le code principal
-
-## Licence
-
-Ce projet est sous licence MIT. Veuillez consulter le fichier LICENCE pour plus d'informations.

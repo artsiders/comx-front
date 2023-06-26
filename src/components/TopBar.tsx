@@ -1,26 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 
 const TopBar = () => {
-  const [search, setSearch] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <header className="topbar">
-      <div className="top">
-        <div className="logotext">Store Name</div>
+    <div className={`top-bar ${scrolled ? 'scrolled' : ''}`}>
+      <img src="/images/logo.webp" alt="Logo" className="logo" />
+      <nav className={`menu ${menuOpen ? 'open' : ''}`}>
+        <ul>
+          <li>Accueil</li>
+          <li>Produits</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <div className="menu-toggle" onClick={toggleMenu}>
+        <div className="hamburger"></div>
       </div>
-      <div className="bottom">
-        <div className="links">
-          <a href="/">Acceuil</a>
-          <a href="/store">Boutique</a>
-          <a href="/">Services</a>
-          <a href="/">Formations</a>
-          <a href="/">A Propos</a>
-        </div>
-        <div className="cta-log">
-          <input type="search" value={search} onChange={(e: any) => setSearch(e.currentTarget.value)} />
-        </div>
-      </div>
-    </header>
+    </div>
   );
 };
 
