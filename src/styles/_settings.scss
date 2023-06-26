@@ -7,6 +7,9 @@
   color: var(--writing);
   font-family: $font;
 }
+::selection {
+  background-color: var(--secondary);
+}
 html {
   overflow-x: hidden;
 }
