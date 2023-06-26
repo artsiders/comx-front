@@ -5,6 +5,7 @@ import UploadLogo from "../components/CreateShopForm/UploadLogo";
 import UserInfo from "../components/CreateShopForm/UserInfo";
 import ShopInfo from "../components/CreateShopForm/ShopInfo";
 import { useNavigate } from "react-router-dom";
+import { textToSlug } from "../_utils";
 
 export default function CreateShop() {
     const navigate = useNavigate()
@@ -60,7 +61,7 @@ export default function CreateShop() {
                         type="button"
                         onClick={() => {
                             if (page === FormTitles.length - 1) {
-                                navigate(`/my-shop/${shopDatas.shopName}`)
+                                navigate(`/my-shop/${textToSlug(shopDatas.shopName)}`)
                             } else {
                                 setPage((currPage) => currPage + 1);
                             }
