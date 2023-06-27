@@ -61,15 +61,19 @@ export default function CreateShop() {
                     break;
 
                 default:
+                    setPage((currPage) => currPage + 1);
                     break;
             }
         }
     }
-
+    const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        handleNavigation()
+    }
 
     return (
         <div className="create_shop_page">
-            <form>
+            <form onSubmit={handelSubmit}>
                 <div className="header">
                     {FormTitles[page]}
                 </div>
