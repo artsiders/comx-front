@@ -6,6 +6,7 @@ import UserInfo from "../components/CreateShopForm/UserInfo";
 import ShopInfo from "../components/CreateShopForm/ShopInfo";
 import { useNavigate } from "react-router-dom";
 import { textToSlug } from "../_utils";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 export default function CreateShop() {
     const navigate = useNavigate()
@@ -40,6 +41,32 @@ export default function CreateShop() {
             return <ShopInfo shopDatas={shopDatas} setShopDatas={setShopDatas} />;
         }
     };
+
+    const handleNavigation = () => {
+
+        if (page === FormTitles.length - 1) {
+            navigate(`/my-shop/${textToSlug(shopDatas.shopName)}`)
+        } else {
+            switch (page) {
+                case 0:
+                    axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/shop/check-shop-name?shopName=${shopDatas.shopName}`)
+                        .then(({ data }: AxiosResponse) => {
+                            if (data.type === "success") {
+                                setPage((currPage) => currPage + 1);
+                            } else {
+                                // code 
+                                console.log(data);
+                            }
+                        }).catch((err: AxiosError) => console.log(err))
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+
     return (
         <div className="create_shop_page">
             <form>
@@ -59,13 +86,7 @@ export default function CreateShop() {
                     ><i className="fa fa-chevron-left"></i> Précédent</button>
                     <button
                         type="button"
-                        onClick={() => {
-                            if (page === FormTitles.length - 1) {
-                                navigate(`/my-shop/${textToSlug(shopDatas.shopName)}`)
-                            } else {
-                                setPage((currPage) => currPage + 1);
-                            }
-                        }}
+                        onClick={handleNavigation}
                     >
                         {page === FormTitles.length - 1 ?
                             <>
