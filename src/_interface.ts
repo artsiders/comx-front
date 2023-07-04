@@ -6,8 +6,8 @@ export interface ShopDatas {
   phone: string;
   password: string;
   adresse: string;
-  theme: string;
   description: string;
+  langue: string;
 }
 
 export interface Product {

@@ -16,11 +16,11 @@ export default function CreateShop() {
         logo: "",
         email: "",
         adresse: "",
-        theme: "",
         description: "",
         fullname: "",
         password: "",
         phone: "",
+        langue: "en",
     });
 
     const FormTitles: string[] = [

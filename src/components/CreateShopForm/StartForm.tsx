@@ -20,6 +20,15 @@ export default function StartForm(props: Props) {
                     setShopDatas({ ...shopDatas, shopName: e.target.value });
                 }}
             />
+            <label htmlFor="text">Langues de la boutique</label>
+            <select
+                onChange={(e) => {
+                    setShopDatas({ ...shopDatas, langue: e.target.value });
+                }}
+            >
+                <option value="fr">français</option>
+                <option value="en">english</option>
+            </select>
         </div>
     )
 }

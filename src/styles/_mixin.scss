@@ -11,7 +11,7 @@
   color: var(--writing);
 
   &:focus {
-    border-color: var(--primary);
+    border-color: var(--secondary);
   }
 }
 @mixin textarea($height: 100px, $width: 100%, $max-height: 250px) {

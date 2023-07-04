@@ -2,6 +2,7 @@
   height: 100vh;
   background-color: var(--primary);
   @extend %center;
+  gap: 20px;
 
   & > div {
     width: 50%;
@@ -12,8 +13,13 @@
     animation: fade-in 0.3s linear;
   }
 
-  input {
+  input,
+  select {
     @include input;
+    margin-bottom: 15px;
+  }
+  select {
+    padding-right: 10px;
   }
   input[type="password"]::placeholder {
     font-weight: bold;

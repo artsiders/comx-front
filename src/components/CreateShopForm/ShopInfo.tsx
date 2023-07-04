@@ -20,15 +20,7 @@ export default function ShopInfo(props: Props) {
                     setShopDatas({ ...shopDatas, adresse: e.target.value });
                 }}
             />
-            <label htmlFor="email">Thème de la boutique</label>
-            <textarea
-                value={shopDatas.theme}
-                onChange={(e) => {
-                    setShopDatas({ ...shopDatas, theme: e.target.value });
-                }}
-            >
-            </textarea>
-            <label htmlFor="email">Domaine d'activité</label>
+            <label htmlFor="email">Description de la boutique</label>
             <textarea
                 value={shopDatas.description}
                 onChange={(e) => {
