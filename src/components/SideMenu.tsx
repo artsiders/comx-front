@@ -69,10 +69,9 @@ export default function SideMenu() {
             </NavLink>
             <span className="tooltip">Produits</span>
           </li>
-          <li>
+          <li className="log_out">
             <a
               href={`/my-shop/custom/${shopName}`}
-              id="log-out"
               onClick={logOut}
             >
               <i className="fa fa-sign-out"></i>
