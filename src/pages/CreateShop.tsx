@@ -20,7 +20,7 @@ export default function CreateShop() {
         fullname: "",
         password: "",
         phone: "",
-        langue: "en",
+        langue: "fr",
     });
 
     const FormTitles: string[] = [
@@ -45,7 +45,7 @@ export default function CreateShop() {
     const handleNavigation = () => {
 
         if (page === FormTitles.length - 1) {
-            navigate(`/my-shop/${textToSlug(shopDatas.shopName)}`)
+            navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}`)
         } else {
             switch (page) {
                 case 0:

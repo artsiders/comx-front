@@ -3,6 +3,7 @@ import Store from "./pages/Store";
 import CreateShop from "./pages/CreateShop";
 import FormLayout from "./components/CreateShopForm/FormLayout";
 import UserShop from "./pages/UserShop";
+import CustomShop from "./pages/CustomShop";
 
 const Routeur = () => {
   return (
@@ -11,6 +12,7 @@ const Routeur = () => {
         <Route path="/" element={<CreateShop />} />
       </Route>
       <Route path="/store" element={<Store />} />
+      <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
       <Route path="/my-shop/:shopName" element={<UserShop />} />
     </Routes>
   );
