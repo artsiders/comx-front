@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { removeTrailingSlash } from "../_utils";
+import { NavLink, useParams } from "react-router-dom";
 // import axios from "axios"; 
 
 export default function SideMenu() {
   // const [matches] = useState(window.matchMedia("(max-width: 600px)").matches);
   const [etat, setEtat] = useState(false);
+  const { shopName } = useParams();
+
 
   // const [data, setData] = useState([]);
   const toggleSideMenu = () => (etat ? setEtat(false) : setEtat(true));
@@ -48,7 +49,7 @@ export default function SideMenu() {
 
           <li>
             <NavLink
-              to={`${removeTrailingSlash(location.pathname)}`}
+              to={`/my-shop/custom/${shopName}/`}
               id="custom"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -59,7 +60,7 @@ export default function SideMenu() {
           </li>
           <li>
             <NavLink
-              to={`${removeTrailingSlash(location.pathname)}/products`}
+              to={`/my-shop/custom/${shopName}/products`}
               id="products"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -70,7 +71,7 @@ export default function SideMenu() {
           </li>
           <li>
             <a
-              href={`${removeTrailingSlash(location.pathname)}/`}
+              href={`/my-shop/custom/${shopName}`}
               id="log-out"
               onClick={logOut}
             >

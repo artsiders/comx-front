@@ -1,7 +1,7 @@
 export default function CustomShop() {
     return (
         <>
-            main
+            custom shop
         </>
     )
 }

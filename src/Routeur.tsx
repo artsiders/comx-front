@@ -4,6 +4,7 @@ import FormLayout from "./components/CreateShopForm/FormLayout";
 import UserShop from "./pages/UserShop";
 import CustomShop from "./pages/CustomShop";
 import UserDasboardLayout from "./components/userDasboard/UserDasboardLayout";
+import UserProducts from "./pages/UserProducts";
 
 const Routeur = () => {
   return (
@@ -13,6 +14,7 @@ const Routeur = () => {
       </Route>
       <Route path="/" element={<UserDasboardLayout />} >
         <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
+        <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
       </Route>
       <Route path="/my-shop/:shopName" element={<UserShop />} />
     </Routes>
