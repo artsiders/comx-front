@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 const UserTopBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { shopName } = useParams()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +36,10 @@ const UserTopBar = () => {
           <li>Produits</li>
           <li>Contact</li> */}
         </ul>
-        <button>
+        <a href={`/my-shop/${shopName}/`} target='_blank' className='btn_preview'>
           Previsualiser
           <i className='fa fa-share'></i>
-        </button>
+        </a>
       </nav>
       <div className="menu-toggle" onClick={toggleMenu}>
         <div className="hamburger"></div>

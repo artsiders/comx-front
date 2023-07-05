@@ -23,11 +23,13 @@
   .logo {
     height: 50px;
     width: auto;
-    margin-left: 20px;
+    margin-left: 10px;
+    border-radius: 5px;
   }
-  button {
+  .btn_preview {
     @extend %button-outline;
     font-weight: 500;
+    text-decoration: none;
     color: var(--primary);
     i {
       color: var(--primary);
