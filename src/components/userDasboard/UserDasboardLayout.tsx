@@ -4,10 +4,10 @@ import UserTopBar from "./UserTopBar";
 
 export default function UserDasboardLayout() {
     return (
-        <div>
+        <div className="user_dasboard_layout">
             <SideMenu />
             <UserTopBar />
-            <main style={{ marginTop: 80 }}>
+            <main>
                 <Outlet />
             </main>
         </div>

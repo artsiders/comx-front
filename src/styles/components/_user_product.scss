@@ -1,0 +1,33 @@
+.user_product {
+  .product-section {
+    header {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+      justify-content: flex-end;
+      input,
+      select {
+        @include input($height: 40px);
+      }
+      input {
+        width: 200px;
+      }
+      select {
+        width: auto;
+      }
+    }
+    max-width: 1200px;
+    margin: 100px auto;
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (max-width: 480px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+}

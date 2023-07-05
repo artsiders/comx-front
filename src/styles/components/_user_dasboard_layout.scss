@@ -1,0 +1,13 @@
+.user_dasboard_layout {
+  main {
+    margin-left: 80px;
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .user_dasboard_layout {
+    main {
+      margin-left: 0;
+    }
+  }
+}
