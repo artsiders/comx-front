@@ -1,5 +1,5 @@
 .side_menu_content {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
     left: 0;
     height: fit-content;
     width: 60px;
-    background-color: var(--backgroundWhite);
+    background-color: var(--background);
     padding: 20px 5px 0 12px;
     transition: 0.4s ease;
     margin-left: 5px;

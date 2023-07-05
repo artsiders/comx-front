@@ -4,9 +4,6 @@ export default function CustomShop() {
     return (
         <div>
             <SideMenu />
-            <main>
-                {/* content  */}
-            </main>
         </div>
     )
 }
