@@ -48,7 +48,7 @@ export default function SideMenu() {
 
           <li>
             <NavLink
-              to={`${removeTrailingSlash(location.pathname)}/custom`}
+              to={`${removeTrailingSlash(location.pathname)}`}
               id="custom"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >

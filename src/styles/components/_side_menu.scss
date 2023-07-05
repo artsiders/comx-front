@@ -49,7 +49,7 @@
       }
     }
     .active {
-      background-color: var(--green);
+      background-color: var(--secondary);
       box-shadow: 0 0 14px var(--shadow);
       i {
         color: white;
@@ -74,7 +74,7 @@
     box-shadow: 0 0 10px var(--shadow);
     border: 1px solid var(--border);
     .active {
-      background-color: var(--green);
+      background-color: var(--secondary);
       box-shadow: 0 0 14px var(--shadow);
       i {
         color: white;
@@ -144,7 +144,7 @@
       }
       &:hover {
         // background-color: var(--primary);
-        border: 1px solid var(--primary);
+        border: 1px solid var(--secondary);
         transition: 0.2s ease;
       }
     }
