@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { removeTrailingSlash } from "../_utils";
 // import axios from "axios"; 
 
 export default function SideMenu() {
@@ -24,6 +25,11 @@ export default function SideMenu() {
   //     })
   //     .catch((error) => console.warn(error));
   // };
+  const logOut = (e: React.FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    console.log("log out");
+
+  }
   return (
     <div
       className="side_menu_content"
@@ -42,18 +48,7 @@ export default function SideMenu() {
 
           <li>
             <NavLink
-              to={`${location.pathname}/`}
-              id="home"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-home"></i>
-              <span className="links_name">Accueil</span>
-            </NavLink>
-            <span className="tooltip">Accueil</span>
-          </li>
-          <li>
-            <NavLink
-              to={`${location.pathname}/custom`}
+              to={`${removeTrailingSlash(location.pathname)}/custom`}
               id="custom"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -64,7 +59,7 @@ export default function SideMenu() {
           </li>
           <li>
             <NavLink
-              to={`${location.pathname}/products`}
+              to={`${removeTrailingSlash(location.pathname)}/products`}
               id="products"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -72,6 +67,17 @@ export default function SideMenu() {
               <span className="links_name">Produits</span>
             </NavLink>
             <span className="tooltip">Produits</span>
+          </li>
+          <li>
+            <a
+              href={`${removeTrailingSlash(location.pathname)}/`}
+              id="log-out"
+              onClick={logOut}
+            >
+              <i className="fa fa-sign-out"></i>
+              <span className="links_name">Déconnexion</span>
+            </a>
+            <span className="tooltip">Déconnexion</span>
           </li>
 
         </ul>
