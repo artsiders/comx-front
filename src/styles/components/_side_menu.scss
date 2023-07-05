@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  top: 0;
 
   .nav_list {
     padding: 0;
@@ -139,6 +140,7 @@
       i {
         color: var(--writing);
         font-size: 16px;
+        filter: drop-shadow(2px 2px 1px var(--shadow));
       }
       &:hover {
         // background-color: var(--primary);
