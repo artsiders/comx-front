@@ -8,10 +8,7 @@ export default function SideMenu() {
 
   // const [data, setData] = useState([]);
   const toggleSideMenu = () => (etat ? setEtat(false) : setEtat(true));
-  const search = (e: Event) => {
-    e.preventDefault();
-    console.log("rechercher");
-  };
+
   // const path = window.location.pathname;
   // let link = "/";
   // if (path === "/" || path === "/home") link = path;
@@ -42,23 +39,10 @@ export default function SideMenu() {
         </div>
         <br />
         <ul className="nav_list">
-          <li className="li_search">
-            <form onSubmit={() => search}>
-              <i
-                onClick={() =>
-                  etat
-                    ? document.getElementById("search")?.click()
-                    : toggleSideMenu()
-                }
-                className="fa s fa-search"
-              ></i>
-              <input type="search" placeholder="rechercher" />
-              <button id="search" hidden></button>
-            </form>
-          </li>
+
           <li>
             <NavLink
-              to="/"
+              to={`${location.pathname}/`}
               id="home"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -68,70 +52,29 @@ export default function SideMenu() {
             <span className="tooltip">Accueil</span>
           </li>
           <li>
-            <NavLink to="/analytics"
+            <NavLink
+              to={`${location.pathname}/custom`}
+              id="custom"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
-              <i className="fa fa-chart-pie"></i>
-              <span className="links_name">Statistiques</span>
+              <i className="fa fa-sliders"></i>
+              <span className="links_name">Customiser</span>
             </NavLink>
-            <span className="tooltip">Statistiques</span>
+            <span className="tooltip">Customiser</span>
           </li>
           <li>
-            <NavLink to="/recettes"
+            <NavLink
+              to={`${location.pathname}/products`}
+              id="products"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
-              <i className="fa fa-cash-register"></i>
-              <span className="links_name">recettes</span>
+              <i className="fa fa-product-hunt"></i>
+              <span className="links_name">Produits</span>
             </NavLink>
-            <span className="tooltip">recettes</span>
+            <span className="tooltip">Produits</span>
           </li>
-          <li>
-            <NavLink to="/depenses"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-shopping-cart"></i>
-              <span className="links_name">dépenses</span>
-            </NavLink>
-            <span className="tooltip">dépenses</span>
-          </li>
-          <li>
-            <NavLink to="/employees"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-user-friends"></i>
-              <span className="links_name">employés</span>
-            </NavLink>
-            <span className="tooltip">employés</span>
-          </li>
-          <li>
-            <NavLink to="/rapport"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-align-center"></i>
-              <span className="links_name">rapport</span>
-            </NavLink>
-            <span className="tooltip">rapport</span>
-          </li>
-          <li>
-            <NavLink to="/helps"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-info"></i>
-              <span className="links_name">centre d'aide</span>
-            </NavLink>
-            <span className="tooltip">centre d'aide</span>
-          </li>
-          <li>
-            <NavLink to="/settings"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-            >
-              <i className="fa fa-cog"></i>
-              <span className="links_name">paramètres</span>
-            </NavLink>
-            <span className="tooltip">paramètres</span>
-          </li>
+
         </ul>
-        <span className="version">1.0.O</span>
       </div>
     </div>
   );

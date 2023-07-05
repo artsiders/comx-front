@@ -1,13 +1,14 @@
 .side_menu_content {
+  position: absolute;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+
   .nav_list {
     padding: 0;
   }
   .sidebar.open {
     width: 250px;
-    .version {
-      opacity: 0.8;
-      transition: 0.4s ease;
-    }
     .tooltip {
       display: none;
     }
@@ -19,39 +20,29 @@
     ul li input {
       padding-right: 20px;
     }
-    .li_search i {
-      background-color: transparent;
-      color: var(--writing);
-      transition: 0.3s ease;
-      border-radius: 5px;
-      font-weight: 600;
-      border: 2px solid var(--green);
-      line-height: 40px;
-      @extend %button;
-    }
     #btn {
       right: 10px;
-      color: var(--writing);
+      color: var(--primary);
       background-color: transparent;
       border: 1px solid transparent;
       opacity: 0.8;
       transition: transform 0.6s ease;
 
       &:hover {
-        border: 1px solid var(--blue-70);
+        border: 1px solid var(--primary);
         transition: 0.1s linear;
       }
-      //   &::after {
-      //     content: "edkadi-hotel";
-      //     position: absolute;
-      //     width: 200px;
-      //     right: 26px;
-      //     text-transform: capitalize;
-      //     font-weight: bold;
-      //     font-family: verdana;
-      //     color: var(--green);
-      //     opacity: 1;
-      //   }
+      &::after {
+        content: "custom shop";
+        position: absolute;
+        width: 200px;
+        right: 26px;
+        text-transform: capitalize;
+        font-weight: bold;
+        font-family: verdana;
+        color: var(--primary);
+        opacity: 1;
+      }
       i {
         transition: transform 0.6s ease;
       }
@@ -72,10 +63,10 @@
     position: relative;
     top: 10px;
     left: 0;
-    height: calc(100vh - 75px);
+    height: fit-content;
     width: 60px;
     background-color: var(--backgroundWhite);
-    padding: 20px 5px 10px 12px;
+    padding: 20px 5px 0 12px;
     transition: 0.4s ease;
     margin-left: 5px;
     border-radius: 8px;
@@ -89,27 +80,6 @@
       }
       .links_name {
         color: white;
-      }
-      .fa-home:hover {
-        color: var(--dark);
-      }
-      .fa-chart-pie:hover {
-        color: var(--dark);
-      }
-      .fa-bell:hover {
-        color: var(--dark);
-      }
-      .fa-money-bill-alt:hover {
-        color: var(--dark);
-      }
-      .fa-shopping-cart:hover {
-        color: var(--dark);
-      }
-      .fa-info:hover {
-        color: var(--dark);
-      }
-      .fa-cog:hover {
-        color: var(--dark);
       }
     }
     .bar {
@@ -130,7 +100,7 @@
     }
     #btn {
       position: absolute;
-      color: var(--writing);
+      color: #ffffff;
       right: 10px;
       top: 6px;
       font-size: 20px;
@@ -155,7 +125,7 @@
     }
     ul li {
       position: relative;
-      height: 35px;
+      height: 45px;
       width: 100%;
       list-style: none;
       margin: 10px 0;
@@ -164,36 +134,16 @@
       transition: 0.2s ease;
       text-transform: capitalize;
       font-size: 16px;
+      font-weight: 500;
       border: 1px solid transparent;
       i {
         color: var(--writing);
         font-size: 16px;
       }
       &:hover {
-        background-color: var(--green-70);
-        border: 1px solid var(--green);
+        // background-color: var(--primary);
+        border: 1px solid var(--primary);
         transition: 0.2s ease;
-      }
-      .fa-home:hover {
-        color: var(--writing);
-      }
-      .fa-chart-pie:hover {
-        color: var(--blue);
-      }
-      .fa-bell:hover {
-        color: var(--green);
-      }
-      .fa-money-bill-alt:hover {
-        color: var(--green);
-      }
-      .fa-shopping-cart:hover {
-        color: var(--red);
-      }
-      .fa-info:hover {
-        color: var(--blue);
-      }
-      .fa-cog:hover {
-        color: var(--writing);
       }
     }
     ul li:hover .tooltip {
@@ -206,9 +156,9 @@
       left: 122px;
       top: 0;
       transform: translate(-50%, -50%);
-      height: 35px;
+      height: 45px;
       width: 122px;
-      line-height: 35px;
+      line-height: 45px;
       border-radius: 6px;
       text-align: center;
       background-color: var(--backgroundWhite);
@@ -236,31 +186,6 @@
       font-weight: normal;
       letter-spacing: 1px;
     }
-    ul li input:focus .fa-search {
-      color: var(--blue);
-    }
-    ul li .fa-search {
-      position: absolute;
-      z-index: 99;
-      list-style: 45px;
-      color: var(--writing);
-      font-size: 18px;
-      transition: 0.4s ease;
-    }
-    .li_search {
-      margin-bottom: 25px;
-      i {
-        right: -2px;
-        background-color: transparent;
-        height: 40px;
-        border-radius: 0px;
-        // border-left: 4px solid var(--green);
-      }
-    }
-    .li_search:hover {
-      background-color: transparent;
-      border: 1px solid transparent;
-    }
     ul li a {
       color: var(--writing);
       display: flex;
@@ -269,7 +194,7 @@
       transition: 0.4s ease;
       border-radius: 5px;
       white-space: nowrap;
-      height: 35px;
+      height: 45px;
     }
     ul li i {
       height: 45px;
@@ -286,16 +211,6 @@
       transition: 0.4s ease;
       color: var(--writing);
     }
-  }
-  .version {
-    color: var(--writing);
-    position: absolute;
-    left: 0;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transition: 0.4s ease;
   }
 }
 
