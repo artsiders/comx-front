@@ -6,6 +6,7 @@ import CustomShop from "./pages/CustomShop";
 import UserDasboardLayout from "./components/userDasboard/UserDasboardLayout";
 import UserProducts from "./pages/UserProducts";
 import UserCategories from "./pages/UserCategories";
+import UserOrder from "./pages/UserOrder";
 
 const Routeur = () => {
   return (
@@ -17,6 +18,7 @@ const Routeur = () => {
         <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
         <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
         <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />
+        <Route path="/my-shop/custom/:shopName/commandes" element={<UserOrder />} />
       </Route>
       <Route path="/my-shop/:shopName" element={<UserShop />} />
     </Routes>
