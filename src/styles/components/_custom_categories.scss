@@ -1,0 +1,22 @@
+.custom_categories {
+  margin: 40px 0;
+  header {
+    border-top: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .categories {
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .category {
+      background-color: var(--background);
+      box-shadow: 0 0 5px var(--shadow);
+      border-radius: 5px;
+      padding: 10px;
+      border: 1px solid var(--border);
+    }
+  }
+}
