@@ -69,6 +69,17 @@ export default function SideMenu() {
             </NavLink>
             <span className="tooltip">Produits</span>
           </li>
+          <li>
+            <NavLink
+              to={`/my-shop/custom/${shopName}/categories`}
+              id="categories"
+              className={({ isActive }) => (isActive ? 'active' : '')}
+            >
+              <i className="fa fa-tags"></i>
+              <span className="links_name">Categories</span>
+            </NavLink>
+            <span className="tooltip">Categories</span>
+          </li>
           <li className="log_out">
             <a
               href={`/my-shop/custom/${shopName}`}

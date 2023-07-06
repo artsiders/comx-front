@@ -5,6 +5,7 @@ import UserShop from "./pages/UserShop";
 import CustomShop from "./pages/CustomShop";
 import UserDasboardLayout from "./components/userDasboard/UserDasboardLayout";
 import UserProducts from "./pages/UserProducts";
+import UserCategories from "./pages/UserCategories";
 
 const Routeur = () => {
   return (
@@ -15,6 +16,7 @@ const Routeur = () => {
       <Route path="/" element={<UserDasboardLayout />} >
         <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
         <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
+        <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />
       </Route>
       <Route path="/my-shop/:shopName" element={<UserShop />} />
     </Routes>

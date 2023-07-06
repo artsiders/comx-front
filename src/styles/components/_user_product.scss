@@ -1,5 +1,5 @@
 .user_product {
-  .product-section {
+  .section {
     header {
       display: flex;
       gap: 10px;
@@ -17,8 +17,8 @@
       }
     }
     max-width: 1200px;
-    margin: 100px auto;
-    .product-grid {
+    margin: auto;
+    .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 20px;

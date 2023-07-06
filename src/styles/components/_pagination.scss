@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  padding: 10px;
+  margin: 10px 0;
+  gap: 20px;
+  @extend %center;
+  justify-content: flex-end;
+
+  button {
+    @extend %button;
+  }
+  .disable {
+    cursor: not-allowed;
+    background-color: var(--border);
+    i {
+      color: var(--writing);
+    }
+  }
+  .pages {
+    span {
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+      border-radius: 4px;
+      &:hover {
+        border-color: var(--primary);
+      }
+    }
+  }
+}
