@@ -101,3 +101,9 @@
   color: var(--primary);
   font-weight: 700;
 }
+.input {
+  @include input;
+}
+.textarea {
+  @include textarea;
+}
