@@ -5,6 +5,7 @@
       gap: 10px;
       margin-bottom: 25px;
       justify-content: flex-end;
+      flex-wrap: wrap;
       input,
       select {
         @include input($height: 40px);
@@ -28,6 +29,14 @@
       @media screen and (max-width: 480px) {
         grid-template-columns: 1fr;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .user_product {
+    .section :where(select, input, button) {
+      width: 100% !important;
     }
   }
 }

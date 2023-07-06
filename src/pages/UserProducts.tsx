@@ -1,6 +1,5 @@
 import { Product } from "../_interface"
 import UserProductCart from "../components/userDasboard/UserProductCart"
-import TagsInputBox from "../components/userDasboard/TagsInputBox"
 import Pagination from "../components/Pagination"
 
 export default function UserProducts() {
@@ -33,7 +32,7 @@ export default function UserProducts() {
                         <option value="technologie">technologie</option>
                         <option value="vetements">vetements</option>
                     </select>
-                    <button className="button">ajouter un produit <i className="fa fa-plus"></i></button>
+                    <button className="button">ajouter<i className="fa fa-plus"></i></button>
                 </header>
                 <article className="grid">
                     {products.map((product: Product, key: number) => (
