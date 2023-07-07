@@ -11,6 +11,7 @@
   z-index: 100;
   transition: all 0.3s ease;
   // transform: translateY(-40px);
+  border-bottom: 1px solid var(--border);
 
   &.scrolled {
     opacity: 1;
@@ -21,7 +22,7 @@
     box-shadow: 0 2px 100px var(--shadow);
   }
   .logo {
-    height: 50px;
+    height: 35px;
     width: auto;
     margin-left: 10px;
     border-radius: 5px;

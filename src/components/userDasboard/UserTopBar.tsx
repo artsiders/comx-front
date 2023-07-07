@@ -29,7 +29,7 @@ const UserTopBar = () => {
 
   return (
     <div className={`user_topbar ${scrolled ? 'scrolled' : ''}`}>
-      <img src="/images/logo.webp" alt="Logo" className="logo" />
+      <img src="/images/comx.svg" alt="Logo" className="logo" />
       <nav className={`menu ${menuOpen ? 'open' : ''}`}>
         <ul>
           {/* <li>Accueil</li>
