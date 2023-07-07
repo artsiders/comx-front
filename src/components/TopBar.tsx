@@ -40,7 +40,7 @@ const TopBar = () => {
         </button>
       </nav>
       <div className="menu-toggle" onClick={toggleMenu}>
-        <div className="hamburger"></div>
+        <i className='fa fa-bars'></i>
       </div>
     </div>
   );
