@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 // import axios from "axios"; 
 
 export default function SideMenu() {
-  // const [matches] = useState(window.matchMedia("(max-width: 600px)").matches);
+  const [mobile] = useState(window.matchMedia("(max-width: 600px)").matches);
   const [etat, setEtat] = useState(false);
   const { shopName } = useParams();
 
@@ -31,12 +31,19 @@ export default function SideMenu() {
     console.log("log out");
 
   }
+  const toggleIfMobile = () => {
+    if (mobile) {
+      if (etat) {
+        setEtat(false)
+      }
+    }
+  }
   return (
     <div
       className="side_menu_content"
-    // onClick={matches ? () => (etat ? setEtat(false) : null) : null}
+      onClick={toggleIfMobile}
     >
-      <div className={etat === true ? "sidebar open" : "sidebar"}>
+      <div className={etat ? "sidebar open" : "sidebar"}>
         <div className="bar">
           <i
             onClick={toggleSideMenu}
