@@ -7,10 +7,39 @@
   <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vite + React + TS</title>
+  <style>
+    .loader {
+      height: 98vh;
+      width: 98vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .loader img {
+      width: 200px;
+      animation: loading 1s ease-in-out alternate infinite;
+    }
+
+    @keyframes loading {
+      0% {
+        opacity: .3;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class="loader">
+      <img src="/images/comx.svg" alt="" srcset="">
+    </div>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
