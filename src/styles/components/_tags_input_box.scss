@@ -2,7 +2,6 @@
   margin-top: 30px;
   width: auto;
   background: var(--background);
-  border-radius: 5px;
   padding: 18px 25px 20px;
   box-shadow: 0 0 10px var(--shadow);
   & :where(.title, li, li i, .details) {
@@ -25,14 +24,12 @@
       flex-wrap: wrap;
       padding: 7px;
       margin: 12px 0;
-      border-radius: 5px;
       border: 1px solid var(--border);
     }
     ul li {
       color: var(--writing);
       margin: 4px 3px;
       list-style: none;
-      border-radius: 5px;
       background: var(--background);
       padding: 5px 8px 5px 10px;
       border: 1px solid var(--border);
@@ -44,7 +41,6 @@
       margin-left: 8px;
       font-size: 12px;
       cursor: pointer;
-      border-radius: 50%;
       background: var(--background);
       justify-content: center;
     }

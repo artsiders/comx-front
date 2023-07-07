@@ -72,7 +72,6 @@
     padding: 20px 5px 0 12px;
     transition: 0.4s ease;
     margin-left: 5px;
-    border-radius: 5px;
     // box-shadow: 0 0 10px var(--shadow);
     border: 1px solid var(--border);
     .active {
@@ -112,7 +111,6 @@
       text-align: center;
       line-height: 40px;
       background-color: var(--blue);
-      border-radius: 5px;
       cursor: pointer;
       transition: transform 0.6s ease;
       i {
@@ -133,7 +131,6 @@
       list-style: none;
       margin: 10px 0;
       left: -5px;
-      border-radius: 5px;
       transition: 0.2s ease;
       text-transform: capitalize;
       font-size: 16px;
@@ -163,7 +160,6 @@
       height: 45px;
       width: 122px;
       line-height: 45px;
-      border-radius: 6px;
       text-align: center;
       background-color: var(--background);
       color: var(--writing);
@@ -179,7 +175,6 @@
       width: 100%;
       left: 0;
       top: 0;
-      border-radius: 5px;
       outline: none;
       border: none;
       background-color: var(--background);
@@ -196,14 +191,12 @@
       align-items: center;
       text-decoration: none;
       transition: 0.4s ease;
-      border-radius: 5px;
       white-space: nowrap;
       height: 45px;
     }
     ul li i {
       height: 45px;
       min-width: 40px;
-      border-radius: 10px;
       line-height: 45px;
       text-align: center;
       cursor: pointer;
@@ -273,7 +266,6 @@
       top: 0;
       height: 100vh;
       margin-left: 0px;
-      border-radius: 0px;
       border: none;
       transform: translateX(-70px);
       pointer-events: all;
