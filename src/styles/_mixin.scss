@@ -1,8 +1,8 @@
-@mixin input($height: 50px, $width: 100%) {
+@mixin input($height: 45px, $width: 100%) {
   height: $height;
   width: $width;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   outline: none;
   padding-left: 14px;
   padding-right: 50px;
