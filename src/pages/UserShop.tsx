@@ -10,21 +10,21 @@ const UserShop = () => {
   const products: Product[] = [
     {
       _id: 1,
-      name: "sac à dos",
-      price: 100000,
-      image: "sac-a-dos.jpg",
+      name: "Renauld twingo",
+      price: 1300000,
+      image: "card-1.webp",
     },
     {
       _id: 2,
-      name: "sac à dos",
-      price: 100000,
-      image: "sac-a-dos.jpg",
+      name: "Mercedess",
+      price: 2890000,
+      image: "card-2.webp",
     },
     {
       _id: 3,
-      name: "sac à dos",
-      price: 100000,
-      image: "sac-a-dos.jpg",
+      name: "Toyota Carina",
+      price: 630000,
+      image: "card-3.webp",
     },
   ]
   return (
