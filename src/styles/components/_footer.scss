@@ -1,6 +1,7 @@
 .footer {
   background-color: #eee;
   margin-top: 100px;
+  border-radius: 0px;
   .footer-body {
     display: flex;
     flex-wrap: wrap;
@@ -41,6 +42,7 @@
   .footer-bottom {
     background-color: #ddd;
     padding: 20px;
+    border-radius: 0;
     p {
       font-size: 14px;
       text-align: center;
