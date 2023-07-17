@@ -45,7 +45,7 @@ export default function CreateShop() {
     const handleNavigation = () => {
 
         if (page === FormTitles.length - 1) {
-            navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}`)
+            navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}/`)
         } else {
             switch (page) {
                 case 0:
