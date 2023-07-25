@@ -1,0 +1,54 @@
+.custom_shop {
+  padding: 0 100px;
+
+  section {
+    background-color: var(--background);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    @extend %box_shodow;
+  }
+  .current_theme {
+    .cover {
+      height: 500px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      & > div {
+        background-color: var(--background);
+        border: 1px solid var(--border);
+        height: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        .card_theme {
+          display: grid;
+          grid-template-columns: 110px auto;
+          img {
+            width: 100px;
+            height: 80px;
+            border: 1px solid var(--border);
+          }
+          .name {
+            font-weight: 600;
+          }
+          .date {
+            font-size: 14px;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+
+  .choise_theme {
+    padding: 10px;
+  }
+}

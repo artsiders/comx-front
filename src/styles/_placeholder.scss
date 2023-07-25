@@ -18,6 +18,11 @@
 
   i {
     color: #ffffff;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    padding-left: 10px;
+    height: 60%;
+    @extend %center;
   }
 
   &:active {
@@ -93,6 +98,10 @@
     background-color: transparent;
     @extend %button;
   }
+}
+%box_shodow {
+  box-shadow: 0 0 10px var(--shadow);
+  border: 1px solid var(--border);
 }
 
 .search_group {
