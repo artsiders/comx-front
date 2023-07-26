@@ -127,10 +127,17 @@ export default function UserProducts() {
                 </section> : <section className="section">
                     <header>
                         <input
-                            className="input" type="search" placeholder="Recherche..." />
+                            className="input"
+                            type="search"
+                            placeholder="Recherche..."
+                        />
                         <select name="categorie">
                             <option value="technologie">technologie</option>
                             <option value="vetements">vetements</option>
+                        </select>
+                        <select name="statut">
+                            <option value="1">Actifs</option>
+                            <option value="0">Inactifs</option>
                         </select>
                         <button className="button" onClick={() => setIsAdding(true)}>ajouter<i className="fa fa-plus"></i></button>
                     </header>
