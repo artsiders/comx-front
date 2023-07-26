@@ -31,51 +31,98 @@ export default function UserProducts() {
             {isAdding ?
                 <section className="add_product_form">
                     <form action="">
-                        <label htmlFor="productName">Nom Produit</label>
-                        <input
-                            className="input"
-                            type="text"
-                            id="productName"
-                            placeholder="samsung A1"
-                            value={''}
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                        />
-                        <label htmlFor="email">price</label>
-                        <input
-                            className="input"
-                            type="number"
-                            placeholder="10000"
-                            value={''}
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                        />
-                        <label htmlFor="email">lien</label>
-                        <input
-                            className="input"
-                            type="text"
-                            placeholder="https://"
-                            value={''}
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                        />
-                        <label htmlFor="image">image</label>
-                        <input
-                            className="input"
-                            type="file"
-                            placeholder="10000"
-                            value={''}
-                            onChange={(e) => {
-                                console.log(e);
-                            }}
-                        />
-                        <label htmlFor="desciption">Description</label>
-                        <textarea className="textarea"></textarea>
-                        <button type="submit" style={{ display: "inline", marginRight: 20 }} className="button">Ajouter</button>
-                        <button type="button" onClick={() => setIsAdding(false)} style={{ display: "inline", backgroundColor: "var(--danger)" }} className="button">Annuler</button>
+                        <div className="input_group">
+                            <label htmlFor="productName">Titre</label>
+                            <input
+                                className="input"
+                                type="text"
+                                id="productName"
+                                placeholder="samsung A1"
+                                value={''}
+                                onChange={(e) => {
+                                    console.log(e);
+                                }}
+                            />
+                            <label htmlFor="desciption">Description</label>
+                            <textarea className="textarea"></textarea>
+                        </div>
+
+
+                        <div className="input_group multimedia">
+                            <span>Image</span>
+                            <label htmlFor="product-image">
+                                <span>Ajouter une image a votre produit</span>
+                                <i className="fa fa-image"></i>
+                            </label>
+                            <input
+                                id="product-image"
+                                className="input"
+                                type="file"
+                                placeholder="10000"
+                                value={''}
+                                onChange={(e) => {
+                                    console.log(e);
+                                }}
+                            />
+                        </div>
+
+
+                        <div className="input_group price">
+                            <label>Prix</label>
+                            <label>Prix avant réduction</label>
+                            <input
+                                className="input"
+                                type="number"
+                                placeholder="0"
+                                data-devise="FCFA"
+                                value={''}
+                                onChange={(e) => {
+                                    console.log(e);
+                                }}
+                            />
+                            <input
+                                className="input"
+                                type="number"
+                                placeholder="0"
+                                data-devise="FCFA"
+                                value={''}
+                                onChange={(e) => {
+                                    console.log(e);
+                                }}
+                            />
+                        </div>
+                        <div className="input_group autre">
+                            <label>statut</label>
+                            <select>
+                                <option value="1">Actifs</option>
+                                <option value="0">Inactifs</option>
+                            </select>
+                            <label>Categorie</label>
+                            <select>
+                                <option value="technologie">technologie</option>
+                                <option value="vetements">vetements</option>
+                            </select>
+
+                            <div className="buttons">
+                                <button
+                                    type="submit"
+                                    style={{ marginRight: 20 }}
+                                    className="button"
+                                >
+                                    Ajouter
+                                    <i className="fa fa-check"></i>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setIsAdding(false)}
+                                    style={{ backgroundColor: "var(--danger)" }}
+                                    className="button"
+                                >
+                                    Annuler
+                                    <i className="fa fa-close"></i>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </section> : <section className="section">
                     <header>

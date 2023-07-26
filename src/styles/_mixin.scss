@@ -27,6 +27,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+// @mixin color-opacity(
+//   $property: background-color,
+//   $color: $primary,
+//   $opacity: 0.5
+// ) {
+//   $rgba-color: rgba($color, $opacity);
+//   #{$property}: $rgba-color;
+// }
 @mixin textgradient(
   $color1: var(--primary),
   $color2: var(--blue),

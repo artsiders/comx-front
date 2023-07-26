@@ -3,6 +3,7 @@
   background-color: var(--primary);
   @extend %center;
   gap: 20px;
+  border-radius: 0;
 
   & > div {
     width: 50%;
@@ -42,6 +43,10 @@
       border: none;
       opacity: 0.8;
       cursor: not-allowed;
+      i {
+        margin: 0;
+        border: 0;
+      }
     }
     button:active:disabled {
       transform: scale(1);

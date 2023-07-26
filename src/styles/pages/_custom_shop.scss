@@ -1,6 +1,4 @@
 .custom_shop {
-  padding: 0 100px;
-
   section {
     background-color: var(--background);
     margin-top: 20px;
@@ -8,6 +6,7 @@
     @extend %box_shadow;
   }
   .current_theme {
+    background-color: var(--secondary-50);
     .cover {
       height: 500px;
       background-size: cover;

@@ -51,7 +51,7 @@
       }
     }
     .active {
-      background-color: var(--secondary);
+      background-color: var(--secondary-70);
       box-shadow: 0 0 14px var(--shadow);
       i {
         color: #ffffff;
@@ -62,6 +62,7 @@
     }
   }
   .sidebar {
+    @extend %box_shadow;
     z-index: 10;
     position: relative;
     top: 10px;
@@ -72,10 +73,8 @@
     padding: 20px 5px 0 12px;
     transition: 0.4s ease;
     margin-left: 5px;
-    // box-shadow: 0 0 10px var(--shadow);
-    border: 1px solid var(--border);
     .active {
-      background-color: var(--secondary);
+      background-color: var(--secondary-70);
       box-shadow: 0 0 14px var(--shadow);
       i {
         color: #ffffff;
@@ -143,7 +142,7 @@
       }
       &:hover {
         // background-color: var(--primary);
-        border: 1px solid var(--secondary);
+        border: 1px solid var(--secondary-70);
         transition: 0.2s ease;
       }
     }

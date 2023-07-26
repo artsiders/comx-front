@@ -7,17 +7,17 @@ export interface Theme {
 export default function CustomShop() {
     const themes: Theme[] = [
         {
-            image: "thumb_current_theme.webp",
+            image: "thumb-theme-1.webp",
             name: "Theme 1",
             date: "2023-28-12",
         },
         {
-            image: "thumb_current_theme.webp",
+            image: "thumb-theme-2.webp",
             name: "Theme 2",
             date: "2023-28-12",
         },
         {
-            image: "thumb_current_theme.webp",
+            image: "thumb-theme-3.webp",
             name: "Theme 3",
             date: "2023-28-12",
         },
@@ -29,7 +29,7 @@ export default function CustomShop() {
                 <div className="cover" style={{ backgroundImage: 'url(/images/theme-cover.webp)' }}>
                     <div>
                         <div className="card_theme">
-                            <img src="/images/thumb_current_theme.webp" alt="current_theme" />
+                            <img src="/images/thumb-theme-1.webp" alt="current_theme" />
                             <div className="text">
                                 <div className="name">Name theme</div>
                                 <div className="date">2023-28-12</div>

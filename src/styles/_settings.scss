@@ -12,6 +12,12 @@
   background-color: var(--secondary);
   color: white;
 }
+body,
+html,
+main,
+header {
+  border-radius: 0;
+}
 html {
   overflow-x: hidden;
 }

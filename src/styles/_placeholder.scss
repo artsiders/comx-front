@@ -33,7 +33,7 @@
     border-width: 2px;
   }
   &:hover {
-    background-color: var(--secondary);
+    background-color: var(--secondary-70);
   }
 }
 
@@ -47,10 +47,10 @@
   }
   &:hover {
     background-color: transparent;
-    border-color: var(--secondary);
-    color: var(--secondary);
+    border-color: var(--secondary-50);
+    color: var(--secondary-50);
     i {
-      color: var(--secondary);
+      color: var(--secondary-50);
     }
   }
 }

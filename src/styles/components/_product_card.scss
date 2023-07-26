@@ -26,6 +26,10 @@
     .product-button {
       @extend %button;
       width: 100%;
+      i {
+        border: none;
+        margin: 0;
+      }
     }
   }
 }

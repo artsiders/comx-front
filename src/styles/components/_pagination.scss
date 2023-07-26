@@ -8,6 +8,10 @@
 
   button {
     @extend %button;
+    i {
+      border: none;
+      padding: 0;
+    }
   }
   .disable {
     cursor: not-allowed;

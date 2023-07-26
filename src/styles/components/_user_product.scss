@@ -33,13 +33,68 @@
   }
 }
 .add_product_form {
-  padding: 20px;
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  box-shadow: 0 0 10px var(--shodow);
   input,
   textarea {
     margin-bottom: 10px;
+  }
+  label {
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .input_group {
+    padding: 20px;
+    padding: 20px;
+    background-color: var(--background);
+    @extend %box_shadow;
+    margin-bottom: 40px;
+  }
+  .input_group.price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0 20px;
+
+    input::after {
+      content: attr(devise);
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      background-color: red;
+      top: 0;
+      right: 0;
+    }
+  }
+  .input_group.multimedia {
+    input {
+      display: none;
+    }
+    span {
+      display: block;
+      margin-bottom: 10px;
+    }
+    label {
+      span {
+        margin: 0;
+        margin-right: 10px;
+      }
+      opacity: 0.6;
+      @extend %center;
+      position: relative;
+      background-color: var(--background);
+      padding: 20px;
+      border: 2px dashed var(--primary);
+      cursor: pointer;
+      height: 150px;
+    }
+  }
+  .input_group.autre {
+    select {
+      @include input;
+      margin-bottom: 15px;
+    }
+  }
+  .buttons {
+    display: flex;
   }
 }
 
