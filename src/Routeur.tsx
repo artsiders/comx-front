@@ -7,14 +7,16 @@ import UserDashboardLayout from "./components/userDasboard/UserDashboardLayout";
 import UserProducts from "./pages/UserProducts";
 import UserCategories from "./pages/UserCategories";
 import UserOrder from "./pages/UserOrder";
+import Form from "./pages/Form";
 
 const Routeur = () => {
   return (
     <Routes>
-      <Route path="/" element={<FormLayout />} >
+      <Route element={<FormLayout />} >
         <Route path="/" element={<CreateShop />} />
+        <Route path="/test" element={<Form />}></Route>
       </Route>
-      <Route path="/" element={<UserDashboardLayout />} >
+      <Route element={<UserDashboardLayout />} >
         <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
         <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
         <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />

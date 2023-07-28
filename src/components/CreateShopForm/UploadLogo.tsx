@@ -22,6 +22,7 @@ export default function UploadLogo(props: Props) {
             <img src={file ? file : '/images/default-logo.webp'} alt="logo-example" />
             <input
                 type="file"
+                name="file"
                 id="logo"
                 placeholder=""
                 onChange={handleChange}

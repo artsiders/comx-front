@@ -10,7 +10,7 @@ export default function UserInfo(props: Props) {
 
     return (
         <div>
-            <label htmlFor="fullname">Nom complet</label>
+            <label>Nom complet</label>
             <input
                 type="text"
                 id="fullname"
@@ -20,7 +20,7 @@ export default function UserInfo(props: Props) {
                     setShopDatas({ ...shopDatas, fullname: e.target.value });
                 }}
             />
-            <label htmlFor="email">Email</label>
+            <label>Email</label>
             <input
                 type="email"
                 placeholder="exemple@gmail.com"
@@ -29,7 +29,7 @@ export default function UserInfo(props: Props) {
                     setShopDatas({ ...shopDatas, email: e.target.value });
                 }}
             />
-            <label htmlFor="text">Mot de passe</label>
+            <label>Mot de passe</label>
             <input
                 type="password"
                 placeholder="⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫⚫"
@@ -38,9 +38,9 @@ export default function UserInfo(props: Props) {
                     setShopDatas({ ...shopDatas, password: e.target.value });
                 }}
             />
-            <label htmlFor="text">Téléphone</label>
+            <label>Téléphone</label>
             <input
-                type="tel"
+                type="number"
                 placeholder="### ## ## ## ##"
                 value={shopDatas.phone}
                 onChange={(e) => {
