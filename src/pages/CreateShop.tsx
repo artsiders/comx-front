@@ -9,13 +9,19 @@ import { textToSlug } from "../_utils";
 import { AxiosError, AxiosResponse } from "axios";
 import axiosURL from "../axiosConfig";
 import { toast } from 'react-toastify';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { connect } from "../feature/session.slice";
+import { RootState } from "../app/store";
 
 export default function CreateShop() {
     const navigate = useNavigate()
-
     const dispatch = useDispatch()
+
+    const session = useSelector((state: RootState) => state.session)
+    if (session.connected) {
+        navigate(`/my-shop/custom/${textToSlug(session.Shop.shopName)}/`)
+    }
+
 
     const [page, setPage] = useState(0)
     const [shopDatas, setShopDatas] = useState<ShopDatas>({
