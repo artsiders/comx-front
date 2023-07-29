@@ -16,3 +16,23 @@ export interface Product {
   price: number;
   image: string;
 }
+
+export interface SessionState {
+  Shop: {
+    shopName: string;
+    logo: string;
+    adresse?: string;
+    description: string;
+    langue: string;
+    _idUser: string;
+    _id: string;
+  };
+  User: {
+    email: string;
+    fullname: string;
+    password: string;
+    phone: number;
+    _id: string;
+  };
+  connected: boolean;
+}
