@@ -10,6 +10,12 @@ export interface ShopDatas {
   langue: string;
 }
 
+export interface Theme {
+  image: string;
+  name: string;
+  date: string;
+}
+
 export interface Product {
   _id: number;
   name: string;

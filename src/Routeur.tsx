@@ -8,6 +8,7 @@ import UserProducts from "./pages/UserProducts";
 import UserCategories from "./pages/UserCategories";
 import UserOrder from "./pages/UserOrder";
 import Form from "./pages/Form";
+import PrivateRoute from "./PrivateRoute";
 
 const Routeur = () => {
   return (
@@ -16,12 +17,16 @@ const Routeur = () => {
         <Route path="/" element={<CreateShop />} />
         <Route path="/test" element={<Form />}></Route>
       </Route>
-      <Route element={<UserDashboardLayout />} >
-        <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
-        <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
-        <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />
-        <Route path="/my-shop/custom/:shopName/commandes" element={<UserOrder />} />
+
+      <Route element={<PrivateRoute />}>
+        <Route element={<UserDashboardLayout />} >
+          <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
+          <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
+          <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />
+          <Route path="/my-shop/custom/:shopName/commandes" element={<UserOrder />} />
+        </Route>
       </Route>
+
       <Route path="/my-shop/:shopName" element={<UserShop />} />
     </Routes>
   );

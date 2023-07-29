@@ -1,8 +1,4 @@
-export interface Theme {
-    image: string;
-    name: string;
-    date: string;
-}
+import { Theme } from "../_interface"
 
 export default function CustomShop() {
     const themes: Theme[] = [
