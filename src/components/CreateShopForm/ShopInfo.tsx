@@ -13,7 +13,7 @@ export default function ShopInfo(props: Props) {
             <label>Adresse de la boutique</label>
             <input
                 type="text"
-                placeholder="123 rue de la Ville 75001 Paris"
+                placeholder="123 rue de la Ville 75001 Paris (facultatif)"
                 autoFocus
                 value={shopDatas.adresse}
                 onChange={(e) => {

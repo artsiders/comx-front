@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { textToSlug } from "../_utils";
 import { AxiosError, AxiosResponse } from "axios";
 import axiosURL from "../axiosConfig";
+import { toast } from 'react-toastify';
 
 export default function CreateShop() {
     const navigate = useNavigate()
@@ -55,40 +56,58 @@ export default function CreateShop() {
                             if (data.type === "success") {
                                 setPage((currPage) => currPage + 1);
                             } else {
-                                // code
-                                console.log(data);
+                                toast(data.message, {
+                                    type: data.type,
+                                });
                             }
                         }).catch((err: AxiosError) => console.log(err))
+                } else {
+                    toast("Vous avez oublier de défini un nom pour votre boutique !");
                 }
 
                 break;
             case 1:
                 if (!shopDatas.fullname) {
+                    toast("Entrer votre nom s'il vous plait", {
+                        type: "error",
+                    });
                     return;
                 }
                 if (!shopDatas.email) {
+                    toast("Entrer votre adresse E-mail s'il vous plait", {
+                        type: "error",
+                    });
                     return;
                 }
                 if (!shopDatas.password) {
+                    toast("Créer un mot de passe s'il vous plait", {
+                        type: "error",
+                    });
                     return;
                 }
                 if (!shopDatas.phone) {
+                    toast("Entrer votre numéro de téléphone s'il vous plait", {
+                        type: "error",
+                    });
                     return;
                 }
                 setPage((currPage) => currPage + 1);
 
                 break;
             case 2:
-                if (!shopDatas.adresse) {
-                    return;
-                }
                 if (!shopDatas.description) {
+                    toast("Donnez une petite description a votre boutique", {
+                        type: "error",
+                    });
                     return;
                 }
                 setPage((currPage) => currPage + 1);
                 break;
             case 3:
                 if (!shopDatas.logo) {
+                    toast("Importez un logo pour votre boutique.", {
+                        type: "error",
+                    });
                     return;
                 }
                 formdata.append("shopName", shopDatas.shopName)
@@ -107,7 +126,6 @@ export default function CreateShop() {
 
                 axiosURL.post(`/shop`, formdata)
                     .then(({ data }: AxiosResponse) => {
-                        console.log(data);
                         // {
                         //     "type": "success",
                         //     "message": "Boutique créee avec succès",
@@ -122,8 +140,15 @@ export default function CreateShop() {
                         //         "__v": 0
                         //     }
                         // }
+                        toast(data.message, {
+                            type: data.type,
+                        });
                         if (data.type === "success") {
                             navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}/`)
+                        } else {
+                            toast("Une erreur inatendue s'est produite :( reéssayez plus tard !", {
+                                type: data.type,
+                            });
                         }
                     }).catch((err: AxiosError) => {
                         // {
