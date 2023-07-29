@@ -9,9 +9,14 @@ import { textToSlug } from "../_utils";
 import { AxiosError, AxiosResponse } from "axios";
 import axiosURL from "../axiosConfig";
 import { toast } from 'react-toastify';
+import { useDispatch } from "react-redux";
+import { connect } from "../feature/session.slice";
 
 export default function CreateShop() {
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+
     const [page, setPage] = useState(0)
     const [shopDatas, setShopDatas] = useState<ShopDatas>({
         shopName: "",
@@ -126,75 +131,45 @@ export default function CreateShop() {
 
                 axiosURL.post(`/shop`, formdata)
                     .then(({ data }: AxiosResponse) => {
-                        // {
-                        //     "type": "success",
-                        //     "message": "Boutique créee avec succès",
-                        //     "data": {
-                        //         "shopName": "salim",
-                        //         "logo": "salim.jpg",
-                        //         "adresse": "AKENAIZP",
-                        //         "description": "LFBZO",
-                        //         "langue": "fr",
-                        //         "_idUser": "64c36d07870cce73ca7a0f93",
-                        //         "_id": "64c36d07870cce73ca7a0f95",
-                        //         "__v": 0
-                        //     }
-                        // }
+                        const { shop, user } = data.data;
+
                         toast(data.message, {
                             type: data.type,
                         });
+
                         if (data.type === "success") {
+                            dispatch(connect({
+                                Shop: {
+                                    shopName: shop.shopName,
+                                    logo: shop.logo,
+                                    adresse: shop.adresse,
+                                    description: shop.description,
+                                    langue: shop.langue,
+                                    _idUser: shop._idUser,
+                                    _id: shop._id,
+                                },
+                                User: {
+                                    email: user.email,
+                                    fullname: user.fullname,
+                                    password: user.password,
+                                    phone: user.phone,
+                                    _id: user._id,
+                                },
+                                connected: false,
+                            }))
+
                             navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}/`)
-                        } else {
-                            toast("Une erreur inatendue s'est produite :( reéssayez plus tard !", {
-                                type: data.type,
-                            });
                         }
                     }).catch((err: AxiosError) => {
-                        // {
-                        //     "message": "Request failed with status code 400",
-                        //     "name": "AxiosError",
-                        //     "stack": "AxiosError: Request failed with status code 400\n    at settle (http://localhost:5173/node_modules/.vite/deps/axios.js?v=7406a575:1189:12)\n    at XMLHttpRequest.onloadend (http://localhost:5173/node_modules/.vite/deps/axios.js?v=7406a575:1417:7)",
-                        //     "config": {
-                        //         "transitional": {
-                        //             "silentJSONParsing": true,
-                        //             "forcedJSONParsing": true,
-                        //             "clarifyTimeoutError": false
-                        //         },
-                        //         "adapter": [
-                        //             "xhr",
-                        //             "http"
-                        //         ],
-                        //         "transformRequest": [
-                        //             null
-                        //         ],
-                        //         "transformResponse": [
-                        //             null
-                        //         ],
-                        //         "timeout": 5000,
-                        //         "xsrfCookieName": "XSRF-TOKEN",
-                        //         "xsrfHeaderName": "X-XSRF-TOKEN",
-                        //         "maxContentLength": -1,
-                        //         "maxBodyLength": -1,
-                        //         "env": {},
-                        //         "headers": {
-                        //             "Accept": "application/json, text/plain, */*"
-                        //         },
-                        //         "baseURL": "http://127.0.0.1:5000",
-                        //         "method": "post",
-                        //         "url": "/shop",
-                        //         "data": {}
-                        //     },
-                        //     "code": "ERR_BAD_REQUEST",
-                        //     "status": 400
-                        // }
                         console.log(err)
                     })
 
                 break;
 
             default:
-                setPage((currPage) => currPage + 1);
+                toast("Erreur inattendu !", {
+                    type: "error",
+                });
                 break;
         }
     }

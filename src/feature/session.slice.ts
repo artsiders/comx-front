@@ -1,71 +1,70 @@
+import Cookies from "js-cookie";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SessionState } from "../_interface";
 
-// Définir la forme de la charge utile pour l'action connectShop
-interface SessionShopAction {
-  payload: {
-    shopName: string;
-    logo: string;
-    adresse?: string;
-    description: string;
-    langue: string;
-    _idUser: string;
-    _id: string;
-  };
-  type: string;
-}
+const loadState = () => {
+  try {
+    const serializedState = Cookies.get("session");
+    if (!serializedState) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
 
-// Définir la forme de la charge utile pour l'action connectUser
-interface SessionUserAction {
-  payload: {
-    email: string;
-    fullname: string;
-    password: string;
-    phone: number;
-    _id: string;
-  };
+const saveState = (state: SessionState) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    Cookies.set("session", serializedState);
+  } catch (err) {
+    console.error("Error saving state to cookies:", err);
+  }
+};
+
+const initialState: SessionState = loadState() || {
+  Shop: {
+    shopName: "",
+    logo: "",
+    adresse: "",
+    description: "",
+    langue: "",
+    _idUser: "",
+    _id: "",
+  },
+  User: {
+    email: "",
+    fullname: "",
+    password: "",
+    phone: 0,
+    _id: "",
+  },
+  connected: false,
+};
+
+// Définir la forme de la charge utile pour l'action connectShop
+interface SessionAction {
+  payload: SessionState;
   type: string;
 }
 
 export const sessionSlice = createSlice({
   name: "session",
-  initialState: {
-    Shop: {
-      shopName: "",
-      logo: "",
-      adresse: "",
-      description: "",
-      langue: "",
-      _idUser: "",
-      _id: "",
-    },
-    User: {
-      email: "",
-      fullname: "",
-      password: "",
-      phone: 0,
-      _id: "",
-    },
-    connected: false,
-  } as SessionState,
+  initialState,
 
   reducers: {
-    connectShop: (
+    connect: (
       state: SessionState,
-      action: PayloadAction<SessionShopAction["payload"]>
+      action: PayloadAction<SessionAction["payload"]>
     ) => {
       const { payload } = action;
-      state.Shop = payload;
+      state.Shop = payload.Shop;
+      state.User = payload.User;
       state.connected = true;
+      saveState(state); // enregistrement de l'état dans les cookies
     },
-    connectUser: (
-      state: SessionState,
-      action: PayloadAction<SessionUserAction["payload"]>
-    ) => {
-      const { payload } = action;
-      state.User = payload;
-      state.connected = true;
-    },
+
     disconnect: (state: SessionState) => {
       state.User = {
         email: "",
@@ -84,7 +83,9 @@ export const sessionSlice = createSlice({
         _id: "",
       };
       state.connected = false;
+      saveState(state); // enregistrement de l'état dans les cookies
     },
   },
 });
-export const { connectUser, connectShop, disconnect } = sessionSlice.actions;
+
+export const { connect, disconnect } = sessionSlice.actions;
