@@ -1,4 +1,4 @@
-# Nom de l'application
+# ComX Shop
 
 Comx-front est une application web qui permet à un utilisateur de créer sa propre boutique en ligne facilement et rapidement. Avec cette application, vous pouvez créer une boutique en ligne pour vendre vos produits en quelques minutes, sans avoir besoin de compétences techniques.
 
@@ -15,8 +15,8 @@ Comx-front est une application web qui permet à un utilisateur de créer sa pro
 ## Installation
 
 1. Clonez ce dépôt de code sur votre machine
-2. Ouvrez un terminal dans le dossier du projet et exécutez la commande `npm install` pour installer les dépendances
-3. Exécutez la commande `npm run dev` pour lancer l'application en mode développement
+2. Ouvrez un terminal dans le dossier du projet et exécutez la commande `npm install` ou `yarn` pour installer les dépendances
+3. Exécutez la commande `npm run dev` ou `yarn dev` pour lancer l'application en mode développement
 4. Ouvrez votre navigateur à l'adresse http://localhost:5173 pour voir l'application en action
 
 ## Captures d'écran
