@@ -1,12 +1,50 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import HeroTop from "../components/HeroTop";
 import TopBar from "../components/TopBar";
-import { Product } from "../_interface";
+import { Product, ShopUser } from "../_interface";
 import ProductCart from "../components/ProductCart";
+import axiosURL from "../axiosConfig";
+import { AxiosError, AxiosResponse } from "axios";
+import { useEffect, useState } from "react";
 
 const UserShop = () => {
   const { shopName } = useParams();
+  const [isShop, setIsShop] = useState(true)
+
+  const [shopUserDatas, setSetshopUserDatas] = useState<ShopUser>({
+    Shop: {
+      shopName: "",
+      logo: "",
+      adresse: "",
+      description: "",
+      langue: "",
+      _idUser: "",
+      _id: "",
+    },
+    User: {
+      email: "",
+      fullname: "",
+      password: "",
+      phone: 0,
+      _id: "",
+    },
+  })
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    axiosURL.get(`/shop/${shopName}`)
+      .then(({ data }: AxiosResponse) => {
+        if (data.type !== "success") {
+          setIsShop(false)
+        }
+        setSetshopUserDatas(data.data)
+
+      }).catch((err: AxiosError) => console.log(err))
+  }, [shopName, navigate])
+
+
   const products: Product[] = [
     {
       _id: 1,
@@ -28,22 +66,29 @@ const UserShop = () => {
     },
   ]
   return (
-    <div className="user_shop">
-      <TopBar />
+    <>
+      {isShop ?
+        <div className="user_shop">
+          <TopBar data={shopUserDatas} />
 
-      <HeroTop shopName={shopName || "Shop name"} />
+          <HeroTop data={shopUserDatas} />
 
-      <section className="product-section">
-        <h1>Articles de la boutique</h1>
-        <div className="product-grid">
-          {products.map((product: Product, key: number) => (
-            <ProductCart product={product} key={key} />
-          ))}
+          <section className="product-section">
+            <h1>Articles de la boutique</h1>
+            <div className="product-grid">
+              {products.map((product: Product, key: number) => (
+                <ProductCart product={product} key={key} />
+              ))}
+            </div>
+          </section>
+
+          <Footer data={shopUserDatas} />
+        </div> :
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <p style={{ fontSize: 40 }}>404</p>
         </div>
-      </section>
-
-      <Footer />
-    </div>
+      }
+    </>
   );
 };
 

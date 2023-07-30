@@ -1,10 +1,19 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { ShopUser } from '../_interface';
+import { RootState } from '../app/store';
+import { useSelector } from 'react-redux';
 
-const TopBar = () => {
+
+interface Props {
+  data: ShopUser;
+}
+
+const TopBar = ({ data }: Props) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { shopName } = useParams()
+
+  const session = useSelector((state: RootState) => state.session)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,18 +43,21 @@ const TopBar = () => {
         <ul>
           <li>
             <NavLink
-              to={`/my-shop/${shopName}`}
+              to={`/my-shop/${data.Shop.shopName}`}
               className={({ isActive }) => (isActive ? 'active' : '')}
             >Accueil</NavLink>
           </li>
           <li>Produits</li>
           <li>Contact</li>
         </ul>
-        <a href={`/my-shop/custom/${shopName}/`} className='btn_option'>
-          options
-          <i className='fa fa-cog'></i>
-        </a>
-        <a href={`/my-shop/custom/${shopName}/`} className='button-outline btn_shopping_cart'>
+        {
+          (data.User._id === session.User._id) &&
+          <a href={`/my-shop/custom/${data.Shop.shopName}/`} className='btn_option'>
+            options
+            <i className='fa fa-cog'></i>
+          </a>
+        }
+        <a href={`/my-shop/custom/${data.Shop.shopName}/`} className='button-outline btn_shopping_cart'>
           <sup>0</sup>
           <i className='fa fa-shopping-cart'></i>
         </a>

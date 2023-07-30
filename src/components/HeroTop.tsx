@@ -1,18 +1,19 @@
-import { slugToText } from "../_utils";
-
+import { ShopUser } from "../_interface";
 interface Props {
-  shopName: string;
+  data: ShopUser;
 }
-const HeroTop = (props: Props) => {
+
+const HeroTop = ({ data }: Props) => {
   return (
     <div className="herotop" style={{ backgroundImage: "url('/images/herotop.webp')" }}>
       <div className="hero_content">
-        <h1>{slugToText(props.shopName)}</h1>
+        <h1>{data.Shop.shopName}</h1>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit,
-          facere?
+          {data.Shop.description}
         </p>
-        <button>Contactez nous</button>
+        <a style={{ textDecoration: "none" }} href={`tel:${data.User.phone}`}>
+          <button>Contactez nous</button>
+        </a>
       </div>
     </div>
   );

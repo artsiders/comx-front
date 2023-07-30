@@ -1,12 +1,19 @@
-export default function Footer() {
+import { ShopUser } from "../_interface";
+
+interface Props {
+  data: ShopUser;
+}
+
+export default function Footer(props: Props) {
+  const { data } = props;
+
   return (
     <div className="footer">
       <div className="footer-body">
         <div className="column">
           <img src="/images/logo.webp" alt="Logo" />
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            pharetra maximus augue, in scelerisque tortor malesuada vel. Etiam
+            {data.Shop.description}
           </p>
         </div>
         <div className="column">
@@ -20,9 +27,9 @@ export default function Footer() {
         <div className="column">
           <h3>Contact</h3>
           <p>
-            Cameroun Bafoussam <br />
-            +237 651 28 41 14<br />
-            salim.artsider@gmail.com
+            {data.Shop.adresse} <br />
+            {data.User.phone}<br />
+            {data.User.email}
           </p>
         </div>
       </div>
