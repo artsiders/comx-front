@@ -7,10 +7,16 @@ import ProductCart from "../components/ProductCart";
 import axiosURL from "../axiosConfig";
 import { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 const UserShop = () => {
   const { shopName } = useParams();
   const [isShop, setIsShop] = useState(true)
+
+  const session = useSelector((state: RootState) => state.session)
+
+  const [products, setProducts] = useState<Product[]>([])
 
   const [shopUserDatas, setSetshopUserDatas] = useState<ShopUser>({
     Shop: {
@@ -44,42 +50,16 @@ const UserShop = () => {
       }).catch((err: AxiosError) => console.log(err))
   }, [shopName, navigate])
 
+  useEffect(() => {
+    axiosURL.get(`/products/${session.Shop._id}`)
+      .then(({ data }: AxiosResponse) => {
+        if (data.type === "success") {
+          setProducts(data.data)
+        }
+      }).catch((err: AxiosError) => console.log(err))
 
-  const products: Product[] = [
-    {
-      _id: "1",
-      name: "Toyota carina",
-      description: "200km heure",
-      price: 10000,
-      priceAfterDiscount: 10000,
-      statut: true,
-      category: "vehicule",
-      image: "card-1.webp",
-      _idShop: "jbsfjebzo",
-    },
-    {
-      _id: "1",
-      name: "Mercedess benz",
-      description: "200km heure",
-      price: 10000,
-      priceAfterDiscount: 10000,
-      statut: true,
-      category: "vehicule",
-      image: "card-2.webp",
-      _idShop: "jbsfjebzo",
-    },
-    {
-      _id: "1",
-      name: "Renauld twingo",
-      description: "200km heure",
-      price: 10000,
-      priceAfterDiscount: 10000,
-      statut: true,
-      category: "vehicule",
-      image: "card-3.webp",
-      _idShop: "jbsfjebzo",
-    },
-  ]
+  }, [session])
+
   return (
     <>
       {isShop ?
