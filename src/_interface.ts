@@ -15,12 +15,16 @@ export interface Theme {
   name: string;
   date: string;
 }
-
 export interface Product {
-  _id: number;
+  _id: string;
   name: string;
+  description: string;
   price: number;
+  priceAfterDiscount: number;
+  statut: boolean;
+  category: string;
   image: string;
+  _idShop: string;
 }
 
 export interface SessionState {

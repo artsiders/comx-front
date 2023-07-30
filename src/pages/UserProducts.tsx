@@ -1,29 +1,26 @@
 import { Product } from "../_interface"
 import UserProductCart from "../components/userDasboard/UserProductCart"
 import Pagination from "../components/Pagination"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import axiosURL from "../axiosConfig"
+import { AxiosResponse, AxiosError } from "axios"
+import { RootState } from "../app/store"
+import { useSelector } from "react-redux";
 
 export default function UserProducts() {
-    const products: Product[] = [
-        {
-            _id: 1,
-            name: "Renauld twingo",
-            price: 1300000,
-            image: "card-1.webp",
-        },
-        {
-            _id: 2,
-            name: "Mercedess",
-            price: 2890000,
-            image: "card-2.webp",
-        },
-        {
-            _id: 3,
-            name: "Toyota Carina",
-            price: 630000,
-            image: "card-3.webp",
-        },
-    ]
+    const session = useSelector((state: RootState) => state.session)
+
+    const [products, setProducts] = useState<Product[]>([])
+
+    useEffect(() => {
+        axiosURL.get(`/products/${session.Shop._id}`)
+            .then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    setProducts(data.data)
+                }
+            }).catch((err: AxiosError) => console.log(err))
+
+    }, [session])
 
     const [isAdding, setIsAdding] = useState<boolean>(false)
     return (
