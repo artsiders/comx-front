@@ -6,11 +6,25 @@ import axiosURL from "../axiosConfig"
 import { AxiosResponse, AxiosError } from "axios"
 import { RootState } from "../app/store"
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
 
 export default function UserProducts() {
     const session = useSelector((state: RootState) => state.session)
 
+    const [isAdding, setIsAdding] = useState<boolean>(false)
     const [products, setProducts] = useState<Product[]>([])
+    const [product, setProduct] = useState<Product>({
+        _id: "",
+        name: "",
+        description: "",
+        price: 0,
+        priceAfterDiscount: 0,
+        statut: true,
+        category: "any",
+        image: "",
+        _idShop: session.Shop._id,
+    })
+
 
     useEffect(() => {
         axiosURL.get(`/products/${session.Shop._id}`)
@@ -20,14 +34,48 @@ export default function UserProducts() {
                 }
             }).catch((err: AxiosError) => console.log(err))
 
-    }, [session])
+    }, [session, isAdding])
 
-    const [isAdding, setIsAdding] = useState<boolean>(false)
+
+    const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        const formdata: FormData = new FormData(e.currentTarget);
+
+        if (!product.image) {
+            toast("Importez une image pour votre produit.", {
+                type: "error",
+            });
+            return;
+        }
+        formdata.append("name", product.name)
+        formdata.append("description", product.description)
+        formdata.append("price", `${product.price}`)
+        formdata.append("priceAfterDiscount", `${product.priceAfterDiscount}`)
+        formdata.append("statut", `${product.statut}`)
+        formdata.append("category", product.category)
+        formdata.append("_idShop", product._idShop)
+        formdata.append("image", product.image)
+
+        axiosURL.post(`/products`, formdata)
+            .then(({ data }: AxiosResponse) => {
+                toast(data.message, {
+                    type: data.type,
+                });
+                if (data.type === "success") {
+                    setIsAdding(false)
+                }
+
+            }).catch((err: AxiosError) => {
+                console.log(err)
+            })
+
+    }
+
     return (
         <div className="user_product">
             {isAdding ?
                 <section className="add_product_form">
-                    <form action="">
+                    <form onSubmit={handelSubmit} encType="multipart/form-data">
                         <div className="input_group">
                             <label htmlFor="productName">Titre</label>
                             <input
@@ -35,30 +83,38 @@ export default function UserProducts() {
                                 type="text"
                                 id="productName"
                                 placeholder="samsung A1"
-                                value={''}
+                                value={product.name}
                                 onChange={(e) => {
-                                    console.log(e);
+                                    setProduct({ ...product, name: e.target.value });
                                 }}
                             />
                             <label htmlFor="desciption">Description</label>
-                            <textarea className="textarea"></textarea>
+                            <textarea
+                                className="textarea"
+                                value={product.description}
+                                onChange={(e) => {
+                                    setProduct({ ...product, description: e.target.value });
+                                }}
+                            ></textarea>
                         </div>
 
 
                         <div className="input_group multimedia">
                             <span>Image</span>
                             <label htmlFor="product-image">
-                                <span>Ajouter une image a votre produit</span>
+                                <span>{product.image ? product.image : "Ajouter une image a votre produit"}</span>
                                 <i className="fa fa-image"></i>
                             </label>
                             <input
                                 id="product-image"
                                 className="input"
                                 type="file"
+                                name="file"
                                 placeholder="10000"
-                                value={''}
                                 onChange={(e) => {
-                                    console.log(e);
+                                    const file = e.target.files?.[0];
+                                    if (!file) return;
+                                    setProduct({ ...product, image: file.name });
                                 }}
                             />
                         </div>
@@ -72,9 +128,9 @@ export default function UserProducts() {
                                 type="number"
                                 placeholder="0"
                                 data-devise="FCFA"
-                                value={''}
+                                value={product.price ? product.price : ""}
                                 onChange={(e) => {
-                                    console.log(e);
+                                    setProduct({ ...product, price: parseInt(e.target.value) });
                                 }}
                             />
                             <input
@@ -82,20 +138,28 @@ export default function UserProducts() {
                                 type="number"
                                 placeholder="0"
                                 data-devise="FCFA"
-                                value={''}
+                                value={product.priceAfterDiscount ? product.priceAfterDiscount : ""}
                                 onChange={(e) => {
-                                    console.log(e);
+                                    setProduct({ ...product, priceAfterDiscount: parseInt(e.target.value) });
                                 }}
                             />
                         </div>
                         <div className="input_group autre">
                             <label>statut</label>
-                            <select>
+                            <select
+                                onChange={(e) => {
+                                    setProduct({ ...product, statut: !!e.target.value });
+                                }}
+                            >
                                 <option value="1">Actifs</option>
-                                <option value="0">Inactifs</option>
+                                <option value="">Inactifs</option>
                             </select>
                             <label>Categorie</label>
-                            <select>
+                            <select
+                                onChange={(e) => {
+                                    setProduct({ ...product, category: e.target.value });
+                                }}
+                            >
                                 <option value="technologie">technologie</option>
                                 <option value="vetements">vetements</option>
                             </select>
@@ -129,6 +193,7 @@ export default function UserProducts() {
                             placeholder="Recherche..."
                         />
                         <select name="categorie">
+                            <option value="technologie">any</option>
                             <option value="technologie">technologie</option>
                             <option value="vetements">vetements</option>
                         </select>
@@ -147,7 +212,6 @@ export default function UserProducts() {
                         <Pagination />
                     </section>
                 </section>
-
             }
         </div>
     )

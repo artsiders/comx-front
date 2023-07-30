@@ -8,7 +8,7 @@ const UserProductCart: React.FC<Props> = ({ product }) => {
     return (
         <div className="user_product_cart" key={product._id}>
             <div className="image">
-                <img src={`/images/${product.image}`} alt={product.name} />
+                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${product.image}`} alt={product.name} />
             </div>
             <div className="details">
                 <h3 className="name">{product.name}</h3>
