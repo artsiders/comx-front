@@ -25,6 +25,7 @@
     }
     p {
       color: #ffffff;
+      @include clamp(2);
     }
     button {
       @extend %button;

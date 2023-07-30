@@ -9,6 +9,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
+import { slugToText } from "../_utils";
 
 const UserShop = () => {
   const { shopName } = useParams();
@@ -40,7 +41,7 @@ const UserShop = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axiosURL.get(`/shop/${shopName}`)
+    axiosURL.get(`/shop/${slugToText(shopName || "")}`)
       .then(({ data }: AxiosResponse) => {
         if (data.type !== "success") {
           setIsShop(false)
