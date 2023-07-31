@@ -1,36 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axiosURL from "../../axiosConfig";
+import { AxiosResponse, AxiosError } from 'axios'
+import { toast } from "react-toastify"
 
 interface Tag {
-    id: number;
+    _id: string;
     name: string;
 }
 
-const tagsLimit = 10;
-
 const TagsInputBox = () => {
-    const [tags, setTags] = useState<Tag[]>([
-        { id: 1, name: "null" },
-        { id: 2, name: "Technologie" },
-        { id: 3, name: "vetements" },
-    ]);
-    const [remainingTags, setRemainingTags] = useState<number>(tagsLimit - tags.length);
+    const [tags, setTags] = useState<Tag[]>([]);
+    const [refresh, setRefresh] = useState<boolean>(false)
+
+    useEffect(() => {
+        axiosURL.get(`/tags/`)
+            .then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    setTags(data.data);
+                }
+            }).catch((err: AxiosError) => {
+                console.log(err);
+            })
+    }, [refresh])
+
+
     const [inputValue, setInputValue] = useState<string>("");
 
     const addTag = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
             const tagNames = inputValue.split(",").map((tagName) => tagName.trim());
-            const newTags: Tag[] = tagNames.map((tagName) => ({ id: Date.now(), name: tagName }));
-            const allTags = [...tags, ...newTags].slice(0, tagsLimit);
-            setTags(allTags);
+
+            axiosURL.post('tags', { name: tagNames }).then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    setTags(data.data)
+                    setRefresh(() => !refresh)
+                } else if (data.type === "warning") {
+                    toast(data.message, {
+                        type: data.type,
+                    })
+                }
+            }).catch((err: AxiosError) => {
+                toast("Une erreur inatendue s'est produite !", {
+                    type: "error",
+                })
+                console.log(err);
+            })
             setInputValue("");
-            setRemainingTags(tagsLimit - allTags.length);
         }
     };
 
-    const removeTag = (tagId: number) => {
-        const filteredTags = tags.filter((tag) => tag.id !== tagId);
+    const removeTag = (tagId: string) => {
+        const filteredTags = tags.filter((tag) => tag._id !== tagId);
         setTags(filteredTags);
-        setRemainingTags(tagsLimit - filteredTags.length);
     };
 
     return (
@@ -43,11 +64,11 @@ const TagsInputBox = () => {
                 <p>Press enter or add a comma after each tag</p>
                 <ul>
                     {tags.map((tag) => (
-                        <li key={tag.id}>
+                        <li key={tag._id}>
                             {tag.name}{" "}
                             <i
                                 className="fa fa-close"
-                                onClick={() => removeTag(tag.id)}
+                                onClick={() => removeTag(tag._id)}
                             ></i>
                         </li>
                     ))}
@@ -62,7 +83,7 @@ const TagsInputBox = () => {
             </div>
             <div className="details">
                 <p>
-                    <span>{remainingTags}</span> tags are remaining
+                    <span>{'limite'}</span> tags are remaining
                 </p>
             </div>
         </div>
