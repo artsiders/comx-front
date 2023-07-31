@@ -56,7 +56,7 @@ export default function SideMenu() {
 
           <li>
             <NavLink
-              to={`/my-shop/custom/${shopName}/`}
+              to={`/my-shop/custom/`}
               id="custom"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -67,7 +67,7 @@ export default function SideMenu() {
           </li>
           <li>
             <NavLink
-              to={`/my-shop/custom/${shopName}/products`}
+              to={`/my-shop/custom/products`}
               id="products"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -78,7 +78,7 @@ export default function SideMenu() {
           </li>
           <li>
             <NavLink
-              to={`/my-shop/custom/${shopName}/categories`}
+              to={`/my-shop/custom/categories`}
               id="categories"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >
@@ -89,7 +89,7 @@ export default function SideMenu() {
           </li>
           <li>
             <NavLink
-              to={`/my-shop/custom/${shopName}/commandes`}
+              to={`/my-shop/custom/commandes`}
               id="commandes"
               className={({ isActive }) => (isActive ? 'active' : '')}
             >

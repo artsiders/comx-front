@@ -20,10 +20,10 @@ const Routeur = () => {
 
       <Route element={<PrivateRoute />}>
         <Route element={<UserDashboardLayout />} >
-          <Route path="/my-shop/custom/:shopName" element={<CustomShop />} />
-          <Route path="/my-shop/custom/:shopName/products" element={<UserProducts />} />
-          <Route path="/my-shop/custom/:shopName/categories" element={<UserCategories />} />
-          <Route path="/my-shop/custom/:shopName/commandes" element={<UserOrder />} />
+          <Route path="/my-shop/custom/" element={<CustomShop />} />
+          <Route path="/my-shop/custom/products" element={<UserProducts />} />
+          <Route path="/my-shop/custom/categories" element={<UserCategories />} />
+          <Route path="/my-shop/custom/commandes" element={<UserOrder />} />
         </Route>
       </Route>
 

@@ -160,6 +160,7 @@ export default function UserProducts() {
                                     setProduct({ ...product, category: e.target.value });
                                 }}
                             >
+                                <option value="any">any</option>
                                 <option value="technologie">technologie</option>
                                 <option value="vetements">vetements</option>
                             </select>
