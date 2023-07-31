@@ -2,26 +2,33 @@ import { useState, useEffect } from "react";
 import axiosURL from "../../axiosConfig";
 import { AxiosResponse, AxiosError } from 'axios'
 import { toast } from "react-toastify"
+import { RootState } from "../../app/store";
+import { useSelector } from "react-redux"
 
 interface Tag {
     _id: string;
     name: string;
+    _idShop: string;
 }
 
 const TagsInputBox = () => {
     const [tags, setTags] = useState<Tag[]>([]);
     const [refresh, setRefresh] = useState<boolean>(false)
+    const [limit, setLimit] = useState<number>(10)
+    const session = useSelector((state: RootState) => state.session)
 
     useEffect(() => {
-        axiosURL.get(`/tags/`)
+        axiosURL.get(`/tags/${session.Shop._id}`)
             .then(({ data }: AxiosResponse) => {
                 if (data.type === "success") {
                     setTags(data.data);
+                    setLimit(10 - data.data.length)
+
                 }
             }).catch((err: AxiosError) => {
                 console.log(err);
             })
-    }, [refresh])
+    }, [refresh, session])
 
 
     const [inputValue, setInputValue] = useState<string>("");
@@ -30,21 +37,21 @@ const TagsInputBox = () => {
         if (event.key === "Enter") {
             const tagNames = inputValue.split(",").map((tagName) => tagName.trim());
 
-            axiosURL.post('tags', { name: tagNames }).then(({ data }: AxiosResponse) => {
-                if (data.type === "success") {
-                    setTags(data.data)
-                    setRefresh(() => !refresh)
-                } else if (data.type === "warning") {
-                    toast(data.message, {
-                        type: data.type,
+            axiosURL.post(`/tags/`, { name: tagNames, _idShop: session.Shop._id })
+                .then(({ data }: AxiosResponse) => {
+                    if (data.type === "success") {
+                        setRefresh(() => !refresh)
+                    } else if (data.type === "warning") {
+                        toast(data.message, {
+                            type: data.type,
+                        })
+                    }
+                }).catch((err: AxiosError) => {
+                    toast("Une erreur inatendue s'est produite !", {
+                        type: "error",
                     })
-                }
-            }).catch((err: AxiosError) => {
-                toast("Une erreur inatendue s'est produite !", {
-                    type: "error",
+                    console.log(err);
                 })
-                console.log(err);
-            })
             setInputValue("");
         }
     };
@@ -61,7 +68,7 @@ const TagsInputBox = () => {
                 <h2>Categorie de produit</h2>
             </div>
             <div className="content">
-                <p>Press enter or add a comma after each tag</p>
+                <p>Appuie sur entrée ⌨ ou ajoute une virgule (,) après chaque étiquette</p>
                 <ul>
                     {tags.map((tag) => (
                         <li key={tag._id}>
@@ -83,7 +90,7 @@ const TagsInputBox = () => {
             </div>
             <div className="details">
                 <p>
-                    <span>{'limite'}</span> tags are remaining
+                    <span>{limit}</span> étiquettes restantes
                 </p>
             </div>
         </div>
