@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 export default function UserProducts() {
     const session = useSelector((state: RootState) => state.session)
 
+    const [refresh, setRefresh] = useState<boolean>(false)
     const [isAdding, setIsAdding] = useState<boolean>(false)
     const [products, setProducts] = useState<Product[]>([])
     const [product, setProduct] = useState<Product>({
@@ -33,8 +34,7 @@ export default function UserProducts() {
                     setProducts(data.data)
                 }
             }).catch((err: AxiosError) => console.log(err))
-
-    }, [session, isAdding])
+    }, [session, isAdding, refresh])
 
 
     const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -206,7 +206,7 @@ export default function UserProducts() {
                     </header>
                     <article className="grid">
                         {products.map((product: Product, key: number) => (
-                            <UserProductCart product={product} key={key} />
+                            <UserProductCart refreshProduct={() => setRefresh(!refresh)} product={product} key={key} />
                         ))}
                     </article>
                     <section>

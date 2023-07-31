@@ -5,9 +5,10 @@ import { toast } from 'react-toastify';
 
 interface Props {
     product: Product;
+    refreshProduct: () => void;
 }
 
-const UserProductCart: React.FC<Props> = ({ product }) => {
+const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
 
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const _id = e.currentTarget.dataset.id
@@ -17,7 +18,7 @@ const UserProductCart: React.FC<Props> = ({ product }) => {
                     type: data.type,
                 })
                 if (data.type === "success") {
-                    // refrech
+                    refreshProduct()
                 }
 
             }).catch((err: AxiosError) => {
