@@ -41,7 +41,7 @@ const TagsInputBox = () => {
                 .then(({ data }: AxiosResponse) => {
                     if (data.type === "success") {
                         setRefresh(() => !refresh)
-                    } else if (data.type === "warning") {
+                    } else {
                         toast(data.message, {
                             type: data.type,
                         })
