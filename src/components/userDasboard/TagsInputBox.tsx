@@ -57,15 +57,24 @@ const TagsInputBox = () => {
     };
 
     const removeTag = (tagId: string) => {
-        const filteredTags = tags.filter((tag) => tag._id !== tagId);
-        setTags(filteredTags);
+        axiosURL.delete(`/tags/${tagId}`)
+            .then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    setRefresh(() => !refresh)
+                }
+            }).catch((err: AxiosError) => {
+                console.log(err);
+                toast("Une erreur inatendue s'est produite !", {
+                    type: "error",
+                })
+            })
     };
 
     return (
         <div className="tags_input_box">
             <div className="title">
-                <i className="fa fa-product-hunt"></i>
-                <h2>Categorie de produit</h2>
+                <i className="fa fa-tags"></i>
+                <h2>Etiquette des produits</h2>
             </div>
             <div className="content">
                 <p>Appuie sur entrée ⌨ ou ajoute une virgule (,) après chaque étiquette</p>
