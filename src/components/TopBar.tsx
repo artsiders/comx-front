@@ -52,12 +52,12 @@ const TopBar = ({ data }: Props) => {
         </ul>
         {
           (data.User._id === session.User._id) &&
-          <a href={`/my-shop/custom/${data.Shop.shopName}/`} className='btn_option'>
+          <a href={`/my-shop/custom/`} className='btn_option'>
             options
             <i className='fa fa-cog'></i>
           </a>
         }
-        <a href={`/my-shop/custom/${data.Shop.shopName}/`} className='button-outline btn_shopping_cart'>
+        <a href={`/cart`} className='button-outline btn_shopping_cart'>
           <sup>0</sup>
           <i className='fa fa-shopping-cart'></i>
         </a>

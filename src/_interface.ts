@@ -64,3 +64,9 @@ export interface ShopUser {
     _id: string;
   };
 }
+
+export interface Tag {
+  _id: string;
+  name: string;
+  _idShop: string;
+}

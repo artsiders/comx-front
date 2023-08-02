@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 
 const UserTopBar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { shopName } = useParams()
+  const session = useSelector((state: RootState) => state.session)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +37,7 @@ const UserTopBar = () => {
           <li>Produits</li>
           <li>Contact</li> */}
         </ul>
-        <a href={`/my-shop/${shopName}/`} target='_blank' className='btn_preview'>
+        <a href={`/my-shop/${session.Shop.shopName}/`} target='_blank' className='btn_preview'>
           Previsualiser
           <i className='fa fa-share'></i>
         </a>

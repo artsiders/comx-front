@@ -4,12 +4,8 @@ import { AxiosResponse, AxiosError } from 'axios'
 import { toast } from "react-toastify"
 import { RootState } from "../../app/store";
 import { useSelector } from "react-redux"
-
-interface Tag {
-    _id: string;
-    name: string;
-    _idShop: string;
-}
+import { Tag } from "../../_interface";
+import TagItem from "./TagItem";
 
 const TagsInputBox = () => {
     const [tags, setTags] = useState<Tag[]>([]);
@@ -56,20 +52,6 @@ const TagsInputBox = () => {
         }
     };
 
-    const removeTag = (tagId: string) => {
-        axiosURL.delete(`/tags/${tagId}`)
-            .then(({ data }: AxiosResponse) => {
-                if (data.type === "success") {
-                    setRefresh(() => !refresh)
-                }
-            }).catch((err: AxiosError) => {
-                console.log(err);
-                toast("Une erreur inatendue s'est produite !", {
-                    type: "error",
-                })
-            })
-    };
-
     return (
         <div className="tags_input_box">
             <div className="title">
@@ -80,13 +62,11 @@ const TagsInputBox = () => {
                 <p>Appuie sur entrée ⌨ ou ajoute une virgule (,) après chaque étiquette</p>
                 <ul>
                     {tags.map((tag) => (
-                        <li key={tag._id}>
-                            {tag.name}{" "}
-                            <i
-                                className="fa fa-close"
-                                onClick={() => removeTag(tag._id)}
-                            ></i>
-                        </li>
+                        <TagItem
+                            tag={tag}
+                            setRefresh={setRefresh}
+                            refresh={refresh}
+                        />
                     ))}
                     <input
                         type="text"

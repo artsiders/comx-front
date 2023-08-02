@@ -5,7 +5,6 @@ import UploadLogo from "../components/CreateShopForm/UploadLogo";
 import UserInfo from "../components/CreateShopForm/UserInfo";
 import ShopInfo from "../components/CreateShopForm/ShopInfo";
 import { useNavigate } from "react-router-dom";
-import { textToSlug } from "../_utils";
 import { AxiosError, AxiosResponse } from "axios";
 import axiosURL from "../axiosConfig";
 import { toast } from 'react-toastify';
@@ -19,7 +18,7 @@ export default function CreateShop() {
 
     const session = useSelector((state: RootState) => state.session)
     if (session.connected) {
-        navigate(`/my-shop/custom/${textToSlug(session.Shop.shopName)}/`)
+        navigate(`/my-shop/custom/`)
     }
 
 
@@ -164,7 +163,7 @@ export default function CreateShop() {
                                 connected: false,
                             }))
 
-                            navigate(`/my-shop/custom/${textToSlug(shopDatas.shopName)}/`)
+                            navigate(`/my-shop/custom/`)
                         }
                     }).catch((err: AxiosError) => {
                         console.log(err)
