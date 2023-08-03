@@ -1,14 +1,24 @@
 import { AxiosError, AxiosResponse } from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axiosURL from "../axiosConfig"
 import { toast } from "react-toastify"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { connect } from "../feature/session.slice"
+import { RootState } from "../app/store"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const session = useSelector((state: RootState) => state.session)
+    useEffect(() => {
+        if (session.connected) {
+            navigate('/my-shop/custom/')
+        }
+    }, [session, navigate])
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

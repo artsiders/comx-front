@@ -41,6 +41,7 @@ const initialState: SessionState = loadState() || {
     _id: "",
   },
   connected: false,
+  token: "",
 };
 
 // Définir la forme de la charge utile pour l'action connectShop
@@ -62,6 +63,7 @@ export const sessionSlice = createSlice({
       state.Shop = payload.Shop;
       state.User = payload.User;
       state.connected = true;
+      state.token = payload.token;
       saveState(state); // enregistrement de l'état dans les cookies
     },
 
@@ -83,6 +85,7 @@ export const sessionSlice = createSlice({
         _id: "",
       };
       state.connected = false;
+      state.token = "";
       saveState(state); // enregistrement de l'état dans les cookies
     },
   },

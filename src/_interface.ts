@@ -45,6 +45,7 @@ export interface SessionState {
     _id: string;
   };
   connected: boolean;
+  token: string;
 }
 export interface ShopUser {
   Shop: {
