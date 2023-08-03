@@ -1,4 +1,4 @@
-import { Product } from "../_interface"
+import { Product, Tag } from "../_interface"
 import UserProductCart from "../components/userDasboard/UserProductCart"
 import Pagination from "../components/Pagination"
 import { useState, useEffect } from "react"
@@ -14,6 +14,7 @@ export default function UserProducts() {
     const [refresh, setRefresh] = useState<boolean>(false)
     const [isAdding, setIsAdding] = useState<boolean>(false)
     const [products, setProducts] = useState<Product[]>([])
+    const [tags, setTags] = useState<Tag[]>([])
     const [product, setProduct] = useState<Product>({
         _id: "",
         name: "",
@@ -35,6 +36,17 @@ export default function UserProducts() {
                 }
             }).catch((err: AxiosError) => console.log(err))
     }, [session, isAdding, refresh])
+
+    useEffect(() => {
+        axiosURL.get(`/tags/${session.Shop._id}`)
+            .then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    setTags(data.data);
+                }
+            }).catch((err: AxiosError) => {
+                console.log(err);
+            })
+    }, [refresh, session])
 
 
     const handelSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -145,25 +157,29 @@ export default function UserProducts() {
                             />
                         </div>
                         <div className="input_group autre">
-                            <label>statut</label>
-                            <select
-                                onChange={(e) => {
-                                    setProduct({ ...product, statut: !!e.target.value });
-                                }}
-                            >
-                                <option value="1">Actifs</option>
-                                <option value="">Inactifs</option>
-                            </select>
-                            <label>Categorie</label>
-                            <select
-                                onChange={(e) => {
-                                    setProduct({ ...product, category: e.target.value });
-                                }}
-                            >
-                                <option value="any">any</option>
-                                <option value="technologie">technologie</option>
-                                <option value="vetements">vetements</option>
-                            </select>
+                            <div className="col">
+                                <label>statut</label>
+                                <select
+                                    onChange={(e) => {
+                                        setProduct({ ...product, statut: !!e.target.value });
+                                    }}
+                                >
+                                    <option value="1">Actifs</option>
+                                    <option value="">Inactifs</option>
+                                </select>
+                            </div>
+                            <div className="col">
+                                <label>Categorie</label>
+                                <select
+                                    onChange={(e) => {
+                                        setProduct({ ...product, category: e.target.value });
+                                    }}
+                                >
+                                    {tags.map((tag: Tag, key: number) =>
+                                        <option key={key} value={tag._id}>{tag.name}</option>
+                                    )}
+                                </select>
+                            </div>
 
                             <div className="buttons">
                                 <button
@@ -194,9 +210,9 @@ export default function UserProducts() {
                             placeholder="Recherche..."
                         />
                         <select name="categorie">
-                            <option value="technologie">any</option>
-                            <option value="technologie">technologie</option>
-                            <option value="vetements">vetements</option>
+                            {tags.map((tag: Tag, key: number) =>
+                                <option key={key} value={tag._id}>{tag.name}</option>
+                            )}
                         </select>
                         <select name="statut">
                             <option value="1">Actifs</option>

@@ -67,6 +67,9 @@
         border: 1px solid var(--border);
         height: 30px;
         width: 30px;
+        &:hover {
+          background-color: var(--border);
+        }
       }
     }
   }

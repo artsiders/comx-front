@@ -88,9 +88,11 @@
     }
   }
   .input_group.autre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
     select {
       @include input;
-      margin-bottom: 15px;
     }
   }
   .buttons {
