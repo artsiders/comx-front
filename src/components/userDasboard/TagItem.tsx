@@ -35,8 +35,8 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                 })
                 if (data.type === "success") {
                     setRefresh(() => !refresh)
-                    setIsEditing(false)
                 }
+                setIsEditing(false)
             }).catch((err: AxiosError) => {
                 console.log(err);
                 toast("Une erreur inatendue s'est produite !", {
@@ -53,7 +53,7 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                     onClick={() => removeTag(tag._id)}
                 ></i>
             </li> : <li>
-                <label>
+                <label className="form_edit_tag">
                     <input
                         type="text"
                         className="input"
@@ -62,7 +62,13 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                         onChange={(e) => setEditName(e.currentTarget.value)}
                     />
                     <i
-                        onClick={() => handleUpdate(tag._id, tag.name)}
+                        onClick={() => {
+                            if (tag.name !== editName) {
+                                handleUpdate(tag._id, editName)
+                            } else {
+                                setIsEditing(false)
+                            }
+                        }}
                         className="fa fa-check"
                     ></i>
                 </label>
