@@ -1,0 +1,17 @@
+.login_form {
+  form {
+    padding-top: 30px;
+  }
+  button {
+    width: 100%;
+  }
+  a {
+    margin: 10px;
+    display: block;
+    color: #828282;
+    font-size: 15px;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

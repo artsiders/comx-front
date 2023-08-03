@@ -48,7 +48,7 @@ export default function Login() {
     }
 
     return (
-        <div>
+        <div className="login_form">
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input
@@ -70,6 +70,7 @@ export default function Login() {
                     Se connecter
                     <i className="fa fa-sign-in"></i>
                 </button>
+                <a href="/">Créer une boutique</a>
             </form>
         </div>
     )

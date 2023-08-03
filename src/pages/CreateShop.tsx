@@ -1,6 +1,6 @@
 import { useState } from "react";
 import StartForm from "../components/CreateShopForm/StartForm";
-import { ShopDatas } from "../_interface";
+import { SessionState, ShopDatas } from "../_interface";
 import UploadLogo from "../components/CreateShopForm/UploadLogo";
 import UserInfo from "../components/CreateShopForm/UserInfo";
 import ShopInfo from "../components/CreateShopForm/ShopInfo";
@@ -136,7 +136,7 @@ export default function CreateShop() {
 
                 axiosURL.post(`/shop`, formdata)
                     .then(({ data }: AxiosResponse) => {
-                        const { shop, user } = data.data;
+                        const { Shop, User, token } = data.data as SessionState;
 
                         toast(data.message, {
                             type: data.type,
@@ -145,22 +145,23 @@ export default function CreateShop() {
                         if (data.type === "success") {
                             dispatch(connect({
                                 Shop: {
-                                    shopName: shop.shopName,
-                                    logo: shop.logo,
-                                    adresse: shop.adresse,
-                                    description: shop.description,
-                                    langue: shop.langue,
-                                    _idUser: shop._idUser,
-                                    _id: shop._id,
+                                    shopName: Shop.shopName,
+                                    logo: Shop.logo,
+                                    adresse: Shop.adresse,
+                                    description: Shop.description,
+                                    langue: Shop.langue,
+                                    _idUser: Shop._idUser,
+                                    _id: Shop._id,
                                 },
                                 User: {
-                                    email: user.email,
-                                    fullname: user.fullname,
-                                    password: user.password,
-                                    phone: user.phone,
-                                    _id: user._id,
+                                    email: User.email,
+                                    fullname: User.fullname,
+                                    password: User.password,
+                                    phone: User.phone,
+                                    _id: User._id,
                                 },
                                 connected: false,
+                                token: token,
                             }))
 
                             navigate(`/my-shop/custom/`)

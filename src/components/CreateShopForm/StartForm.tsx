@@ -29,6 +29,7 @@ export default function StartForm(props: Props) {
                 <option value="fr">français</option>
                 <option value="en">english</option>
             </select>
+            <p>j'ai déjà une boutique <a href="/login">Se connecter</a></p>
         </div>
     )
 }

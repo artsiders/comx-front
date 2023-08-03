@@ -1,4 +1,8 @@
-// .start_form {
-//   display: flex;
-//   flex-direction: column;
-// }
+.start_form {
+  a {
+    color: #828282;
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}
