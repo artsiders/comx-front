@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { disconnect } from "../feature/session.slice";
 // import axios from "axios"; 
 
 export default function SideMenu() {
   const [mobile] = useState(window.matchMedia("(max-width: 600px)").matches);
   const [etat, setEtat] = useState(false);
-  const { shopName } = useParams();
-
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   // const [data, setData] = useState([]);
   const toggleSideMenu = () => (etat ? setEtat(false) : setEtat(true));
@@ -28,8 +30,9 @@ export default function SideMenu() {
   // };
   const logOut = (e: React.FormEvent<HTMLElement>) => {
     e.preventDefault();
-    console.log("log out");
+    dispatch(disconnect())
 
+    navigate('/login')
   }
   const toggleIfMobile = () => {
     if (mobile) {
@@ -100,7 +103,7 @@ export default function SideMenu() {
           </li>
           <li className="log_out">
             <a
-              href={`/my-shop/custom/${shopName}`}
+              href={`/login`}
               onClick={logOut}
             >
               <i className="fa fa-sign-out"></i>
