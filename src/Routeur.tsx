@@ -9,12 +9,14 @@ import UserCategories from "./pages/UserCategories";
 import UserOrder from "./pages/UserOrder";
 import Form from "./pages/Form";
 import PrivateRoute from "./PrivateRoute";
+import Login from "./pages/Login";
 
 const Routeur = () => {
   return (
     <Routes>
       <Route element={<FormLayout />} >
         <Route path="/" element={<CreateShop />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/test" element={<Form />}></Route>
       </Route>
 
