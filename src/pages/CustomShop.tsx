@@ -1,8 +1,34 @@
 import { useState } from "react"
-import { Theme } from "../_interface"
+import { ShopUser, Theme } from "../_interface"
+import axiosURL from "../axiosConfig";
+import { AxiosError, AxiosResponse } from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../app/store";
+import { toast } from "react-toastify"
+import { updateSession } from "../feature/session.slice";
 
 export default function CustomShop() {
     const [isEditing, setIsEditing] = useState(false)
+    const dispatch = useDispatch()
+
+    const { User, Shop } = useSelector((state: RootState) => state.session);
+
+    const [shopDatas, setShopDatas] = useState<ShopUser["Shop"]>({
+        shopName: Shop.shopName,
+        logo: Shop.logo,
+        adresse: Shop.adresse,
+        description: Shop.description,
+        langue: Shop.langue,
+        _idUser: Shop._idUser,
+        _id: Shop._id,
+    })
+    const [userDatas, setUserDatas] = useState<ShopUser["User"]>({
+        email: User.email,
+        fullname: User.fullname,
+        phone: User.phone,
+        _id: User._id,
+    })
+
     const themes: Theme[] = [
         {
             image: "thumb-theme-1.webp",
@@ -19,7 +45,27 @@ export default function CustomShop() {
             name: "Theme 3",
             date: "2023-28-12",
         },
-    ]
+    ];
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        axiosURL.patch(`/shop/${userDatas._id}`, { Shop: shopDatas, User: userDatas })
+            .then(({ data }: AxiosResponse) => {
+                toast(data.message, {
+                    type: data.type,
+                })
+                if (data.type === "success") {
+                    dispatch(updateSession(data.data))
+                    setIsEditing(false)
+                }
+            }).catch((err: AxiosError) => {
+                toast("Une erreur innattendue est survenu !", {
+                    type: 'error',
+                })
+                console.log(err);
+            })
+    }
+
     return (
         <div className="custom_shop">
             <span>Théme</span>
@@ -69,27 +115,27 @@ export default function CustomShop() {
                             <ul>
                                 <li>
                                     <i className="fa fa-shopping-bag"></i>
-                                    <strong>shopName</strong>
+                                    <strong>{Shop.shopName}</strong>
                                 </li>
                                 <li>
                                     <i className="fa fa-user"></i>
-                                    full name
+                                    {User.fullname}
                                 </li>
                                 <li>
                                     <i className="fa fa-at"></i>
-                                    email
+                                    {User.email}
                                 </li>
                                 <li>
                                     <i className="fa fa-phone"></i>
-                                    phone
+                                    {User.phone}
                                 </li>
                                 <li>
                                     <i className="fa fa-address-card"></i>
-                                    adresse
+                                    {Shop.adresse}
                                 </li>
                                 <li>
                                     <i className="fa fa-language"></i>
-                                    langue
+                                    {Shop.langue}
                                 </li>
                             </ul>
                             <a
@@ -102,48 +148,82 @@ export default function CustomShop() {
                             >Modifier les informations</a>
                         </div>
                         :
-                        <form className="box_info form">
+                        <form
+                            className="box_info form"
+                            onSubmit={handleSubmit}
+                        >
                             <ul>
                                 <li>
                                     <i className="fa fa-shopping-bag"></i>
                                     <div>
                                         <label>Nom de la boutique</label>
-                                        <input type="text" className="input" />
+                                        <input
+                                            type="text"
+                                            className="input"
+                                            value={shopDatas.shopName}
+                                            onChange={(e) => setShopDatas({ ...shopDatas, shopName: e.currentTarget.value })}
+                                        />
                                     </div>
                                 </li>
                                 <li>
                                     <i className="fa fa-at"></i>
                                     <div>
                                         <label>Nom et prénom</label>
-                                        <input type="text" className="input" />
+                                        <input
+                                            type="text"
+                                            className="input"
+                                            value={userDatas.fullname}
+                                            onChange={(e) => setUserDatas({ ...userDatas, fullname: e.currentTarget.value })}
+                                        />
                                     </div>
                                 </li>
                                 <li>
                                     <i className="fa fa-phone"></i>
                                     <div>
                                         <label>Email</label>
-                                        <input type="text" className="input" />
+                                        <input
+                                            type="email"
+                                            className="input"
+                                            value={userDatas.email}
+                                            onChange={(e) => setUserDatas({ ...userDatas, email: e.currentTarget.value })}
+                                        />
                                     </div>
                                 </li>
                                 <li>
                                     <i className="fa fa-address-card"></i>
                                     <div>
                                         <label>Téléphone</label>
-                                        <input type="text" className="input" />
+                                        <input
+                                            type="number"
+                                            className="input"
+                                            value={userDatas.phone}
+                                            onChange={(e) => setUserDatas({ ...userDatas, phone: parseInt(e.currentTarget.value) })}
+                                        />
                                     </div>
                                 </li>
                                 <li>
                                     <i className="fa fa-language"></i>
                                     <div>
                                         <label>Adresse</label>
-                                        <input type="text" className="input" />
+                                        <input
+                                            type="text"
+                                            className="input"
+                                            value={shopDatas.adresse}
+                                            onChange={(e) => setShopDatas({ ...shopDatas, adresse: e.currentTarget.value })}
+                                        />
                                     </div>
                                 </li>
                                 <li>
                                     <i className="fa fa-user"></i>
                                     <div>
                                         <label>Langue</label>
-                                        <select className="input">
+                                        <select
+                                            className="input"
+                                            value={shopDatas.langue}
+                                            onChange={(e) => {
+                                                setShopDatas({ ...shopDatas, langue: e.currentTarget.value })
+                                            }}
+                                        >
                                             <option value="fr">Français</option>
                                             <option value="en">Anglais</option>
                                         </select>

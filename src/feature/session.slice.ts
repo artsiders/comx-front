@@ -88,7 +88,16 @@ export const sessionSlice = createSlice({
       state.token = "";
       saveState(state); // enregistrement de l'état dans les cookies
     },
+    updateSession: (
+      state: SessionState,
+      action: PayloadAction<SessionAction["payload"]>
+    ) => {
+      const { payload } = action;
+      state.Shop = payload.Shop;
+      state.User = payload.User;
+      saveState(state); // enregistrement de l'état dans les cookies
+    },
   },
 });
 
-export const { connect, disconnect } = sessionSlice.actions;
+export const { connect, disconnect, updateSession } = sessionSlice.actions;

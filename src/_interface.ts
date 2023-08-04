@@ -60,7 +60,7 @@ export interface ShopUser {
   User: {
     email: string;
     fullname: string;
-    password: string;
+    password?: string;
     phone: number;
     _id: string;
   };
