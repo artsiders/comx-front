@@ -125,7 +125,7 @@
     }
     ul li {
       position: relative;
-      height: 45px;
+      height: 40px;
       width: 100%;
       list-style: none;
       margin: 10px 0;
@@ -156,7 +156,7 @@
       left: 122px;
       top: 0;
       transform: translate(-50%, -50%);
-      height: 45px;
+      height: 40px;
       width: 122px;
       line-height: 45px;
       text-align: center;
@@ -168,22 +168,22 @@
       pointer-events: none;
       // display: none;
     }
-    ul li input {
-      position: absolute;
-      height: 40px;
-      width: 100%;
-      left: 0;
-      top: 0;
-      outline: none;
-      border: none;
-      background-color: var(--background);
-      padding-left: 40px;
-      color: var(--writing);
-      opacity: 0.9;
-      font-size: 14px;
-      font-weight: normal;
-      letter-spacing: 1px;
-    }
+    // ul li input {
+    //   position: absolute;
+    //   height: 40px;
+    //   width: 100%;
+    //   left: 0;
+    //   top: 0;
+    //   outline: none;
+    //   border: none;
+    //   background-color: var(--background);
+    //   padding-left: 40px;
+    //   color: var(--writing);
+    //   opacity: 0.9;
+    //   font-size: 14px;
+    //   font-weight: normal;
+    //   letter-spacing: 1px;
+    // }
     ul li a {
       color: var(--writing);
       display: flex;
@@ -191,12 +191,12 @@
       text-decoration: none;
       transition: 0.4s ease;
       white-space: nowrap;
-      height: 45px;
+      height: 40px;
     }
     ul li i {
-      height: 45px;
+      height: 40px;
       min-width: 40px;
-      line-height: 45px;
+      line-height: 40px;
       text-align: center;
       cursor: pointer;
     }
@@ -210,7 +210,7 @@
     .log_out {
       position: absolute;
       bottom: 0;
-      height: 45px;
+      height: 40px;
       width: 40px;
       margin: 10px 0;
       left: 9px;
