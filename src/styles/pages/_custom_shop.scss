@@ -112,10 +112,28 @@
         @extend %center;
       }
 
-      .logo img {
-        border-radius: 50%;
-        height: 100px;
-        width: 100px;
+      .logo {
+        label {
+          position: absolute;
+          height: inherit;
+          width: inherit;
+          background-color: var(--secondary-50);
+          @extend %center;
+          border-radius: 50%;
+          opacity: 0;
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+        }
+        img {
+          border-radius: 50%;
+          height: 100px;
+          width: 100px;
+        }
+      }
+      .logo:hover {
+        label {
+          opacity: 0.8;
+        }
       }
     }
     .content {

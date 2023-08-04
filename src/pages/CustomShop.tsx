@@ -102,10 +102,13 @@ export default function CustomShop() {
                         </div>)}
                 </div>
             </section>
+
             <section className="shop_info">
                 <div className="cover" style={{ backgroundImage: 'url(/images/herotop.webp)' }}>
                     <div className="logo">
+                        <label htmlFor="logo-input" className="fa fa-edit"></label>
                         <img src="/images/logo.webp" alt="shop_logo" />
+                        <input id="logo-input" type="file" name="file" hidden />
                     </div>
                 </div>
                 <div className="content">
