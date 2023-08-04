@@ -1,6 +1,8 @@
+import { useState } from "react"
 import { Theme } from "../_interface"
 
 export default function CustomShop() {
+    const [isEditing, setIsEditing] = useState(false)
     const themes: Theme[] = [
         {
             image: "thumb-theme-1.webp",
@@ -62,35 +64,109 @@ export default function CustomShop() {
                 </div>
                 <div className="content">
                     <div className="side"></div>
-                    <div className="box_info">
-                        <ul>
-                            <li>
-                                <i className="fa fa-shopping-bag"></i>
-                                <strong>shopName</strong>
-                            </li>
-                            <li>
-                                <i className="fa fa-user"></i>
-                                full name
-                            </li>
-                            <li>
-                                <i className="fa fa-at"></i>
-                                email
-                            </li>
-                            <li>
-                                <i className="fa fa-phone"></i>
-                                phone
-                            </li>
-                            <li>
-                                <i className="fa fa-address-card"></i>
-                                adresse
-                            </li>
-                            <li>
-                                <i className="fa fa-language"></i>
-                                langue
-                            </li>
-                        </ul>
-                        <a href="/" className="link">Modifier les informations</a>
-                    </div>
+                    {!isEditing ?
+                        <div className="box_info">
+                            <ul>
+                                <li>
+                                    <i className="fa fa-shopping-bag"></i>
+                                    <strong>shopName</strong>
+                                </li>
+                                <li>
+                                    <i className="fa fa-user"></i>
+                                    full name
+                                </li>
+                                <li>
+                                    <i className="fa fa-at"></i>
+                                    email
+                                </li>
+                                <li>
+                                    <i className="fa fa-phone"></i>
+                                    phone
+                                </li>
+                                <li>
+                                    <i className="fa fa-address-card"></i>
+                                    adresse
+                                </li>
+                                <li>
+                                    <i className="fa fa-language"></i>
+                                    langue
+                                </li>
+                            </ul>
+                            <a
+                                href="/"
+                                className="link"
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setIsEditing(true)
+                                }}
+                            >Modifier les informations</a>
+                        </div>
+                        :
+                        <form className="box_info form">
+                            <ul>
+                                <li>
+                                    <i className="fa fa-shopping-bag"></i>
+                                    <div>
+                                        <label>Nom de la boutique</label>
+                                        <input type="text" className="input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i className="fa fa-at"></i>
+                                    <div>
+                                        <label>Nom et prénom</label>
+                                        <input type="text" className="input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i className="fa fa-phone"></i>
+                                    <div>
+                                        <label>Email</label>
+                                        <input type="text" className="input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i className="fa fa-address-card"></i>
+                                    <div>
+                                        <label>Téléphone</label>
+                                        <input type="text" className="input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i className="fa fa-language"></i>
+                                    <div>
+                                        <label>Adresse</label>
+                                        <input type="text" className="input" />
+                                    </div>
+                                </li>
+                                <li>
+                                    <i className="fa fa-user"></i>
+                                    <div>
+                                        <label>Langue</label>
+                                        <select className="input">
+                                            <option value="fr">Français</option>
+                                            <option value="en">Anglais</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div className="buttons">
+                                <button className="button">
+                                    Enregistrer
+                                    <i className="fa fa-save"></i>
+                                </button>
+                                <button
+                                    className="button-outline cancel"
+                                    onClick={() => setIsEditing(false)}
+                                >
+                                    Annuler
+                                    <i className="fa fa-close"></i>
+                                </button>
+                            </div>
+                        </form>
+
+                    }
+
                 </div>
             </section>
         </div>

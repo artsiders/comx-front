@@ -104,18 +104,18 @@
       .logo {
         border-radius: 50%;
         position: absolute;
-        bottom: -50%;
+        bottom: -55px;
         left: 40px;
-        height: 160px;
-        width: 160px;
+        height: 115px;
+        width: 115px;
         border: 4px solid var(--secondary);
         @extend %center;
       }
 
       .logo img {
         border-radius: 50%;
-        height: 150px;
-        width: 150px;
+        height: 100px;
+        width: 100px;
       }
     }
     .content {
@@ -124,6 +124,9 @@
 
       .box_info {
         padding: 20px;
+        border-left: 1px solid var(--border);
+        padding-left: 10px;
+        border-radius: 0;
 
         ul {
           padding-top: 30px;
@@ -139,6 +142,30 @@
         a {
           display: block;
           margin-top: 30px;
+        }
+      }
+      .box_info.form {
+        ul li {
+          margin: 0;
+          border: none;
+          padding: 5px;
+          label {
+            margin-bottom: 5px;
+            display: block;
+          }
+          input {
+            height: 40px;
+          }
+        }
+        .buttons {
+          display: flex;
+          margin-top: 30px;
+          gap: 20px;
+          margin-left: 50px;
+
+          .cancel {
+            border-color: var(--danger);
+          }
         }
       }
     }
