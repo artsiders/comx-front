@@ -54,6 +54,45 @@ export default function CustomShop() {
                         </div>)}
                 </div>
             </section>
+            <section className="shop_info">
+                <div className="cover" style={{ backgroundImage: 'url(/images/herotop.webp)' }}>
+                    <div className="logo">
+                        <img src="/images/logo.webp" alt="shop_logo" />
+                    </div>
+                </div>
+                <div className="content">
+                    <div className="side"></div>
+                    <div className="box_info">
+                        <ul>
+                            <li>
+                                <i className="fa fa-shopping-bag"></i>
+                                <strong>shopName</strong>
+                            </li>
+                            <li>
+                                <i className="fa fa-user"></i>
+                                full name
+                            </li>
+                            <li>
+                                <i className="fa fa-at"></i>
+                                email
+                            </li>
+                            <li>
+                                <i className="fa fa-phone"></i>
+                                phone
+                            </li>
+                            <li>
+                                <i className="fa fa-address-card"></i>
+                                adresse
+                            </li>
+                            <li>
+                                <i className="fa fa-language"></i>
+                                langue
+                            </li>
+                        </ul>
+                        <a href="/" className="link">Modifier les informations</a>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

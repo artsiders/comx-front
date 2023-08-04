@@ -127,3 +127,9 @@
 .textarea {
   @include textarea;
 }
+.link {
+  color: gray;
+  &:hover {
+    color: var(--secondary-70);
+  }
+}
