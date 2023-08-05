@@ -7,17 +7,17 @@ import UserDashboardLayout from "./components/userDasboard/UserDashboardLayout";
 import UserProducts from "./pages/UserProducts";
 import UserCategories from "./pages/UserCategories";
 import UserOrder from "./pages/UserOrder";
-import Form from "./pages/Form";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 
 const Routeur = () => {
   return (
     <Routes>
       <Route element={<FormLayout />} >
-        <Route path="/" element={<CreateShop />} />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/test" element={<Form />}></Route>
+        <Route path="/create-shop" element={<CreateShop />} />
       </Route>
 
       <Route element={<PrivateRoute />}>
@@ -29,7 +29,8 @@ const Routeur = () => {
         </Route>
       </Route>
 
-      <Route path="/my-shop/:shopName" element={<UserShop />} />
+      <Route path="shop/:shopName" element={<UserShop />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

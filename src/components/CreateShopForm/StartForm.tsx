@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { ShopDatas } from "../../_interface";
 
 interface Props {
@@ -29,7 +30,7 @@ export default function StartForm(props: Props) {
                 <option value="fr">français</option>
                 <option value="en">english</option>
             </select>
-            <p>j'ai déjà une boutique <a href="/login">Se connecter</a></p>
+            <p>j'ai déjà une boutique <NavLink to="/login">Se connecter</NavLink></p>
         </div>
     )
 }

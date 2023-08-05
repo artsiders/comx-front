@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import { useDispatch, useSelector } from "react-redux"
 import { connect } from "../feature/session.slice"
 import { RootState } from "../app/store"
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 export default function Login() {
     const dispatch = useDispatch()
@@ -56,6 +56,7 @@ export default function Login() {
                     className="input"
                     placeholder="example@gmail.com"
                     value={email}
+                    autoFocus
                     onChange={(e) => setEmail(e.currentTarget.value)}
                 />
                 <label>Mot de passe</label>
@@ -70,7 +71,7 @@ export default function Login() {
                     Se connecter
                     <i className="fa fa-sign-in"></i>
                 </button>
-                <a href="/">Créer une boutique</a>
+                <NavLink to="/create-shop">Créer une boutique</NavLink>
             </form>
         </div>
     )
