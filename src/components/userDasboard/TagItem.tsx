@@ -3,6 +3,8 @@ import axiosURL from "../../axiosConfig";
 import { AxiosResponse, AxiosError } from 'axios'
 import { toast } from "react-toastify"
 import { Tag } from "../../_interface";
+import { RootState } from "../../app/store";
+import { useSelector } from "react-redux";
 
 interface Props {
     tag: Tag;
@@ -13,6 +15,7 @@ interface Props {
 export default function TagItem({ tag, refresh, setRefresh }: Props) {
     const [isEditing, setIsEditing] = useState(false)
     const [editName, setEditName] = useState(tag.name)
+    const { Shop } = useSelector((state: RootState) => state.session)
 
     const removeTag = (tagId: string) => {
         axiosURL.delete(`/tags/${tagId}`)
@@ -27,8 +30,8 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                 })
             })
     };
-    const handleUpdate = (tagId: string, name: string) => {
-        axiosURL.patch(`/tags/${tagId}`, { name })
+    const handleUpdate = (tagId: string, name: string, _idShop: string) => {
+        axiosURL.patch(`/tags/${tagId}`, { name, _idShop })
             .then(({ data }: AxiosResponse) => {
                 toast(data.message, {
                     type: data.type,
@@ -64,7 +67,7 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                     <i
                         onClick={() => {
                             if (tag.name !== editName) {
-                                handleUpdate(tag._id, editName)
+                                handleUpdate(tag._id, editName, Shop._id)
                             } else {
                                 setIsEditing(false)
                             }

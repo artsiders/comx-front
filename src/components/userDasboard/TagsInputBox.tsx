@@ -10,7 +10,7 @@ import TagItem from "./TagItem";
 const TagsInputBox = () => {
     const [tags, setTags] = useState<Tag[]>([]);
     const [refresh, setRefresh] = useState<boolean>(false)
-    const [limit, setLimit] = useState<number>(10)
+    const [limit, setLimit] = useState<number>(9)
     const session = useSelector((state: RootState) => state.session)
 
     useEffect(() => {
@@ -18,7 +18,7 @@ const TagsInputBox = () => {
             .then(({ data }: AxiosResponse) => {
                 if (data.type === "success") {
                     setTags(data.data);
-                    setLimit(10 - data.data.length)
+                    setLimit(9 - data.data.length)
 
                 }
             }).catch((err: AxiosError) => {
@@ -61,6 +61,7 @@ const TagsInputBox = () => {
             <div className="content">
                 <p>Appuie sur entrée ⌨ ou ajoute une virgule (,) après chaque étiquette</p>
                 <ul>
+                    <li>Non catégorisé</li>
                     {tags.map((tag) => (
                         <TagItem
                             tag={tag}

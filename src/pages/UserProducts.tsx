@@ -175,6 +175,7 @@ export default function UserProducts() {
                                         setProduct({ ...product, category: e.target.value });
                                     }}
                                 >
+                                    <option value="any">Non catégorisé</option>
                                     {tags.map((tag: Tag, key: number) =>
                                         <option key={key} value={tag._id}>{tag.name}</option>
                                     )}
@@ -210,6 +211,7 @@ export default function UserProducts() {
                             placeholder="Recherche..."
                         />
                         <select name="categorie">
+                            <option value="any">Non catégorisé</option>
                             {tags.map((tag: Tag, key: number) =>
                                 <option key={key} value={tag._id}>{tag.name}</option>
                             )}
