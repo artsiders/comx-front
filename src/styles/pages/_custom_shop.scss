@@ -9,7 +9,7 @@
     background-color: var(--secondary-50);
     .cover {
       height: 45vw;
-      min-height: 300px;
+      min-height: 350px;
       background-size: contain;
       background-position: top center;
       position: relative;
@@ -44,6 +44,34 @@
             font-size: 14px;
             opacity: 0.8;
           }
+        }
+      }
+    }
+    @include breakpoint(sm) {
+      .cover > div {
+        flex-direction: column;
+        height: fit-content;
+        padding: 20px;
+        gap: 20px;
+        justify-content: flex-start;
+
+        div,
+        button {
+          width: 100%;
+        }
+      }
+    }
+    @include breakpoint(xs) {
+      .cover > div {
+        flex-direction: column;
+        height: fit-content;
+        padding: 20px;
+        gap: 20px;
+        justify-content: flex-start;
+
+        div,
+        button {
+          width: 100%;
         }
       }
     }
@@ -93,6 +121,19 @@
       }
       .button {
         width: 100%;
+      }
+    }
+    @include breakpoint(md) {
+      .themes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+      }
+    }
+    @include breakpoint(sm) {
+      .themes {
+        display: flex;
+        flex-direction: column;
       }
     }
   }
@@ -173,9 +214,6 @@
             margin-bottom: 5px;
             display: block;
           }
-          input {
-            height: 40px;
-          }
         }
         .buttons {
           display: flex;
@@ -185,6 +223,48 @@
 
           .cancel {
             border-color: var(--danger);
+          }
+        }
+      }
+    }
+    @include breakpoint(md) {
+      .content {
+        display: flex;
+        flex-direction: column;
+
+        .box_info {
+          border-left: 0 solid transparent;
+          padding-left: 20px;
+          padding-top: 40px;
+        }
+      }
+    }
+    @include breakpoint(sm) {
+      .content {
+        .box_info {
+          ul li {
+            display: flex;
+            width: 100%;
+          }
+          ul li div {
+            width: 100%;
+          }
+          ul li i {
+            display: none;
+          }
+          &.form .buttons {
+            margin-left: 0;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
+    @include breakpoint(xs) {
+      .content {
+        .box_info {
+          &.form .buttons {
+            flex-direction: column;
+            gap: 10px;
           }
         }
       }
