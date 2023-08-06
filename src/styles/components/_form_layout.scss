@@ -6,20 +6,38 @@
   border-radius: 0;
 
   & > div {
-    width: 50%;
+    width: fit-content;
     padding: 20px;
     background-color: #ffffff;
     box-shadow: 0 0 100px var(--shadow);
     animation: fade-in 0.3s linear;
   }
+  form {
+    width: 400px;
+  }
+  label {
+    display: block;
+  }
+  p,
+  a {
+    font-size: small;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  a {
+    color: #828282;
+    &:hover {
+      color: var(--primary);
+    }
+  }
 
-  input,
-  select {
+  input {
     @include input;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   select {
-    padding-right: 10px;
+    margin-bottom: 20px;
+    // appearance: none;
   }
   input[type="password"]::placeholder {
     font-weight: bold;
@@ -29,10 +47,6 @@
   }
   textarea {
     @include textarea;
-  }
-
-  button {
-    @extend %button-outline;
   }
   .btn-navigation {
     display: flex;
@@ -55,9 +69,12 @@
 
   .create_shop_page {
     .header {
-      font-size: 22px;
+      font-size: larger;
       font-weight: 600;
-      margin: 20px 0;
+      padding-bottom: 15px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      border-radius: 0;
     }
   }
 }

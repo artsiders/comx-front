@@ -1,17 +1,20 @@
 .login_form {
   form {
     padding-top: 30px;
+    width: 300px;
   }
   button {
     width: 100%;
+    margin-bottom: 20px;
+    @extend %button;
   }
-  a {
-    margin: 10px;
-    display: block;
-    color: #828282;
-    font-size: 15px;
-    &:hover {
-      color: var(--primary);
-    }
-  }
+  // a {
+  //   margin: 10px;
+  //   display: block;
+  //   color: #828282;
+  //   font-size: 15px;
+  //   &:hover {
+  //     color: var(--primary);
+  //   }
+  // }
 }

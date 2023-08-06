@@ -67,11 +67,11 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.currentTarget.value)}
                 />
-                <button type="submit" className="button">
+                <button type="submit">
                     Se connecter
                     <i className="fa fa-sign-in"></i>
                 </button>
-                <NavLink to="/create-shop">Créer une boutique</NavLink>
+                <p>Je suis nouveau ici ! <NavLink to="/create-shop">Créer une boutique</NavLink></p>
             </form>
         </div>
     )

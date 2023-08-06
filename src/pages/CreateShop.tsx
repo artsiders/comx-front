@@ -203,6 +203,7 @@ export default function CreateShop() {
                 <div className="btn-navigation">
                     <button
                         type="button"
+                        className="button-outline"
                         disabled={page == 0}
                         onClick={() => {
                             setPage((currPage) => currPage - 1);
@@ -210,6 +211,7 @@ export default function CreateShop() {
                     ><i className="fa fa-chevron-left"></i> Précédent</button>
                     <button
                         type="submit"
+                        className="button-outline"
                     >
                         {page === FormTitles.length - 1 ?
                             <>
