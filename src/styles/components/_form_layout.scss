@@ -74,4 +74,17 @@
       border-radius: 0;
     }
   }
+
+  @include breakpoint(md) {
+    width: 100%;
+    form {
+      width: 80vw;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: center;
+      // width: 100vw;
+      // height: 100vh;
+      // padding: 30px;
+    }
+  }
 }
