@@ -44,3 +44,28 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+// break points map //
+$breakpoints: (
+  "xs": "max-width: 575px",
+  "sm": "max-width: 769px",
+  "md": "max-width: 950px",
+  "lg": "max-width: 1200px",
+  "xl": "max-width: 1400px",
+  "xxl": "min-width: 1400px",
+);
+
+@mixin breakpoint($value) {
+  $my-map: map-get(
+    $map: $breakpoints,
+    $key: $value,
+  );
+
+  @if $my-map {
+    @media (#{$my-map}) {
+      @content;
+    }
+  } @else {
+    @error "Oups le breakpont #{$value} n'est pas correct !";
+  }
+}

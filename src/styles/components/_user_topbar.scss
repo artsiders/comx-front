@@ -24,9 +24,10 @@
     box-shadow: 0 2px 100px var(--shadow);
   }
   .logo {
-    height: 35px;
+    height: 30px;
     width: auto;
-    margin-left: 10px;
+    margin-left: 15px;
+    margin-bottom: 5px;
   }
   .btn_preview {
     @extend %button-outline;
@@ -62,7 +63,20 @@
         }
       }
     }
-    @media screen and (max-width: 768px) {
+  }
+  .menu-toggle {
+    display: none;
+    i {
+      font-size: 20px;
+      height: 40px;
+      width: 40px;
+      @extend %center;
+    }
+  }
+
+  @include breakpoint(sm) {
+    justify-content: center;
+    .menu {
       position: fixed;
       top: 80px;
       left: 0;
@@ -84,23 +98,19 @@
         }
       }
     }
-  }
-  .menu-toggle {
-    display: none;
-    i {
-      font-size: 20px;
-      height: 40px;
-      width: 40px;
-      @extend %center;
-    }
-    @media screen and (max-width: 768px) {
-      display: block;
+    .menu-toggle {
+      display: flex;
+      justify-content: center;
       position: absolute;
       top: 20px;
       right: 20px;
       width: 30px;
       height: 30px;
       cursor: pointer;
+      i {
+        height: 20px;
+        width: 20px;
+      }
     }
   }
 }

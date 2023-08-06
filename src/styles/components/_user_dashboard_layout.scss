@@ -9,9 +9,22 @@
       overflow-x: hidden;
     }
   }
-}
-@media screen and (max-width: 600px) {
-  .user_dashboard_layout {
+
+  @include breakpoint(md) {
+    .user_section {
+      main {
+        padding: 120px 40px;
+      }
+    }
+  }
+  @include breakpoint(sm) {
+    .user_section {
+      main {
+        padding: 120px 20px;
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
     main {
       margin-left: 0;
     }

@@ -38,7 +38,7 @@ const UserTopBar = () => {
           <li>Contact</li> */}
         </ul>
         <a href={`/shop/${session.Shop.shopName}/`} target='_blank' className='btn_preview'>
-          Previsualiser
+          Prévisualiser
           <i className='fa fa-share'></i>
         </a>
       </nav>
