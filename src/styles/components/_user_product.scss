@@ -6,10 +6,6 @@
       margin-bottom: 25px;
       justify-content: flex-end;
       flex-wrap: wrap;
-      input,
-      select {
-        @include input($height: 40px);
-      }
       input {
         width: 200px;
       }
@@ -91,9 +87,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-    select {
-      @include input;
-    }
   }
   .buttons {
     display: flex;

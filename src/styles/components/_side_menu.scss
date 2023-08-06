@@ -68,7 +68,7 @@
     top: 10px;
     left: 0;
     height: calc(100vh - 100px);
-    width: 60px;
+    width: 55px;
     background-color: var(--background);
     padding: 20px 5px 0 12px;
     transition: 0.4s ease;
@@ -104,11 +104,11 @@
       color: #ffffff;
       right: 10px;
       top: 6px;
-      font-size: 20px;
-      height: 40px;
-      width: 40px;
+      font-size: medium;
+      height: 35px;
+      width: 35px;
       text-align: center;
-      line-height: 40px;
+      line-height: 35px;
       background-color: var(--blue);
       cursor: pointer;
       transition: transform 0.6s ease;
@@ -125,14 +125,14 @@
     }
     ul li {
       position: relative;
-      height: 40px;
+      height: 35px;
       width: 100%;
       list-style: none;
       margin: 10px 0;
       left: -5px;
       transition: 0.2s ease;
       text-transform: capitalize;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
       border: 1px solid transparent;
       i {
@@ -156,9 +156,9 @@
       left: 122px;
       top: 0;
       transform: translate(-50%, -50%);
-      height: 40px;
+      height: 35px;
       width: 122px;
-      line-height: 45px;
+      line-height: 35px;
       text-align: center;
       background-color: var(--background);
       color: var(--writing);
@@ -170,14 +170,14 @@
     }
     // ul li input {
     //   position: absolute;
-    //   height: 40px;
+    //   height: 35px;
     //   width: 100%;
     //   left: 0;
     //   top: 0;
     //   outline: none;
     //   border: none;
     //   background-color: var(--background);
-    //   padding-left: 40px;
+    //   padding-left: 35px;
     //   color: var(--writing);
     //   opacity: 0.9;
     //   font-size: 14px;
@@ -191,12 +191,12 @@
       text-decoration: none;
       transition: 0.4s ease;
       white-space: nowrap;
-      height: 40px;
+      height: 35px;
     }
     ul li i {
-      height: 40px;
-      min-width: 40px;
-      line-height: 40px;
+      height: 35px;
+      min-width: 35px;
+      line-height: 35px;
       text-align: center;
       cursor: pointer;
     }
@@ -210,8 +210,8 @@
     .log_out {
       position: absolute;
       bottom: 0;
-      height: 40px;
-      width: 40px;
+      height: 35px;
+      width: 35px;
       margin: 10px 0;
       left: 9px;
     }

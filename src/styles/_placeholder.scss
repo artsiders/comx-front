@@ -105,6 +105,15 @@
   border: 1px solid var(--border);
 }
 
+%link {
+  font-size: small;
+  font-weight: bold;
+  color: gray;
+  &:hover {
+    color: var(--secondary-70);
+  }
+}
+
 .search_group {
   @extend %search_group;
 }
@@ -121,6 +130,7 @@
   color: var(--primary);
   font-weight: 700;
 }
+
 .input,
 select {
   @include input;
@@ -129,8 +139,5 @@ select {
   @include textarea;
 }
 .link {
-  color: gray;
-  &:hover {
-    color: var(--secondary-70);
-  }
+  @extend %link;
 }
