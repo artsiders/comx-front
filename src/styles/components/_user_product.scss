@@ -93,10 +93,38 @@
   }
 }
 
-@media screen and (max-width: 550px) {
+@include breakpoint(xs) {
   .user_product {
-    .section :where(select, input, button) {
+    .add_product_form .input_group.autre {
+      display: flex;
+      flex-direction: column;
+    }
+    .section :where(input) {
       width: 100% !important;
+    }
+    .section :where(select) {
+      width: 46% !important;
+    }
+    .section header {
+      justify-content: space-between;
+      button {
+        width: 100%;
+      }
+    }
+    .section {
+      margin-top: -30px;
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .user_product {
+    .add_product_form .input_group.autre .buttons {
+      display: flex;
+      flex-direction: column;
+      button {
+        margin-right: 0 !important;
+        margin-bottom: 10px;
+      }
     }
   }
 }
