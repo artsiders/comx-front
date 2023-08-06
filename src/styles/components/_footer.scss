@@ -1,5 +1,5 @@
 .footer {
-  background-color: #eee;
+  background-color: var(--border);
   margin-top: 100px;
   border-radius: 0px;
   .footer-body {
@@ -50,14 +50,14 @@
       margin: 0;
     }
   }
-  @media screen and (max-width: 768px) {
+  @include breakpoint(md) {
     .footer-body {
       padding: 20px;
       .column {
         flex-basis: 100%;
         margin-bottom: 20px;
         img {
-          max-width: 100%;
+          max-width: 50%;
         }
       }
     }

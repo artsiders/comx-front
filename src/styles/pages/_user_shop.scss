@@ -18,4 +18,9 @@
       }
     }
   }
+  @include breakpoint(md) {
+    .product-section {
+      padding: 20px;
+    }
+  }
 }
