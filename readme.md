@@ -19,9 +19,17 @@ Comx-front est une application web qui permet à un utilisateur de créer sa pro
 3. Exécutez la commande `npm run dev` ou `yarn dev` pour lancer l'application en mode développement
 4. Ouvrez votre navigateur à l'adresse http://localhost:5173 pour voir l'application en action
 
-## Captures d'écran
+## Captures d'écran (créer une boutique)
+
+![Capture d'écran de l'application](./screenshots/capture_ecran-create_shop_form.webp)
+
+## Captures d'écran (dashboard)
 
 ![Capture d'écran de l'application](./screenshots/capture_ecran.webp)
+
+## Captures d'écran (produits)
+
+![Capture d'écran de l'application](./screenshots/capture_ecran-product.webp)
 
 ## Scripts
 
@@ -35,3 +43,5 @@ Les scripts suivants sont disponibles dans ce projet :
 Pour exécuter un script, ouvrez un terminal et tapez `npm run nom-du-script`, par exemple :
 
 - `npm run dev` ou `yarn dev` Cela lancera l'application en mode développement avec Vite.
+
+**NB :** <u>cette application dépend d'une api pour fonctionner !<b>
