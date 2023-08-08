@@ -18,8 +18,13 @@
       font-size: 18px;
     }
     .price {
-      font-size: 16px;
+      font-size: 14px;
+      s {
+        color: var(--danger);
+      }
       // background-color: var(--green);
+    }
+    .percentage {
     }
     button {
       @extend %button-outline;

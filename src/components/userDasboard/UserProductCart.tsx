@@ -8,6 +8,16 @@ interface Props {
     refreshProduct: () => void;
 }
 
+// _id: string;
+// name: string;
+// description: string;
+// price: number;
+// priceAfterDiscount: number;
+// statut: boolean;
+// category: string;
+// image: string;
+// _idShop: string;
+
 const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
 
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -28,6 +38,15 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                 console.log(err)
             })
     }
+    const discoutPercentage = (price: number, priceAfterDiscount: number) => {
+        const reduction = priceAfterDiscount - price;
+        const percentage = (reduction / priceAfterDiscount) * 100;
+        return percentage.toFixed(2);
+    }
+    function formatPrixFCFA(prix: number | string): string {
+        const prixFormate = prix.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' });
+        return prixFormate;
+    }
     return (
         <div className="user_product_cart" key={product._id}>
             <div className="image">
@@ -35,7 +54,10 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
             </div>
             <div className="details">
                 <h3 className="name">{product.name}</h3>
-                <p className="price">${product.price}</p>
+                <p className="price">{formatPrixFCFA(product.price)}</p>
+                <p className="price">{product.priceAfterDiscount && <s>{formatPrixFCFA(product.priceAfterDiscount)}</s>}</p>
+                <p className="percentage">{discoutPercentage(product.price, product.priceAfterDiscount)} %</p>
+                {/* <div dangerouslySetInnerHTML={{ __html: product.description }}></div> */}
                 <div className="action">
                     <button className="edit"><i className="fa fa-edit"></i></button>
                     <button

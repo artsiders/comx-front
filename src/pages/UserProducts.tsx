@@ -8,7 +8,12 @@ import { RootState } from "../app/store"
 import { useSelector } from "react-redux";
 import { toast } from 'react-toastify';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 export default function UserProducts() {
+    const [description, setDescription] = useState('');
+
     const session = useSelector((state: RootState) => state.session)
 
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -60,7 +65,7 @@ export default function UserProducts() {
             return;
         }
         formdata.append("name", product.name)
-        formdata.append("description", product.description)
+        formdata.append("description", description)
         formdata.append("price", `${product.price}`)
         formdata.append("priceAfterDiscount", `${product.priceAfterDiscount}`)
         formdata.append("statut", `${product.statut}`)
@@ -101,13 +106,14 @@ export default function UserProducts() {
                                 }}
                             />
                             <label htmlFor="desciption">Description</label>
-                            <textarea
+                            {/* <textarea
                                 className="textarea"
                                 value={product.description}
                                 onChange={(e) => {
                                     setProduct({ ...product, description: e.target.value });
                                 }}
-                            ></textarea>
+                            ></textarea> */}
+                            <ReactQuill theme="snow" value={description} onChange={setDescription} />
                         </div>
 
 
