@@ -13,7 +13,7 @@
       img {
         width: 100%;
         max-width: 100px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
       h3 {
         font-size: 24px;
@@ -23,6 +23,9 @@
         font-size: 16px;
         line-height: 1.5;
         text-align: justify;
+      }
+      p.description {
+        @include clamp(4);
       }
       ul {
         list-style: none;

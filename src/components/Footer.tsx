@@ -12,9 +12,10 @@ export default function Footer(props: Props) {
       <div className="footer-body">
         <div className="column">
           <img src="/images/logo.webp" alt="Logo" />
-          <p>
+          <p className="description">
             {data.Shop.description}
           </p>
+          <a href="/" className="link">lire plus </a>
         </div>
         <div className="column">
           <h3>Menu</h3>

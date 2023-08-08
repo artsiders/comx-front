@@ -10,3 +10,17 @@ export function removeTrailingSlash(str: string): string {
   }
   return str;
 }
+
+export function discoutPercentage(price: number, priceAfterDiscount: number) {
+  const reduction = priceAfterDiscount - price;
+  const percentage = (reduction / priceAfterDiscount) * 100;
+  return percentage.toFixed(2);
+}
+
+export function formatPrixFCFA(prix: number | string): string {
+  const prixFormate = prix.toLocaleString("fr-FR", {
+    style: "currency",
+    currency: "XOF",
+  });
+  return prixFormate;
+}

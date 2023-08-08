@@ -1,4 +1,5 @@
 import { Product } from "../../_interface";
+import { discoutPercentage, formatPrixFCFA } from "../../_utils";
 import axiosURL from "../../axiosConfig";
 import { AxiosResponse, AxiosError } from 'axios'
 import { toast } from 'react-toastify';
@@ -37,15 +38,6 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                 })
                 console.log(err)
             })
-    }
-    const discoutPercentage = (price: number, priceAfterDiscount: number) => {
-        const reduction = priceAfterDiscount - price;
-        const percentage = (reduction / priceAfterDiscount) * 100;
-        return percentage.toFixed(2);
-    }
-    function formatPrixFCFA(prix: number | string): string {
-        const prixFormate = prix.toLocaleString('fr-FR', { style: 'currency', currency: 'XOF' });
-        return prixFormate;
     }
     return (
         <div className="user_product_cart" key={product._id}>
