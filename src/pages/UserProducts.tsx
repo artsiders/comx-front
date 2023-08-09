@@ -1,7 +1,7 @@
 import { Product, Tag } from "../_interface"
 import UserProductCart from "../components/userDasboard/UserProductCart"
 import Pagination from "../components/Pagination"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import axiosURL from "../axiosConfig"
 import { AxiosResponse, AxiosError } from "axios"
 import { RootState } from "../app/store"
@@ -13,6 +13,17 @@ import 'react-quill/dist/quill.snow.css';
 
 export default function UserProducts() {
     const [description, setDescription] = useState('');
+
+    const label = useRef<null | HTMLLabelElement>(null)
+
+    const [file, setFile] = useState<string | undefined>();
+
+    function handleUploadImage(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        setProduct({ ...product, image: file.name });
+        setFile(URL.createObjectURL(file));
+    }
 
     const session = useSelector((state: RootState) => state.session)
 
@@ -80,6 +91,19 @@ export default function UserProducts() {
                 });
                 if (data.type === "success") {
                     setIsAdding(false)
+                    setFile(undefined)
+                    setDescription('')
+                    setProduct({
+                        _id: "",
+                        name: "",
+                        description: "",
+                        price: 0,
+                        priceAfterDiscount: 0,
+                        statut: true,
+                        category: "any",
+                        image: "",
+                        _idShop: session.Shop._id,
+                    })
                 }
 
             }).catch((err: AxiosError) => {
@@ -99,48 +123,69 @@ export default function UserProducts() {
                                 className="input"
                                 type="text"
                                 id="productName"
-                                placeholder="samsung A1"
+                                placeholder="Entrer le Titre de votre produit"
                                 value={product.name}
                                 onChange={(e) => {
                                     setProduct({ ...product, name: e.target.value });
                                 }}
                             />
-                            <label htmlFor="desciption">Description</label>
-                            {/* <textarea
-                                className="textarea"
-                                value={product.description}
-                                onChange={(e) => {
-                                    setProduct({ ...product, description: e.target.value });
-                                }}
-                            ></textarea> */}
-                            <ReactQuill theme="snow" value={description} onChange={setDescription} />
+                            <label>Description</label>
+                            <ReactQuill
+                                theme="snow"
+                                value={description}
+                                onChange={setDescription}
+                            />
                         </div>
 
-
                         <div className="input_group multimedia">
-                            <span>Image</span>
-                            <label htmlFor="product-image">
-                                <span>{product.image ? product.image : "Ajouter une image a votre produit"}</span>
-                                <i className="fa fa-image"></i>
-                            </label>
+                            <span>Média</span>
+                            <div className="box_image">
+                                <label ref={label} htmlFor="product-image">
+                                    <span>{product.image ? <mark>{product.image}</mark> : <>
+                                        Ajouter une image a votre produit
+                                        <span className="file_accept">
+                                            <em>.jpg,</em>
+                                            <em>.png,</em>
+                                            <em>.jpeg,</em>
+                                            <em>.webp</em>
+                                        </span>
+                                        <button
+                                            type="button"
+                                            className="button"
+                                            onClick={() => {
+                                                if (label) label.current?.click()
+                                            }}
+                                        >
+                                            Choisir une image
+                                            <i className="fa fa-image"></i>
+                                        </button>
+                                    </>}</span>
+                                </label>
+                                <div style={{ backgroundImage: `url(${file})` }}>
+                                    {!file && <i className="fa fa-image"></i>}
+                                </div>
+                                <i
+                                    className="fa fa-close"
+                                    onClick={() => {
+                                        setProduct({ ...product, image: "" })
+                                        setFile("")
+                                    }}
+                                ></i>
+                            </div>
                             <input
+                                hidden
                                 id="product-image"
-                                className="input"
                                 type="file"
                                 name="file"
-                                placeholder="10000"
-                                onChange={(e) => {
-                                    const file = e.target.files?.[0];
-                                    if (!file) return;
-                                    setProduct({ ...product, image: file.name });
-                                }}
+                                onChange={handleUploadImage}
+                                accept=".jpg, .png, .jpeg, .webp"
                             />
                         </div>
 
 
                         <div className="input_group price">
                             <label>Prix</label>
-                            <label>Prix avant réduction</label>
+                            <label>Prix avant réduction <em>(0ptionel)</em> </label>
                             <input
                                 className="input"
                                 type="number"
@@ -200,11 +245,11 @@ export default function UserProducts() {
                                 <button
                                     type="button"
                                     onClick={() => setIsAdding(false)}
-                                    style={{ backgroundColor: "var(--danger)" }}
-                                    className="button"
+                                    style={{ borderColor: "var(--danger)" }}
+                                    className="button-outline"
                                 >
                                     Annuler
-                                    <i className="fa fa-close"></i>
+                                    <i style={{ color: 'var(--danger)' }} className="fa fa-close"></i>
                                 </button>
                             </div>
                         </div>

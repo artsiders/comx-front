@@ -6,7 +6,7 @@ import { disconnect } from "../feature/session.slice";
 
 export default function SideMenu() {
   const [mobile] = useState(window.matchMedia("(max-width: 769px)").matches);
-  const [etat, setEtat] = useState(false);
+  const [etat, setEtat] = useState(!mobile);
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

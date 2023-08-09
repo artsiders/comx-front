@@ -22,9 +22,14 @@ html {
   overflow-x: hidden;
 }
 mark {
-  background-color: transparent;
-  border: 1px solid var(--primary);
+  background-color: var(--accent);
+  border: 1px solid var(--border);
   color: var(--primary);
+  padding: 0 10px;
+}
+label > em {
+  font-style: normal;
+  opacity: 0.6;
 }
 
 body {

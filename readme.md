@@ -25,7 +25,7 @@ Comx-front est une application web qui permet à un utilisateur de créer sa pro
 
 ## Captures d'écran (dashboard)
 
-![Capture d'écran de l'application](./screenshots/capture_ecran.webp)
+![Capture d'écran de l'application](./screenshots/capture_ecran-main.webp)
 
 ## Captures d'écran (produits)
 

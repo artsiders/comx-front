@@ -7,7 +7,7 @@
       justify-content: flex-end;
       flex-wrap: wrap;
       input {
-        width: 200px;
+        width: 150px;
       }
       select {
         width: auto;
@@ -40,7 +40,7 @@
     .ql-container.ql-snow {
       border-radius: 0 0 10px 10px;
       .ql-editor {
-        height: 200px;
+        height: 150px;
         border-radius: 0;
       }
     }
@@ -57,6 +57,7 @@
     @extend %box_shadow;
     margin-bottom: 40px;
   }
+
   .input_group.price {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -72,27 +73,69 @@
       right: 0;
     }
   }
+
   .input_group.multimedia {
-    input {
-      display: none;
-    }
-    span {
+    & > span {
+      margin-bottom: 6px;
       display: block;
-      margin-bottom: 10px;
     }
-    label {
-      span {
-        margin: 0;
-        margin-right: 10px;
-      }
-      opacity: 0.6;
-      @extend %center;
+    mark {
+      text-align: center;
+    }
+
+    .box_image {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-gap: 20px;
       position: relative;
-      background-color: var(--background);
-      padding: 20px;
-      border: 2px dashed var(--primary);
-      cursor: pointer;
-      height: 150px;
+      @include breakpoint(sm) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      div,
+      label {
+        @extend %center;
+        position: relative;
+        padding: 20px;
+        cursor: pointer;
+        height: 150px;
+      }
+
+      div {
+        background-color: var(--accent);
+        border: 2px solid var(--border);
+        background-size: cover;
+        background-position: center;
+      }
+      label {
+        // opacity: 0.6;
+        border: 2px dashed var(--primary);
+        & > span {
+          @extend %center;
+          flex-direction: column;
+          gap: 10px;
+          margin: 0;
+          word-break: break-all;
+        }
+      }
+      i.fa-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+      span.file_accept {
+        display: flex;
+        gap: 10px;
+        em {
+          font-size: smaller;
+          font-weight: bold;
+          font-style: normal;
+          margin: 0;
+        }
+      }
     }
   }
   .input_group.autre {

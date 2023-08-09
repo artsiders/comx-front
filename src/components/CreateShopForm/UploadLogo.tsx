@@ -8,7 +8,7 @@ interface Props {
 
 export default function UploadLogo(props: Props) {
     const { shopDatas, setShopDatas } = props;
-    const [file, setFile] = useState<any>();
+    const [file, setFile] = useState<string | undefined>();
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const file = e.target.files?.[0];
