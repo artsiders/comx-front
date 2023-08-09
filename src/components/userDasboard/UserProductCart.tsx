@@ -49,6 +49,7 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                 <p className="price">{formatPrixFCFA(product.price)}</p>
                 <p className="price">{product.priceAfterDiscount && <s>{formatPrixFCFA(product.priceAfterDiscount)}</s>}</p>
                 <p className="percentage">{discoutPercentage(product.price, product.priceAfterDiscount)} %</p>
+                <p className="tag">Tag : <b>{product.tag.name}</b></p>
                 {/* <div dangerouslySetInnerHTML={{ __html: product.description }}></div> */}
                 <div className="action">
                     <button className="edit"><i className="fa fa-edit"></i></button>

@@ -15,6 +15,11 @@ export interface Theme {
   name: string;
   date: string;
 }
+export interface Tag {
+  _id: string;
+  name: string;
+  _idShop: string;
+}
 export interface Product {
   _id: string;
   name: string;
@@ -22,7 +27,7 @@ export interface Product {
   price: number;
   priceAfterDiscount: number;
   statut: boolean;
-  category: string;
+  tag: Tag;
   image: string;
   _idShop: string;
 }
@@ -64,10 +69,4 @@ export interface ShopUser {
     phone: number;
     _id: string;
   };
-}
-
-export interface Tag {
-  _id: string;
-  name: string;
-  _idShop: string;
 }

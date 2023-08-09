@@ -38,7 +38,11 @@ export default function UserProducts() {
         price: 0,
         priceAfterDiscount: 0,
         statut: true,
-        category: "any",
+        tag: {
+            _id: "",
+            name: "",
+            _idShop: "",
+        },
         image: "",
         _idShop: session.Shop._id,
     })
@@ -80,7 +84,7 @@ export default function UserProducts() {
         formdata.append("price", `${product.price}`)
         formdata.append("priceAfterDiscount", `${product.priceAfterDiscount}`)
         formdata.append("statut", `${product.statut}`)
-        formdata.append("category", product.category)
+        formdata.append("tag", product.tag._id)
         formdata.append("_idShop", product._idShop)
         formdata.append("image", product.image)
 
@@ -100,7 +104,11 @@ export default function UserProducts() {
                         price: 0,
                         priceAfterDiscount: 0,
                         statut: true,
-                        category: "any",
+                        tag: {
+                            _id: "",
+                            name: "",
+                            _idShop: "",
+                        },
                         image: "",
                         _idShop: session.Shop._id,
                     })
@@ -223,7 +231,7 @@ export default function UserProducts() {
                                 <label>Categorie</label>
                                 <select
                                     onChange={(e) => {
-                                        setProduct({ ...product, category: e.target.value });
+                                        setProduct({ ...product, tag: { _id: e.target.value, name: "", _idShop: "" } });
                                     }}
                                 >
                                     <option value="any">Non catégorisé</option>
