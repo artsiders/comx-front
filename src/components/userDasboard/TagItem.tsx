@@ -20,6 +20,9 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
     const removeTag = (tagId: string) => {
         axiosURL.delete(`/tags/${tagId}`)
             .then(({ data }: AxiosResponse) => {
+                toast(data.message, {
+                    type: data.type,
+                })
                 if (data.type === "success") {
                     setRefresh(() => !refresh)
                 }
