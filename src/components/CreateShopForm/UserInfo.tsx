@@ -14,7 +14,7 @@ export default function UserInfo(props: Props) {
             <input
                 type="text"
                 id="fullname"
-                placeholder="mohamed salim"
+                placeholder="Ex: Mohamed salim"
                 value={shopDatas.fullname}
                 onChange={(e) => {
                     setShopDatas({ ...shopDatas, fullname: e.target.value });

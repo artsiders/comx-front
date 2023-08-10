@@ -8,7 +8,7 @@
   .current_theme {
     background-color: var(--secondary-50);
     .cover {
-      height: 45vw;
+      height: 30vw;
       min-height: 350px;
       background-size: contain;
       background-position: top center;
@@ -17,7 +17,7 @@
       & > div {
         background-color: var(--background);
         border: 1px solid var(--border);
-        height: 100px;
+        height: 110px;
         position: absolute;
         bottom: 0;
         left: 0;
@@ -35,7 +35,7 @@
           img {
             width: 100px;
             height: 80px;
-            border: 1px solid var(--border);
+            @extend %box_shadow;
           }
           .name {
             font-weight: 600;
@@ -43,6 +43,7 @@
           .date {
             font-size: 14px;
             opacity: 0.8;
+            margin-bottom: 5px;
           }
         }
       }
@@ -78,11 +79,15 @@
   }
 
   .choise_theme {
-    padding: 20px;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 20px 10px;
+
     .themes {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 20px;
+      grid-gap: 30px;
     }
     & > span {
       margin-bottom: 20px;
@@ -90,7 +95,8 @@
     }
 
     .card_theme {
-      border: 1px solid var(--border);
+      @extend %box_shadow;
+      background-color: var(--background);
       overflow: hidden;
       &.active {
         border: 1px solid var(--secondary);
@@ -143,6 +149,20 @@
       height: 150px;
       position: relative;
       border-radius: 10px 10px 0 0;
+      position: relative;
+
+      & > span {
+        position: absolute;
+        left: 180px;
+        bottom: 10px;
+        color: white;
+        font-size: large;
+        margin-right: 40px;
+
+        @include breakpoint(xs) {
+          display: none;
+        }
+      }
 
       .logo {
         border-radius: 50%;

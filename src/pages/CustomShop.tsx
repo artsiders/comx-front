@@ -68,23 +68,31 @@ export default function CustomShop() {
 
     return (
         <div className="custom_shop">
-            <span>Théme</span>
+            <span>Théme <mark>béta</mark></span>
             <section className="current_theme">
                 <div className="cover" style={{ backgroundImage: 'url(/images/theme-cover.webp)' }}>
                     <div>
                         <div className="card_theme">
                             <img src="/images/thumb-theme-1.webp" alt="current_theme" />
                             <div className="text">
-                                <div className="name">Name theme</div>
-                                <div className="date">2023-28-12</div>
+                                <div className="name">Basique thème</div>
+                                <div className="date">Date: 2023-28-12</div>
+                                <div className="date">Auteur: <mark>
+                                    <a
+                                        href="mailto:salim.artsider@gmail.com"
+                                        className="link"
+                                        style={{ textDecoration: "none" }}
+                                    >salim sama</a>
+                                </mark></div>
                             </div>
                         </div>
                         <button className="button">Customiser <i className="fa fa-paint-brush"></i></button>
                     </div>
                 </div>
             </section>
+
             <section className="choise_theme">
-                <span>Choisissez un théme pour votre boutique</span>
+                <span>Choisissez un théme pour votre boutique <mark>béta</mark></span>
                 <div className="themes">
                     {themes.map((theme: Theme, key: number) =>
                         <div className="card_theme" key={key}>
@@ -104,7 +112,15 @@ export default function CustomShop() {
             </section>
 
             <section className="shop_info">
-                <div className="cover" style={{ backgroundImage: 'url(/images/herotop.webp)' }}>
+                <div className="cover"
+                    style={{
+                        background: `linear-gradient(
+                            to top, 
+                            rgb(0 0 0 / .9), rgb(0 0 0 / 0)
+                        ), url(/images/herotop.webp)`,
+                    }}
+                >
+                    <span>Informations relative à votre boutique!</span>
                     <div className="logo">
                         <label htmlFor="logo-input" className="fa fa-edit"></label>
                         <img src="/images/logo.webp" alt="shop_logo" />

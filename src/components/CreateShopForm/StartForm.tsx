@@ -21,7 +21,7 @@ export default function StartForm(props: Props) {
                     setShopDatas({ ...shopDatas, shopName: e.target.value });
                 }}
             />
-            <label htmlFor="text">Langues de la boutique</label>
+            <label htmlFor="text">Langue de la boutique</label>
             <select
                 onChange={(e) => {
                     setShopDatas({ ...shopDatas, langue: e.target.value });
