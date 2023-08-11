@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import UserProductDetail from "../components/userDasboard/UserProductDetail"
 
 export default function UserProducts() {
     const [description, setDescription] = useState('');
@@ -25,6 +24,8 @@ export default function UserProducts() {
         setProduct({ ...product, image: file.name });
         setFile(URL.createObjectURL(file));
     }
+
+
 
     const session = useSelector((state: RootState) => state.session)
 
@@ -48,12 +49,12 @@ export default function UserProducts() {
         _idShop: session.Shop._id,
     })
 
-
     useEffect(() => {
-        axiosURL.get(`/products/${session.Shop._id}`)
+        axiosURL.get(`/products/all/${session.Shop._id}`)
             .then(({ data }: AxiosResponse) => {
                 if (data.type === "success") {
-                    setProducts(data.data)
+                    const products = data.data as Product[]
+                    setProducts(products)
                 }
             }).catch((err: AxiosError) => console.log(err))
     }, [session, isAdding, refresh])
@@ -283,10 +284,6 @@ export default function UserProducts() {
                         <button className="button" onClick={() => setIsAdding(true)}>ajouter<i className="fa fa-plus"></i></button>
                     </header>
                     <article className="grid">
-                        {true && <UserProductDetail
-                            refreshProduct={() => setRefresh(!refresh)}
-                            product={products[0]}
-                        />}
                         {products.map((product: Product, key: number) => (
                             <UserProductCart
                                 refreshProduct={() => setRefresh(!refresh)}

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Product } from "../../_interface";
 import { discoutPercentage, formatPrixFCFA } from "../../_utils";
 import axiosURL from "../../axiosConfig";
@@ -14,6 +15,7 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
     const { _id, name, price, priceAfterDiscount, tag, image } = product
 
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.stopPropagation()
         const _id = e.currentTarget.dataset.id
         axiosURL.delete(`products/${_id}?filename=${image}`)
             .then(({ data }: AxiosResponse) => {
@@ -31,8 +33,17 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                 console.log(err)
             })
     }
+
+    const navigate = useNavigate()
+
+    const showDetail = () => {
+        navigate(`/my-shop/custom/product/${_id}`)
+    }
     return (
-        <div className="user_product_cart" key={_id}>
+        <div
+            className="user_product_cart"
+            onClick={showDetail}
+        >
             <div className="image">
                 <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
             </div>

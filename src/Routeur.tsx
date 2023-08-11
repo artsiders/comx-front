@@ -10,6 +10,7 @@ import UserOrder from "./pages/UserOrder";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import UserProductDetail from "./components/userDasboard/UserProductDetail";
 
 const Routeur = () => {
   return (
@@ -24,6 +25,7 @@ const Routeur = () => {
         <Route element={<UserDashboardLayout />} >
           <Route path="/my-shop/custom/" element={<CustomShop />} />
           <Route path="/my-shop/custom/products" element={<UserProducts />} />
+          <Route path="/my-shop/custom/product/:_idProduct" element={<UserProductDetail />} />
           <Route path="/my-shop/custom/categories" element={<UserCategories />} />
           <Route path="/my-shop/custom/commandes" element={<UserOrder />} />
         </Route>

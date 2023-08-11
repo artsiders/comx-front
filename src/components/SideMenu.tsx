@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { disconnect } from "../feature/session.slice";
 // import axios from "axios"; 
 
@@ -9,6 +9,7 @@ export default function SideMenu() {
   const [etat, setEtat] = useState(!mobile);
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { _idProduct } = useParams()
 
   // const [data, setData] = useState([]);
   const toggleSideMenu = () => (etat ? setEtat(false) : setEtat(true));
@@ -72,7 +73,7 @@ export default function SideMenu() {
             <NavLink
               to={`/my-shop/custom/products`}
               id="products"
-              className={({ isActive }) => (isActive ? 'active' : '')}
+              className={({ isActive }) => ((isActive || _idProduct) ? 'active' : '')}
             >
               <i className="fa fa-product-hunt"></i>
               <span className="links_name">Produits</span>

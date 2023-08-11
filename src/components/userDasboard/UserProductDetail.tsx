@@ -1,17 +1,47 @@
+import { useEffect, useState } from "react";
 import { Product } from "../../_interface";
 import { discoutPercentage, formatPrixFCFA } from "../../_utils";
 import axiosURL from "../../axiosConfig";
 import { AxiosResponse, AxiosError } from 'axios'
 import { toast } from 'react-toastify';
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { useParams } from "react-router-dom";
 
-interface Props {
-    product: Product;
-    refreshProduct: () => void;
-}
 
-const UserProductDetail: React.FC<Props> = ({ product, refreshProduct }) => {
-    // unused element {_idShop}
+const UserProductDetail = () => {
+    const { _idProduct } = useParams()
+
+    const session = useSelector((state: RootState) => state.session)
+    const [product, setProduct] = useState<Product>({
+        _id: "",
+        name: "",
+        description: "",
+        price: 0,
+        priceAfterDiscount: 0,
+        statut: true,
+        tag: {
+            _id: "",
+            name: "",
+            _idShop: "",
+        },
+        image: "",
+        _idShop: session.Shop._id,
+    })
     const { _id, name, price, priceAfterDiscount, tag, image, description, statut } = product
+
+    useEffect(() => {
+        const params = {
+            _idShop: session.Shop._id
+        }
+        axiosURL.get(`/products/${_idProduct}`, { params })
+            .then(({ data }: AxiosResponse) => {
+                if (data.type === "success") {
+                    const product = data.data as Product
+                    setProduct(product)
+                }
+            }).catch((err: AxiosError) => console.log(err))
+    }, [session, _idProduct])
 
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const _id = e.currentTarget.dataset.id
@@ -21,7 +51,7 @@ const UserProductDetail: React.FC<Props> = ({ product, refreshProduct }) => {
                     type: data.type,
                 })
                 if (data.type === "success") {
-                    refreshProduct()
+                    // refreshProduct()
                 }
 
             }).catch((err: AxiosError) => {
