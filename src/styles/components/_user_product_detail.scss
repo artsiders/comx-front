@@ -1,0 +1,67 @@
+.user_product_detail {
+  grid-column: span 3;
+  height: fit-content;
+  overflow: hidden;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 40% auto;
+  background-color: #fff;
+
+  .image {
+    position: relative;
+    cursor: pointer;
+    img {
+      padding: 10px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 0;
+    }
+  }
+  .details {
+    padding: 10px 5px 10px 15px;
+    border-left: 1px solid var(--border);
+    border-radius: 0;
+    p {
+      margin-bottom: 10px;
+    }
+    .name {
+      font-size: larger;
+      font-weight: bold;
+    }
+    .discount_box {
+      display: flex;
+      gap: 10px;
+    }
+    .discount,
+    .percentage {
+      font-size: 14px;
+      s {
+        color: var(--danger);
+      }
+    }
+    .description span > p {
+      display: inline;
+    }
+    button {
+      margin-top: 10px;
+      i {
+        font-size: large;
+        margin: 0;
+        border: none;
+        padding: 0;
+      }
+    }
+    .trash {
+      @extend %button-outline;
+      border-color: var(--danger);
+    }
+    .edit {
+      @extend %button;
+    }
+    .action {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+  }
+}

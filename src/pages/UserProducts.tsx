@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import UserProductDetail from "../components/userDasboard/UserProductDetail"
 
 export default function UserProducts() {
     const [description, setDescription] = useState('');
@@ -282,8 +283,16 @@ export default function UserProducts() {
                         <button className="button" onClick={() => setIsAdding(true)}>ajouter<i className="fa fa-plus"></i></button>
                     </header>
                     <article className="grid">
+                        {true && <UserProductDetail
+                            refreshProduct={() => setRefresh(!refresh)}
+                            product={products[0]}
+                        />}
                         {products.map((product: Product, key: number) => (
-                            <UserProductCart refreshProduct={() => setRefresh(!refresh)} product={product} key={key} />
+                            <UserProductCart
+                                refreshProduct={() => setRefresh(!refresh)}
+                                product={product}
+                                key={key}
+                            />
                         ))}
                     </article>
                     <section>

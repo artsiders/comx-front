@@ -38,6 +38,38 @@
   }
 }
 
+%badge {
+  background-color: var(--accent);
+  font-size: small;
+  display: inline-block;
+  padding: 0 10px;
+  font-weight: bold;
+  border-radius: 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.badge {
+  @extend %badge;
+}
+
+.badge-success {
+  background-color: var(--success);
+  color: white;
+}
+.badge-danger {
+  background-color: var(--danger);
+  color: white;
+}
+.badge-warning {
+  background-color: var(--warning);
+  color: black;
+}
+.badge-info {
+  background-color: var(--primary);
+  color: white;
+}
+
 %button-outline {
   @extend %button;
   border: 1px solid var(--primary);
