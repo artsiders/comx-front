@@ -7,20 +7,34 @@
   grid-template-columns: 40% auto;
   background-color: #fff;
 
+  @include breakpoint(sm) {
+    display: flex;
+    flex-direction: column;
+    .image {
+      padding-right: 0;
+      img {
+        padding: 0;
+      }
+    }
+  }
+
   .image {
     position: relative;
     cursor: pointer;
+    padding-right: 10px;
     img {
-      padding: 10px;
       width: 100%;
       object-fit: cover;
-      border-radius: 0;
     }
   }
   .details {
     padding: 10px 5px 10px 15px;
     border-left: 1px solid var(--border);
     border-radius: 0;
+
+    @include breakpoint(sm) {
+      border-left: none;
+    }
     p {
       margin-bottom: 10px;
     }
