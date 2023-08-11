@@ -10,10 +10,12 @@ interface Props {
 }
 
 const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
+    // unused element {description,statut,_idShop}
+    const { _id, name, price, priceAfterDiscount, tag, image } = product
 
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const _id = e.currentTarget.dataset.id
-        axiosURL.delete(`products/${_id}?filename=${product.image}`)
+        axiosURL.delete(`products/${_id}?filename=${image}`)
             .then(({ data }: AxiosResponse) => {
                 toast(data.message, {
                     type: data.type,
@@ -30,25 +32,32 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
             })
     }
     return (
-        <div className="user_product_cart" key={product._id}>
+        <div className="user_product_cart" key={_id}>
             <div className="image">
-                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${product.image}`} alt={product.name} />
+                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
             </div>
             <div className="details">
-                <h3 className="name">{product.name}</h3>
-                <p className="price">{formatPrixFCFA(product.price)}</p>
-                <p className="discount">{product.priceAfterDiscount && <s>{formatPrixFCFA(product.priceAfterDiscount)}</s>}</p>
-                <p className="percentage">{discoutPercentage(product.price, product.priceAfterDiscount)} %</p>
-                <p className="tag">Tag : <mark>{product.tag?.name || "Non catégorisé"}</mark></p>
-                {/* <div dangerouslySetInnerHTML={{ __html: product.description }}></div> */}
+                <h3 className="name">{name}</h3>
+                <p className="price">{formatPrixFCFA(price)}</p>
+                {(priceAfterDiscount !== 0) && <div className="discount_box">
+                    <p className="discount">
+                        {priceAfterDiscount && <s>{formatPrixFCFA(priceAfterDiscount)}</s>}
+                    </p>
+                    <p className="percentage">
+                        <b>{discoutPercentage(price, priceAfterDiscount)} %</b>
+                    </p>
+                </div>
+                }
+                {(tag?.name) && <p className="tag">Tag : <mark>{tag?.name || "Non catégorisé"}</mark></p>}
+                {/* <div dangerouslySetInnerHTML={{ __html: description }}></div> */}
                 <div className="action">
                     <button className="edit"><i className="fa fa-edit"></i></button>
                     <button
                         className="trash"
                         onClick={handleDelete}
-                        data-id={product._id}
+                        data-id={_id}
                     >
-                        <i data-id={product._id} className="fa fa-trash"></i>
+                        <i data-id={_id} className="fa fa-trash"></i>
                     </button>
                 </div>
             </div>
