@@ -25,8 +25,6 @@ export default function UserProducts() {
         setFile(URL.createObjectURL(file));
     }
 
-
-
     const session = useSelector((state: RootState) => state.session)
 
     const [refresh, setRefresh] = useState<boolean>(false)

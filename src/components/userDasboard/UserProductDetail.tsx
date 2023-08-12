@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { useParams } from "react-router-dom";
+import SubTopBar from "./SubTopBar";
 
 
 const UserProductDetail = () => {
@@ -53,7 +54,6 @@ const UserProductDetail = () => {
                 if (data.type === "success") {
                     // refreshProduct()
                 }
-
             }).catch((err: AxiosError) => {
                 toast('Erreur lors de la suppression', {
                     type: "error",
@@ -61,39 +61,51 @@ const UserProductDetail = () => {
                 console.log(err)
             })
     }
+
     return (
-        <div className="user_product_detail" key={_id}>
-            <div className="image">
-                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
-            </div>
-            <div className="details">
-                <p className="name">{name}</p>
-                <p className="price"><b>Prix : </b>{formatPrixFCFA(price)}</p>
-                {(priceAfterDiscount !== 0) && <div className="discount_box">
-                    <p className="discount">
-                        <b>Réduction : </b>{priceAfterDiscount && <s>{formatPrixFCFA(priceAfterDiscount)}</s>}
-                    </p>
-                    <p className="percentage">
-                        <b>{discoutPercentage(price, priceAfterDiscount)} %</b>
-                    </p>
+        <>
+            <SubTopBar currentPage="detail produit" />
+            <section className="user_product_detail" key={_id}>
+                <div className="image">
+                    <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
+                    <i className="fa fa-edit"></i>
                 </div>
-                }
-                {(tag?.name) && <p className="tag"><b>Tag : </b><mark>{tag?.name || "Non catégorisé"}</mark></p>}
-                <p><b>Statut : </b>{(statut) ? <span className="badge badge-success">Actif</span> : <span className="badge badge-danger">Inactif</span>}</p>
-                <p className="description"><b>Description:</b> <span dangerouslySetInnerHTML={{ __html: description }}></span></p>
-                <div className="action">
-                    <button className="edit">Modifier <i className="fa fa-edit"></i></button>
-                    <button
-                        className="trash"
-                        onClick={handleDelete}
-                        data-id={_id}
-                    >
-                        Supprimer
-                        <i data-id={_id} className="fa fa-trash"></i>
-                    </button>
+                <div className="details">
+                    <p className="name">{name}</p>
+                    <p className="price"><b>Prix : </b>{formatPrixFCFA(price)}</p>
+                    {(priceAfterDiscount !== 0) && <div className="discount_box">
+                        <p className="discount">
+                            <b>Réduction : </b>{priceAfterDiscount && <s>{formatPrixFCFA(priceAfterDiscount)}</s>}
+                        </p>
+                        <p className="percentage">
+                            <b>{discoutPercentage(price, priceAfterDiscount)} %</b>
+                        </p>
+                    </div>
+                    }
+                    {(tag?.name) && <p className="tag">
+                        <b>Tag : </b><mark>{tag?.name || "Non catégorisé"}</mark>
+                    </p>}
+                    <p>
+                        <b>Statut : </b>{(statut) ? <span className="badge badge-success">Actif</span> : <span className="badge badge-danger">Inactif</span>}
+                    </p>
+                    <p className="description">
+                        <b>Description:</b>
+                        <span dangerouslySetInnerHTML={{ __html: description }}></span>
+                    </p>
+                    <div className="action">
+                        <button className="edit">Modifier <i className="fa fa-edit"></i></button>
+                        <button
+                            className="trash"
+                            onClick={handleDelete}
+                            data-id={_id}
+                        >
+                            Supprimer
+                            <i data-id={_id} className="fa fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </>
     )
 }
 

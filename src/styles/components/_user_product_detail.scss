@@ -2,10 +2,11 @@
   grid-column: span 3;
   height: fit-content;
   overflow: hidden;
-  padding: 10px;
+  padding: 15px 10px;
   display: grid;
   grid-template-columns: 40% auto;
   background-color: #fff;
+  @extend %box_shadow;
 
   @include breakpoint(sm) {
     display: flex;
@@ -22,9 +23,22 @@
     position: relative;
     cursor: pointer;
     padding-right: 10px;
+    height: fit-content;
     img {
       width: 100%;
       object-fit: cover;
+    }
+    i {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--accent);
+      height: 35px;
+      width: 35px;
+      @extend %center;
+    }
+    i:hover {
+      background-color: var(--border);
     }
   }
   .details {
@@ -53,8 +67,13 @@
         color: var(--danger);
       }
     }
-    .description span > p {
-      display: inline;
+    .description {
+      padding: 5px;
+      background-color: var(--accent);
+      display: block;
+      li {
+        list-style: none;
+      }
     }
     button {
       margin-top: 10px;
