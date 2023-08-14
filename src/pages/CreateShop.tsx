@@ -156,12 +156,11 @@ export default function CreateShop() {
                                 User: {
                                     email: User.email,
                                     fullname: User.fullname,
-                                    password: User.password,
                                     phone: User.phone,
                                     _id: User._id,
                                 },
                                 connected: false,
-                                token: token,
+                                token,
                             }))
 
                             navigate(`/my-shop/custom/`)

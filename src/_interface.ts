@@ -45,7 +45,7 @@ export interface SessionState {
   User: {
     email: string;
     fullname: string;
-    password: string;
+    password?: string;
     phone: number;
     _id: string;
   };
