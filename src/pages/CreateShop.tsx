@@ -21,7 +21,7 @@ export default function CreateShop() {
         navigate(`/my-shop/custom/`)
     }
 
-
+    const [isLoading, setLoading] = useState<boolean>(false)
     const [page, setPage] = useState(0)
     const [shopDatas, setShopDatas] = useState<ShopDatas>({
         shopName: "",
@@ -61,6 +61,7 @@ export default function CreateShop() {
         switch (page) {
             case 0:
                 if (shopDatas.shopName) {
+                    setLoading(true)
                     axiosURL.get(`/shop/check-shop-name?shopName=${shopDatas.shopName}`)
                         .then(({ data }: AxiosResponse) => {
                             if (data.type === "success") {
@@ -70,7 +71,11 @@ export default function CreateShop() {
                                     type: data.type,
                                 });
                             }
-                        }).catch((err: AxiosError) => console.log(err))
+                            setLoading(false)
+                        }).catch((err: AxiosError) => {
+                            console.log(err)
+                            setLoading(false)
+                        })
                 } else {
                     toast("Vous avez oublier de défini un nom pour votre boutique !");
                 }
@@ -101,6 +106,7 @@ export default function CreateShop() {
                     });
                     return;
                 }
+                setLoading(false)
                 setPage((currPage) => currPage + 1);
 
                 break;
@@ -111,9 +117,11 @@ export default function CreateShop() {
                     });
                     return;
                 }
+                setLoading(false)
                 setPage((currPage) => currPage + 1);
                 break;
             case 3:
+                setLoading(true)
                 if (!shopDatas.logo) {
                     toast("Importez un logo pour votre boutique.", {
                         type: "error",
@@ -137,7 +145,7 @@ export default function CreateShop() {
                 axiosURL.post(`/shop`, formdata)
                     .then(({ data }: AxiosResponse) => {
                         const { Shop, User, token } = data.data as SessionState;
-
+                        setLoading(false)
                         toast(data.message, {
                             type: data.type,
                         });
@@ -167,6 +175,7 @@ export default function CreateShop() {
                         }
                     }).catch((err: AxiosError) => {
                         console.log(err)
+                        setLoading(false)
                     })
 
                 break;
@@ -210,17 +219,18 @@ export default function CreateShop() {
                     ><i className="fa fa-chevron-left"></i> Précédent</button>
                     <button
                         type="submit"
-                        className="button-outline"
+                        className={isLoading ? 'button-outline loading' : 'button-outline'}
                     >
                         {page === FormTitles.length - 1 ?
                             <>
                                 Terminer
-                                <i className="fa fa-check"></i>
+                                {isLoading ? <i className="fa fa-spinner fa-pulse fa-loader"></i> : <i className="fa fa-check"></i>}
                             </>
                             :
                             <>
                                 Suivant
-                                <i className="fa fa-chevron-right"></i>
+                                {isLoading ? <i className="fa fa-spinner fa-pulse fa-loader"></i> : <i className="fa fa-chevron-right"></i>}
+
                             </>
                         }
                     </button>

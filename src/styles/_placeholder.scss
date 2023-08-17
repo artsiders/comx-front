@@ -20,6 +20,11 @@
   &.loading {
     opacity: 0.6;
     pointer-events: none;
+    i.fa-loader {
+      border-left: none;
+      padding-left: 0;
+      font-size: medium;
+    }
   }
 
   i {
@@ -31,11 +36,6 @@
     @extend %center;
     font-size: small;
   }
-  i.fa-loader {
-    border-left: none;
-    padding-left: 0;
-    font-size: medium;
-  }
 
   &:active {
     transform: scale(0.98);
@@ -45,6 +45,30 @@
   }
   &:hover {
     background-color: var(--primary-accent);
+  }
+}
+
+%button-outline {
+  @extend %button;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--writing);
+
+  &.loading {
+    i.fa-loader {
+      color: var(--primary);
+    }
+  }
+  i {
+    color: var(--writing);
+  }
+  &:hover {
+    background-color: transparent;
+    border-color: var(--secondary-50);
+    color: var(--secondary-50);
+    i {
+      color: var(--secondary-50);
+    }
   }
 }
 
@@ -78,24 +102,6 @@
 .badge-info {
   background-color: var(--primary);
   color: white;
-}
-
-%button-outline {
-  @extend %button;
-  border: 1px solid var(--primary);
-  background: transparent;
-  color: var(--writing);
-  i {
-    color: var(--writing);
-  }
-  &:hover {
-    background-color: transparent;
-    border-color: var(--secondary-50);
-    color: var(--secondary-50);
-    i {
-      color: var(--secondary-50);
-    }
-  }
 }
 
 %tooltip {
