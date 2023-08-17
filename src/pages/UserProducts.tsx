@@ -15,6 +15,7 @@ import SkeletonProductCard from "../components/SkeletonProductCard"
 export default function UserProducts() {
     const [description, setDescription] = useState('');
     const [isLoading, setLoading] = useState<boolean>(true)
+    const [isLoadAdding, setIsLoadAdding] = useState<boolean>(false)
 
     const label = useRef<null | HTMLLabelElement>(null)
 
@@ -86,6 +87,9 @@ export default function UserProducts() {
             });
             return;
         }
+
+        setIsLoadAdding(true);
+
         formdata.append("name", product.name)
         formdata.append("description", description)
         formdata.append("price", `${product.price}`)
@@ -97,6 +101,7 @@ export default function UserProducts() {
 
         axiosURL.post(`/products`, formdata)
             .then(({ data }: AxiosResponse) => {
+                setIsLoadAdding(false)
                 toast(data.message, {
                     type: data.type,
                 });
@@ -123,6 +128,7 @@ export default function UserProducts() {
 
             }).catch((err: AxiosError) => {
                 console.log(err)
+                setIsLoadAdding(false)
             })
 
     }
@@ -252,10 +258,10 @@ export default function UserProducts() {
                                 <button
                                     type="submit"
                                     style={{ marginRight: 20 }}
-                                    className="button"
+                                    className={isLoadAdding ? 'button loading' : 'button'}
                                 >
                                     Ajouter
-                                    <i className="fa fa-check"></i>
+                                    {isLoadAdding ? <i className="fa fa-spinner fa-pulse fa-loader"></i> : <i className="fa fa-check"></i>}
                                 </button>
                                 <button
                                     type="button"
