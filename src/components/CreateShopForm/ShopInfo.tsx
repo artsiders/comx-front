@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { ShopDatas } from "../../_interface";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 interface Props {
     shopDatas: ShopDatas;
@@ -7,6 +10,14 @@ interface Props {
 
 export default function ShopInfo(props: Props) {
     const { shopDatas, setShopDatas } = props;
+    const [description, setDescription] = useState('');
+
+    useEffect(() => {
+        return () => {
+            setShopDatas({ ...shopDatas, description: description })
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [description])
 
     return (
         <div>
@@ -21,13 +32,11 @@ export default function ShopInfo(props: Props) {
                 }}
             />
             <label htmlFor="email">Description de la boutique</label>
-            <textarea
-                value={shopDatas.description}
-                onChange={(e) => {
-                    setShopDatas({ ...shopDatas, description: e.target.value });
-                }}
-            >
-            </textarea>
+            <ReactQuill
+                theme="snow"
+                value={description}
+                onChange={setDescription}
+            />
         </div>
     )
 }

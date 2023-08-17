@@ -32,6 +32,9 @@ label > em {
   font-style: normal;
   opacity: 0.6;
 }
+label {
+  margin-bottom: 5px;
+}
 
 body {
   background-color: #f1f2f4;
@@ -59,5 +62,19 @@ span[aria-live="polite"],
   border-radius: 10px;
   .Toastify__toast-body {
     padding: 15px;
+  }
+}
+
+// Text editor quill //
+.quill {
+  .ql-toolbar.ql-snow {
+    border-radius: 10px 10px 0 0;
+  }
+  .ql-container.ql-snow {
+    border-radius: 0 0 10px 10px;
+    .ql-editor {
+      height: 150px;
+      border-radius: 0;
+    }
   }
 }
