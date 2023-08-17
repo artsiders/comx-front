@@ -40,6 +40,7 @@ const UserShop = () => {
 
   const navigate = useNavigate()
 
+
   useEffect(() => {
     axiosURL.get(`/shop/${slugToText(shopName || "")}`)
       .then(({ data }: AxiosResponse) => {
@@ -52,7 +53,7 @@ const UserShop = () => {
   }, [shopName, navigate])
 
   useEffect(() => {
-    axiosURL.get(`/products/${session.Shop._id}`)
+    axiosURL.get(`/products/all/${session.Shop._id}`)
       .then(({ data }: AxiosResponse) => {
         if (data.type === "success") {
           setProducts(data.data)

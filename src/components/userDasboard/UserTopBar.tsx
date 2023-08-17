@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import { textToSlug } from '../../_utils';
 
 const UserTopBar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +38,7 @@ const UserTopBar = () => {
           <li>Produits</li>
           <li>Contact</li> */}
         </ul>
-        <a href={`/shop/${session.Shop.shopName}/`} target='_blank' className='btn_preview'>
+        <a href={`/shop/${textToSlug(session.Shop.shopName)}/`} target='_blank' className='btn_preview'>
           Prévisualiser
           <i className='fa fa-share'></i>
         </a>
