@@ -88,12 +88,6 @@ export default function CreateShop() {
                     });
                     return;
                 }
-                if (!shopDatas.email) {
-                    toast("Entrer votre adresse E-mail s'il vous plait", {
-                        type: "error",
-                    });
-                    return;
-                }
                 if (!shopDatas.password) {
                     toast("Créer un mot de passe s'il vous plait", {
                         type: "error",
@@ -106,8 +100,31 @@ export default function CreateShop() {
                     });
                     return;
                 }
-                setLoading(false)
-                setPage((currPage) => currPage + 1);
+                if (!shopDatas.email) {
+                    toast("Entrer votre adresse E-mail s'il vous plait", {
+                        type: "error",
+                    });
+                    return;
+                } else {
+                    setLoading(true)
+                    axiosURL.get(`/users/check-email?email=${shopDatas.email}`)
+                        .then(({ data }: AxiosResponse) => {
+                            setLoading(false)
+                            if (data.type !== "success") {
+                                toast(data.message, {
+                                    type: data.type,
+                                });
+                                return
+                            }
+                            setLoading(false)
+                            setPage((currPage) => currPage + 1);
+                        }).catch((err: AxiosError) => {
+                            console.log(err)
+                            setLoading(false)
+                            return
+                        })
+                }
+
 
                 break;
             case 2:
