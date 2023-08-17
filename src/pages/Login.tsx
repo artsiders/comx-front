@@ -12,6 +12,7 @@ export default function Login() {
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [isLoading, setLoading] = useState<boolean>(false)
 
     const session = useSelector((state: RootState) => state.session)
     useEffect(() => {
@@ -22,6 +23,7 @@ export default function Login() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        setLoading(true)
         axiosURL.post('/users/sign-in/', { email, password })
             .then(({ data }: AxiosResponse) => {
                 if (data.type === "success") {
@@ -30,6 +32,7 @@ export default function Login() {
                 toast(data.message, {
                     type: data.type,
                 });
+                setLoading(false)
 
             }).catch(({ response }: AxiosError) => {
                 const data = response?.data as { message: string, type: string };
@@ -42,8 +45,7 @@ export default function Login() {
                         type: "error",
                     })
                 }
-
-
+                setLoading(false)
             })
     }
 
@@ -67,9 +69,9 @@ export default function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.currentTarget.value)}
                 />
-                <button type="submit">
+                <button className={isLoading ? 'loading' : ''} type="submit">
                     Se connecter
-                    <i className="fa fa-sign-in"></i>
+                    {isLoading ? <i className="fa fa-spinner fa-pulse fa-loader"></i> : <i className="fa fa-sign-in"></i>}
                 </button>
                 <p>Je suis nouveau ici ! <NavLink to="/create-shop">Créer une boutique</NavLink></p>
             </form>

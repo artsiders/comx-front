@@ -17,6 +17,11 @@
   transition: all 0.2s linear;
   justify-content: space-between;
 
+  &.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
   i {
     color: #ffffff;
     border-left: 1px solid var(--border);
@@ -25,6 +30,11 @@
     height: 60%;
     @extend %center;
     font-size: small;
+  }
+  i.fa-loader {
+    border-left: none;
+    padding-left: 0;
+    font-size: medium;
   }
 
   &:active {
