@@ -13,11 +13,15 @@ interface Props {
 }
 
 export default function TagItem({ tag, refresh, setRefresh }: Props) {
-    const [isEditing, setIsEditing] = useState(false)
-    const [editName, setEditName] = useState(tag.name)
+    const [Edit, setEdit] = useState<boolean>(false)
+    const [editName, setEditName] = useState<string>(tag.name)
     const { Shop } = useSelector((state: RootState) => state.session)
+    const [isDeleting, setIsDeleting] = useState<boolean>(false)
+    const [isEditing, setIsEditing] = useState<boolean>(false)
+
 
     const removeTag = (tagId: string) => {
+        setIsDeleting(true)
         axiosURL.delete(`/tags/${tagId}`)
             .then(({ data }: AxiosResponse) => {
                 toast(data.message, {
@@ -26,14 +30,17 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                 if (data.type === "success") {
                     setRefresh(() => !refresh)
                 }
+                setIsDeleting(false)
             }).catch((err: AxiosError) => {
                 console.log(err);
                 toast("Une erreur inatendue s'est produite !", {
                     type: "error",
                 })
+                setIsDeleting(false)
             })
     };
     const handleUpdate = (tagId: string, name: string, _idShop: string) => {
+        setIsEditing(true)
         axiosURL.patch(`/tags/${tagId}`, { name, _idShop })
             .then(({ data }: AxiosResponse) => {
                 toast(data.message, {
@@ -42,17 +49,24 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                 if (data.type === "success") {
                     setRefresh(() => !refresh)
                 }
+                setEdit(false)
                 setIsEditing(false)
             }).catch((err: AxiosError) => {
                 console.log(err);
                 toast("Une erreur inatendue s'est produite !", {
                     type: "error",
                 })
+                setEdit(false)
+                setIsEditing(false)
             })
     };
     return (
         <>
-            {!isEditing ? <li onDoubleClick={() => setIsEditing(true)} key={tag._id}>
+            {!Edit ? <li
+                onDoubleClick={() => setEdit(true)}
+                key={tag._id}
+                className={isDeleting ? "deleting" : ""}
+            >
                 {tag.name}{" "}
                 <i
                     className="fa fa-close"
@@ -67,16 +81,16 @@ export default function TagItem({ tag, refresh, setRefresh }: Props) {
                         value={editName}
                         onChange={(e) => setEditName(e.currentTarget.value)}
                     />
-                    <i
+                    {isEditing ? <i className="fa fa-spinner fa-spin"></i> : <i
                         onClick={() => {
                             if (tag.name !== editName) {
                                 handleUpdate(tag._id, editName, Shop._id)
                             } else {
-                                setIsEditing(false)
+                                setEdit(false)
                             }
                         }}
                         className="fa fa-check"
-                    ></i>
+                    ></i>}
                 </label>
 
             </li>
