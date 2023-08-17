@@ -1,5 +1,6 @@
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-loading-skeleton/dist/skeleton.css'
 import Routeur from "./Routeur";
 import { Provider } from "react-redux";
 import { store } from "./app/store";

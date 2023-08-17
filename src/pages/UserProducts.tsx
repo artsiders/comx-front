@@ -10,9 +10,11 @@ import { toast } from 'react-toastify';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import SkeletonProductCard from "../components/SkeletonProductCard"
 
 export default function UserProducts() {
     const [description, setDescription] = useState('');
+    const [isLoading, setLoading] = useState<boolean>(true)
 
     const label = useRef<null | HTMLLabelElement>(null)
 
@@ -48,13 +50,18 @@ export default function UserProducts() {
     })
 
     useEffect(() => {
+        setLoading(true)
         axiosURL.get(`/products/all/${session.Shop._id}`)
             .then(({ data }: AxiosResponse) => {
                 if (data.type === "success") {
                     const products = data.data as Product[]
                     setProducts(products)
                 }
-            }).catch((err: AxiosError) => console.log(err))
+                setLoading(false)
+            }).catch((err: AxiosError) => {
+                console.log(err);
+                setLoading(true)
+            })
     }, [session, isAdding, refresh])
 
     useEffect(() => {
@@ -282,13 +289,17 @@ export default function UserProducts() {
                         <button className="button" onClick={() => setIsAdding(true)}>ajouter<i className="fa fa-plus"></i></button>
                     </header>
                     <article className="grid">
-                        {products.map((product: Product, key: number) => (
-                            <UserProductCart
-                                refreshProduct={() => setRefresh(!refresh)}
-                                product={product}
-                                key={key}
-                            />
-                        ))}
+                        {isLoading ?
+                            [0, 1, 2, 3, 4, 5].map((key: number) =>
+                                <SkeletonProductCard key={key} />
+                            )
+                            : products.map((product: Product, key: number) => (
+                                <UserProductCart
+                                    refreshProduct={() => setRefresh(!refresh)}
+                                    product={product}
+                                    key={key}
+                                />
+                            ))}
                     </article>
                     <section>
                         <Pagination />
