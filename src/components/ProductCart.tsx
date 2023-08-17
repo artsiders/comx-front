@@ -9,7 +9,11 @@ const ProductCart: React.FC<Props> = ({ product }) => {
     return (
         <div className="product-card" key={product._id}>
             <div className="image">
-                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${product.image}`} alt={product.name} />
+                <img
+                    loading="lazy"
+                    src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${product.image}`}
+                    alt={product.name}
+                />
             </div>
             <div className="details">
                 <h3 className="name">{product.name}</h3>

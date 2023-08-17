@@ -45,7 +45,11 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
             onClick={showDetail}
         >
             <div className="image">
-                <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
+                <img
+                    loading="lazy"
+                    src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`}
+                    alt={name}
+                />
             </div>
             <div className="details">
                 <h3 className="name">{name}</h3>

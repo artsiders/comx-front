@@ -1,6 +1,10 @@
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
-const SkeletonProductCard = () => {
+interface Props {
+    dashboard?: boolean;
+}
+
+const SkeletonProductCard = ({ dashboard }: Props) => {
     return (
         <SkeletonTheme
             baseColor="var(--skeleton-base-color)"
@@ -14,7 +18,7 @@ const SkeletonProductCard = () => {
             >
                 <div className="image">
                     <Skeleton
-                        height={140}
+                        height={dashboard ? 200 : 140}
                         width={'100%'}
                     />
                 </div>
@@ -37,6 +41,12 @@ const SkeletonProductCard = () => {
                             width={'40%'}
                         />
                     </div>
+                    {dashboard && <div style={{ marginTop: 20 }}>
+                        <Skeleton
+                            height={40}
+                            width={'100%'}
+                        />
+                    </div>}
                 </div>
             </div>
         </SkeletonTheme>
