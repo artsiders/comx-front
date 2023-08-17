@@ -1,38 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../_interface";
 import { discoutPercentage, formatPrixFCFA } from "../../_utils";
-import axiosURL from "../../axiosConfig";
-import { AxiosResponse, AxiosError } from 'axios'
-import { toast } from 'react-toastify';
 
 interface Props {
     product: Product;
-    refreshProduct: () => void;
+    refreshProduct?: () => void;
 }
 
-const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
+const UserProductCart: React.FC<Props> = ({ product }) => {
     // unused element {description,statut,_idShop}
     const { _id, name, price, priceAfterDiscount, tag, image } = product
-
-    const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.stopPropagation()
-        const _id = e.currentTarget.dataset.id
-        axiosURL.delete(`products/${_id}?filename=${image}`)
-            .then(({ data }: AxiosResponse) => {
-                toast(data.message, {
-                    type: data.type,
-                })
-                if (data.type === "success") {
-                    refreshProduct()
-                }
-
-            }).catch((err: AxiosError) => {
-                toast('Erreur lors de la suppression', {
-                    type: "error",
-                })
-                console.log(err)
-            })
-    }
 
     const navigate = useNavigate()
 
@@ -65,7 +42,7 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                 }
                 {(tag?.name) && <p className="tag">Tag : <mark>{tag?.name || "Non catégorisé"}</mark></p>}
                 {/* <div dangerouslySetInnerHTML={{ __html: description }}></div> */}
-                <div className="action">
+                {/* <div className="action">
                     <button className="edit"><i className="fa fa-edit"></i></button>
                     <button
                         className="trash"
@@ -74,7 +51,7 @@ const UserProductCart: React.FC<Props> = ({ product, refreshProduct }) => {
                     >
                         <i data-id={_id} className="fa fa-trash"></i>
                     </button>
-                </div>
+                </div> */}
             </div>
         </div>
     )
