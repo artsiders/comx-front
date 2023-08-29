@@ -297,7 +297,7 @@ export default function UserProducts() {
                     <article className="grid">
                         {isLoading ?
                             [0, 1, 2, 3, 4, 5].map((key: number) =>
-                                <SkeletonProductCard key={key} />
+                                <SkeletonProductCard key={key} count={key} />
                             )
                             : products.map((product: Product, key: number) => (
                                 <UserProductCart

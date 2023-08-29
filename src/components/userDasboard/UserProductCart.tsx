@@ -18,7 +18,7 @@ const UserProductCart: React.FC<Props> = ({ product }) => {
     }
     return (
         <div
-            className="user_product_cart"
+            className="user_product_cart animated fadeIn"
             onClick={showDetail}
         >
             <div className="image">
