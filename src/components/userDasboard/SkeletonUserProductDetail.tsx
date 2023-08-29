@@ -6,7 +6,7 @@ const SkeletonUserProductDetail = () => {
             baseColor="var(--skeleton-base-color)"
             highlightColor="var(--skeleton-highlight-color)"
         >
-            <section className="user_product_detail">
+            <section className="user_product_detail animated inUp">
                 <div className="image">
                     <Skeleton
                         height={300}

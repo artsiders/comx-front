@@ -4,8 +4,14 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Routeur from "./Routeur";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const App = () => {
+  useEffect(() => {
+    AOS.init();
+  }, [])
   return (
     <Provider store={store}>
       <Routeur />

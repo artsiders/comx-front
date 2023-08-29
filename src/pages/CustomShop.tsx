@@ -69,7 +69,7 @@ export default function CustomShop() {
     return (
         <div className="custom_shop">
             <span>Théme <mark>béta</mark></span>
-            <section className="current_theme">
+            <section className="current_theme animated inUp" >
                 <div className="cover" style={{ backgroundImage: 'url(/images/theme-cover.webp)' }}>
                     <div>
                         <div className="card_theme">

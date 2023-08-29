@@ -74,7 +74,7 @@ const UserProductDetail = () => {
             <SubTopBar currentPage="detail produit" />
             {isLoading ? <SkeletonUserProductDetail /> :
                 <>
-                    <section className="user_product_detail" key={_id}>
+                    <section className="user_product_detail animated fadeIn" key={_id}>
                         <div className="image">
                             <img src={`${import.meta.env.VITE_REACT_APP_API_URL}/uploads/product/${image}`} alt={name} />
                             <i className="fa fa-edit"></i>
